@@ -1,0 +1,5 @@
+Mila 5 2 3
+Maja 14 7 1
+Milica 3 12 2
+Tata 5 5 2
+Mama 27 8 1

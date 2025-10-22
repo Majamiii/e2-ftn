@@ -1,0 +1,12 @@
+Bologna 4294967291 17
+Chievoverona 4294967295 14
+Crotone 4294967280 16
+Empoli 4294967285 19
+Fiorentina 7 17
+Genoa 0 16
+Inter 2 14
+Lazio 12 14
+Palermo 4294967280 18
+Sampdoria 4294967293 14
+Torino 13 15
+Udinese 4294967292 15
