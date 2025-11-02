@@ -98,8 +98,8 @@ class Game:
                     print('Evaluation time: {}s'.format(round(end - start, 7)))
                     print('Recommended move: X = {}, Y = {}'.format(qx, qy))
 
-                    px = int(input('Insert the X coordinate: '))
-                    py = int(input('Insert the Y coordinate: '))
+                    py = int(input('Insert the X coordinate: '))
+                    px = int(input('Insert the Y coordinate: '))
                     
                     if self._current_state.is_move_valid(px, py, 'X'):
                         self._current_state.set_value(px, py, 'X')

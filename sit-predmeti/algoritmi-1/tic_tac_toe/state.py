@@ -22,7 +22,7 @@ class State(object):
                     self._board[1][i] == self._board[2][i] and \
                     self._board[0][i] != '-':
                 return True, self._board[0][i]
-        # horisontal win
+        # horizontal win
         for row in self._board:
             if row == ['X', 'X', 'X']:
                 return True, 'X'
