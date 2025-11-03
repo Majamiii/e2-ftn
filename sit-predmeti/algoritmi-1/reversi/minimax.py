@@ -13,7 +13,7 @@ class Game():
         self._player_turn = 'X'
 
     # player O (AI) is max
-    def max(self, depth=0):
+    def max(self, state, depth=0):
         #   return 0,0,0
 
         depth += 1
@@ -21,7 +21,7 @@ class Game():
         maxv = -1500
         px = None
         py = None
-        result, winner = self._current_state.is_end('O')
+        result, winner = state.is_end('O')
 
         if result:
             if winner == 'X':
@@ -32,34 +32,40 @@ class Game():
                 return 0, 0, 0
             
         if depth>3:
-            maxv = self._current_state.heuristics('O')
+            maxv = state.heuristics('O')
             #   self._current_state.clean_available_moves('O')
             return maxv, 0, 0
             
         # game is not over
         for i in range(0,8):
             for j in range(0,8):
-                if self._current_state.get_value(i,j) == '*':
-                    og_board = copy.deepcopy(self._current_state._board)
-                    self._current_state.set_value(i,j,'O')
-                    self._current_state.reset_available_moves('O')
-                    (m, min_i, min_j) = self.min(depth)
+                if state.get_value(i,j) == '*':
+
+                    new_state = copy.deepcopy(state)
+                    new_state.set_value(i, j, 'O')
+                    new_state.reset_available_moves('O')
+
+                    #   og_board = copy.deepcopy(state._board)
+                    #   state.set_value(i,j,'O')
+                    #   new_state = state.reset_available_moves('O')
+                    (m, min_i, min_j) = self.min(new_state, depth)
                     if m>maxv:
                         maxv = m
                         px = i
                         py = j
-                    self._current_state._board = og_board
         return maxv, px, py
 
+
+
     # player X (human player) is min
-    def min(self, depth = 0):
+    def min(self, state, depth = 0):
         #   return 0,0,0
         depth += 1
 
         minv = 1500
         px = None
         py = None
-        result, winner = self._current_state.is_end('X')
+        result, winner = state.is_end('X')
 
         if result:
             if winner == 'X':
@@ -70,24 +76,30 @@ class Game():
                 return 0, 0, 0
             
         if depth>3:
-            minv = self._current_state.heuristics('X')
+            minv = -state.heuristics('X')
             #   self._current_state.clean_available_moves('O')
             return minv, 0, 0
             
         # game is not over
         for i in range(0,8):
             for j in range(0,8):
-                if self._current_state.get_value(i,j) == '*':
-                    og_board = copy.deepcopy(self._current_state._board)
-                    self._current_state.set_value(i,j,'X')
-                    self._current_state.reset_available_moves('X')
-                    (m, min_i, min_j) = self.max(depth)
+                if state.get_value(i,j) == '*':
+
+                    new_state = copy.deepcopy(state)
+                    new_state.set_value(i, j, 'X')
+                    new_state.reset_available_moves('X')
+
+                    #   og_board = copy.deepcopy(state._board)
+                    #   state.set_value(i,j,'X')
+                    #   new_state = state.reset_available_moves('X')
+                    (m, min_i, min_j) = self.max(new_state, depth)
                     if m<minv:
                         minv = m
                         px = i
                         py = j
-                    self._current_state._board = og_board
         return minv, px, py
+    
+
     
 
     def play(self):
@@ -135,6 +147,6 @@ class Game():
 
 
             else:
-                (m, px, py) = self.max()
+                (m, px, py) = self.max(self._current_state)
                 self._current_state.set_value(px,py,'O')
                 self._player_turn = 'X'

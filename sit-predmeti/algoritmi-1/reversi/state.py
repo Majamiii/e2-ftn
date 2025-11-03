@@ -192,9 +192,9 @@ class State:
                 if self._board[i][j] == '*':
                     self._board[i][j] = '-'
 
-    def update_board(self, qx, qy, value, first=True, direction=1):
+    def update_board_1(self, qx, qy, value, first=True, direction=1):
         # directions are clockwise from 1 to 8 - we should always keep going in the same direction
-
+        return 0
         if first:
             for direction in range(1,9):
                 # dir=1, we are checking bottom-up
@@ -286,7 +286,41 @@ class State:
         
         return
 
+    def update_board(self, qx, qy, value, direction=1):
+        opponent = 'O' if value == 'X' else 'X'
+        # explore all 8 directions
+        for direction in range(1, 9):
+            dx, dy = 0, 0
+            # clockwise directions
+            if direction == 1: dx, dy = -1, 0        # up
+            elif direction == 2: 
+                dx, dy = -1, 1      # up-right
+            elif direction == 3: 
+                dx, dy = 0, 1       # right
+            elif direction == 4: 
+                dx, dy = 1, 1       # down-right
+            elif direction == 5: 
+                dx, dy = 1, 0       # down
+            elif direction == 6: 
+                dx, dy = 1, -1      # down-left
+            elif direction == 7: 
+                dx, dy = 0, -1      # left
+            elif direction == 8: 
+                dx, dy = -1, -1     # up-left
 
+            x = qx+dx
+            y = qy+dy
+            
+            flipped = []
+
+            while 0 <= x < 8 and 0 <= y < 8 and self._board[x][y] == opponent:
+                flipped.append((x, y))
+                x += dx
+                y += dy
+
+            if 0 <= x < 8 and 0 <= y < 8 and self._board[x][y] == value and flipped:
+                for fx, fy in flipped:
+                    self._board[fx][fy] = value
         
     def __str__(self):
         #   self.reset_available_moves()        # should be commented out
