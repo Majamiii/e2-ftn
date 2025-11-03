@@ -2,6 +2,10 @@ from state import State
 import time
 import copy
 
+# change depth level for minimizer (player) and maximizer (AI) for different speeds and qualities of moves
+
+# initial value: 7 for AI and 8 for minimizer (so that you always win if you follow the reccomendationed moves ;)
+
 class Game():
     __slots__ = ['_current_state', '_player_turn']
     def __init__(self):
@@ -13,8 +17,7 @@ class Game():
         self._player_turn = 'X'
 
     # player O (AI) is max
-    def max(self, state, depth=0):
-        #   return 0,0,0
+    def max(self, state, depth=0, alpha=-2000, beta=2000):
 
         depth += 1
 
@@ -31,9 +34,8 @@ class Game():
             else:
                 return 0, 0, 0
             
-        if depth>3:
+        if depth>7:
             maxv = state.heuristics('O')
-            #   self._current_state.clean_available_moves('O')
             return maxv, 0, 0
             
         # game is not over
@@ -45,20 +47,23 @@ class Game():
                     new_state.set_value(i, j, 'O')
                     new_state.reset_available_moves('O')
 
-                    #   og_board = copy.deepcopy(state._board)
-                    #   state.set_value(i,j,'O')
-                    #   new_state = state.reset_available_moves('O')
-                    (m, min_i, min_j) = self.min(new_state, depth)
+                    (m, min_i, min_j) = self.min(new_state, depth, alpha, beta)
                     if m>maxv:
                         maxv = m
                         px = i
                         py = j
+
+                    if maxv >= beta:
+                        return maxv,px,py
+                    if maxv>alpha:
+                        alpha = maxv
+
         return maxv, px, py
 
 
 
     # player X (human player) is min
-    def min(self, state, depth = 0):
+    def min(self, state, depth = 0, alpha=-2000, beta=2000):
         #   return 0,0,0
         depth += 1
 
@@ -75,9 +80,8 @@ class Game():
             else:
                 return 0, 0, 0
             
-        if depth>3:
+        if depth>8:
             minv = -state.heuristics('X')
-            #   self._current_state.clean_available_moves('O')
             return minv, 0, 0
             
         # game is not over
@@ -89,17 +93,20 @@ class Game():
                     new_state.set_value(i, j, 'X')
                     new_state.reset_available_moves('X')
 
-                    #   og_board = copy.deepcopy(state._board)
-                    #   state.set_value(i,j,'X')
-                    #   new_state = state.reset_available_moves('X')
-                    (m, min_i, min_j) = self.max(new_state, depth)
+                    (m, min_i, min_j) = self.max(new_state, depth, alpha, beta)
                     if m<minv:
                         minv = m
                         px = i
                         py = j
-        return minv, px, py
-    
 
+                        
+                    if minv <= alpha:
+                        return minv, px, py
+
+                    if minv < beta:
+                        beta = minv
+
+        return minv, px, py
     
 
     def play(self):
@@ -123,10 +130,10 @@ class Game():
             if self._player_turn == 'X':
                 while True:
                     start = time.time()
-                    #(m, px, py) = self.min()
+                    (m, px, py) = self.min(copy.deepcopy(self._current_state))
                     end = time.time()
                     print("Evaluation time: ", end-start)
-                    #   print("Recommended move: ", px, py)
+                    print("Recommended move: ", py, px)
 
                     qy = int(input("Set x coordinate: "))
                     if qy<0 or qy>7:
