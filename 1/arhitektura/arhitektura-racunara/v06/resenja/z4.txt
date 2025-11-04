@@ -1,0 +1,15 @@
+Napisati potprogram u asemblerskom jeziku koji će odrediti horizontalni paritet za niz
+15-bitnih brojeva:
+a. int SetParityArray(unsigned short int* niz, int n)
+b. Niz sadrži 16-bitne elemente gde je najviši bit svakog elementa rezervisan za bit
+parnosti
+c. Potprogram treba da poziva potprogram napisan u prethodnom zadatku kako bi
+postavio najviši bit za svaki element niza i kako bi, kroz svaki od poziva, dobio
+informaciju o paritetu svakog od elemenata
+d. Povratna vrednost potprograma jeste broj elemenata sa jedinicom na mestu bita
+pariteta.
+e. Da biste pozivali jedan potprogram iz drugog, u istom fajlu napišite oba
+potprograma, prvo SetParity (isti potprogram iz prethodnog zadatka), pa ispod njega
+SetParityArray
+Napomena: C programi za ove zadatke dostupni su redom u direktorijumima z1, z2, z3 i z4. Od njih,
+samo z4 nema skriptu za automatsko testiranje.

@@ -1,0 +1,43 @@
+** ekstraktovan tekst pomocu imagetotext.info **   i bas im kida sajt    **
+slika sa sova se nalazi tu u folderu, priprema_sov.jpg
+
+
+izrada zadatka se nalazi u operacija.S
+
+
+Priprema SOV:
+Napisati asemblerski program koji predstavlja kalkulator logičkih operacija za 8-bitne brojve. 
+Korisnik u program unosi jedan string maksimalne dužine 100 karaktera koji sadrži logički izraz oblika:
+
+operandi operacijal operand2 operacija2 operand3
+
+gde su operandi 8-bitne neoznačene vrednosti, a operacije jedan od binarnih logičkih operacija iz 
+skupa [“^","<",">”] (isključivo ili, rotacija ulevo, rotacija udesno). 
+Podrazumevati da će minimalno biti unesena dva operanda i jedna operacija između njih, dok se iza 
+toga može nalaziti proizvoljan broj dodatnh operacija i oprantada. Smatrati da će se izmedu nizova 
+znakova koji čine operande i operacije nalaziti tačno jedan razmak i da će broj takvih nizova znakova 
+uvek biti neparan. Takođe, smatrati da se na početku i na kraju stringa neće unositi razmaci.
+
+Operandi se mogu zadati u dekadnom (npr. 123) ili heksadecimalnom (npr. 0x1f) obliku ("x" za heksadecimalni zapis može biti malo ili veliko slovo).
+
+Računanje logičkog izraza ide s leva u desno, bez prioriteta operacija. 
+Ukoliko prilikom računanja izraza nije bilo greške, rezultat treba ispisati u oktalnom brojnom sistemu. 
+Ako se desi greška prilikom rada programa, prekinuti njegovo izvršavanje i ispisati poruku o grešci. 
+
+Ako se desi greška kod prepoznavanja operanda, ispisati string err1. 
+Ako se desi greska kod prepoznavanja operacije, ispisati string err2. 
+Izlazni kod programa treba da bude 0 ako greške nije bilo, a 1 ako jeste.
+
+Primeri korišćenja:
+
+Unseite logicki izraz: 0xff < 36 0x6A > 11
+Rezultat: 262
+
+Unseite logicki izraz: 123 A 3f
+Greska kod operanda.
+
+Za kompletno odraden zadatak se dobija 30 poena.
+Bodovanje zadataka će u velikoj meri zavisiti od procenta uspešnih testova.
+Napomena: ukoliko testovi koji ne treba da izazovu grešku ne prolaze, testovi koji treba da izazovu grešku se ne uzimaju kao validni.
+Pored testova koji su unapred dati (automatizovano testiranje sa ./testiraj.sh zad.S), prilikom pregledanja rešenje će se testirati sa 
+još dodatnih testova, te je potrebno testirati i sa drugim ulazima. Napomena: testiraj. sh ima smisla pokretati tek kada je zadatak završen.

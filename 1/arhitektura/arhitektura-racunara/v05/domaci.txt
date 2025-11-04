@@ -1,0 +1,7 @@
+6.8. Domaći zadaci
+1. Napraviti potprogram int uvecaj(int x) koji na argument dodaje 1 i vraća dobijeni broj.
+2. Napraviti potprogram int palindrom(char *str) koji proverava da li je string palindrom.
+Ako jeste, vratiti 1, u suprotnom vratiti 0.
+3. Prepraviti potprogram za faktorijel tako da se rezultat vraća preko argumenta prenetog po
+adresi. Registar eax iskoristiti za vraćanje vrednosti o grešci: ukoliko dođe do prekoračenja
+opsega od 32 bita prilikom množenja, u eax vratiti 1, inače vratiti 0.

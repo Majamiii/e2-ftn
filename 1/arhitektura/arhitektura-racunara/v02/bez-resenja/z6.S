@@ -1,0 +1,1 @@
+# Proširiti zadatak 6 iz sekcije zadataka sa rešenjima tako da radi sa promenljivama u dvostrukoj preciznosti

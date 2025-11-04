@@ -1,0 +1,16 @@
+3. Napisati potprogram u asembleru kojim se pokomponentno sabiraju dva niza a i b, a rezultat
+sabiranja smešta se u niz c (c[0] = a[0] + b[0], c[1] = a[1] + b[1], …, c[n] = a[n] + b[n]):
+
+a. Elementi sva tri niza su u dvostrukoj preciznosti
+b. Zaglavlje funkcije (potprograma) dato je u glavni.c fajlu u Z3 folderu
+c. Sva tri niza prosleđena su potprogramu kao parametri preneti po adresi
+d. Potprogram kao povratnu vrednost vraća kod greške; greška nastupa ukoliko dođe
+    do prekoračenja pri sabiranju; potprogram vraća 0 ukoliko nije bilo greške, a bilo šta
+    drugo ukoliko jeste
+
+
+Napomena: skriptu za testiranje možete pokrenuti tako što joj samo prosledite svoj potprgoram,
+odnosno .S fajl (ne treba prosleđivati .c fajl) – ./testiraj.sh moje_resenje.S. Ukoliko dobijete grešku
+koja kaže da nemate privilegije za izvršenje skripte, otvorite terminal u folderu gde je skripta za
+testiranje i unesite komandu:
+chmod +x testiraj.sh

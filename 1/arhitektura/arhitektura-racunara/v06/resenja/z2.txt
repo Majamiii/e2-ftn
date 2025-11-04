@@ -1,0 +1,16 @@
+Uraditi zadatak iznad, samo u dvostrukoj preciznosti:
+a. unsigned long long maska(unsigned int n, unsigned int v)
+b. Sve je isto kao u prethodnom zadatku, samo što ovog puta funkcija vraća 64-bitnu
+masku
+c. Pokušati implementaciju na osnovu stavki a i b, i prethodnog zadatka, a po potrebi
+pogledati sledeće tačke kao pomoć:
+  Promena za neispravne vrednosti u odnosu na jednostruku preciznost jeste
+ta što n sada može uzeti vrednosti od 0 do 63
+  Rešenje se ovde vraća kroz par registara (edx:eax); ukoliko je n veće od 31,
+jedinica preskače u registar edx; treba smestiti jedinicu u eax i šiftovati ovaj
+registar ukoliko je n u opsegu od 0 do 31; ako je veće od 31, treba jedinicu
+smestiti u edx i šiftovati ovaj registar za vrednost n-32; priloženo rešenje
+koristi nešto drugačiji pristup – šiftuje eax za ostatak pri deljenju n sa 32, pa
+ukoliko je n veće od 31 na kraju se zamene vrednosti edx i eax; ovaj deo se
+može realizovati i korišćenjem šiftovanja u dvostrukoj preciznosti, za šta je
+kod dostupan u praktikumu na strani 45

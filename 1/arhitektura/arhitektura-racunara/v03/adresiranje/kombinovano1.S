@@ -1,0 +1,19 @@
+.section .data
+    NELEM = 10
+    niz: .long 1,2,3,4,5,6,7,8,9,10
+    suma: .long 0
+.section .text
+.globl main
+main:
+    movl $niz, %esi           # bazni registar
+    movl $0, %eax           # eax se koristi za računanje sume
+    movl $NELEM-1, %edi     # indeksni registar
+petlja:
+    addl (%esi, %edi, 4), %eax
+    decl %edi
+    jns petlja
+kraj:
+    movl %eax, suma
+    movl $1, %eax
+    movl $0, %ebx
+    int $0x80

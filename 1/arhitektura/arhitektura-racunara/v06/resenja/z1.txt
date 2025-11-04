@@ -1,0 +1,32 @@
+  Napisati potprogram u asemblerskom jeziku kojim se pravi 32-bitna maska:
+    a. unsigned int maska(unsigned int n, unsigned int v)
+  
+    b. Funkcija vraća 32-bitnu vrednost čiji je n-ti bit postavljen na vrednost parametra v (0
+      ili 1), dok su svi ostali bitovi postavljeni na suprotnu vrednost od v
+    
+    c. Ukoliko je neki od parametara neispravan, vratiti nulu; primer za n = 3, v = 0:
+    11111111111111111111111111110111
+    
+    d. Pokušati implementaciju na osnovu samo stavki a, b i c, a po potrebi pogledati
+    sledeće tačke kao pomoć:
+    
+      ● Nesipravne vrednosti parametara – za n, nevalidna je svaka vrednost veća
+      31, jer je indeks poslednjeg bita u masci upravo 31; za v, nevalidne su
+      vrednosti veće od 1
+  
+      ● Treba ispitati vrednost ovih parametara i, u slučaju neispravnosti, skočiti na
+      labelu koja rezultat postavlja na nulu
+      
+      ● U suprotnom, treba postaviti vrednost v na odgovarajuću bit poziciju; ukoliko
+      je v = 1, ovo se može postići postavljanjem jedinice na bit najmanje težine
+      rezultujućeg registra, i šiftovanjem ovog registra (a time i jedinice) za n
+      mesta u levo
+      
+      ● U slučaju da je v = 0, može se prvo jedinica postaviti na n-to mesto u
+      registru, pa se onda mogu invertovati bitovi i time dobiti nula na
+      odgovarajućoj poziciji
+      
+    e. Napomena: rešenje zadatka forsira bit operacije za određene korake zadatka jer je to
+    bila tematika ovih vežbi; nije neophodno koristiti ove operacije u toj meri, i sasvim je
+    korektno da pri izradi zadatka koristite sve što je viđeno na prethodnim terminima
+    vežbi umesto bit operacija, tamo gde je to moguće

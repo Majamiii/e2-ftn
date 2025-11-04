@@ -1,0 +1,17 @@
+1. Napisati potprogram u asemblerskom jeziku kojim se računa n-ti element Fibonačijevog niza:
+
+
+    a. Zaglavlje funkcije (potprograma) dato je u glavni.c fajlu u Z1 folderu
+
+    b. Potprogram kao povratnu vrednost vraća kod greške – greška nastupa ukoliko dođe
+        do prekopračenja pri sabiranju (za vežbu, možete proširiti zadatak tako da greška
+        nastupa i kada je prosleđeno nevalidno n); potprogram vraća 0 ukoliko nije nastupila
+        greška, a bilo šta drugo ukoliko jeste nastupila
+    
+    c. Potprogram vraća pronađeni n-ti element niza preko parametra unsigned int* rez
+        prenetog po adresi
+    
+    d. Fajl resenje_1.S sadrži rešenje sa manje uključenih parametara, dok fajl
+        resenje_2_za_testiranje.S sadrži rešenje koje se može proslediti skripti za testiranje
+
+

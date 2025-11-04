@@ -1,0 +1,1 @@
+# Proširiti zadatke 3 i 7 iz sekcije zadataka sa rešenjima tako da rade i sa označenim brojevima
