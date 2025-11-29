@@ -24,6 +24,9 @@
 *.xvid
 *.svi
 *.f4v
+*.exe
+2/materijali/drive unzipped/SAU/octave-8.1.0-w64-installer.exe
+2/materijali/flash/MISS/Usmeni/MISS skripta.pdf
 
 # Optional: ignore a common videos directory (uncomment if you use a /videos/ folder)
 # videos/
