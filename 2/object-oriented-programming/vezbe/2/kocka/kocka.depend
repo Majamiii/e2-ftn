@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1764425837 source:d:\faks\2\object-oriented-programming\vezbe\2\kocka\main.cpp
+	<iostream>
+	"kocka.hpp"
+
+1764426006 d:\faks\2\object-oriented-programming\vezbe\2\kocka\kocka.hpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"kocka.hpp"
+
+1764425626 source:d:\faks\2\object-oriented-programming\vezbe\2\kocka\kocka.cpp
+	"kocka.hpp"
+

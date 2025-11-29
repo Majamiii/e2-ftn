@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1764443888 source:d:\faks\2\object-oriented-programming\vezbe\2\kockica\main.cpp
+	"kockica.hpp"
+
+1764443345 d:\faks\2\object-oriented-programming\vezbe\2\kockica\kockica.hpp
+	<iostream>
+	<ctime>
+
+1764443310 source:d:\faks\2\object-oriented-programming\vezbe\2\kockica\kocka.cpp
+	"kockica.hpp"
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1764448394 source:d:\faks\2\object-oriented-programming\vezbe\2\rerna\main.cpp
+	<iostream>
+	"rerna.hpp"
+
+1764446717 d:\faks\2\object-oriented-programming\vezbe\2\rerna\rerna.hpp
+	<iostream>
+
+1764448305 source:d:\faks\2\object-oriented-programming\vezbe\2\rerna\rerna.cpp
+	"rerna.hpp"
+
