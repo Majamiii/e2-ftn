@@ -1,0 +1,26 @@
+package ognjen_k3_prep;
+
+import java.util.HashMap;
+
+public class Student {
+	private String prezime;
+	private String index;
+	private HashMap<String, Predmet> predmeti;
+	
+	public Student() {
+		super();
+		this.prezime = "";
+		this.index = "";
+		this.predmeti = new HashMap<String, Predmet>();
+	}
+
+	public Student(String prezime, String index, HashMap<String, Predmet> predmeti) {
+		super();
+		this.prezime = prezime;
+		this.index = index;
+		this.predmeti = new HashMap<String, Predmet>();
+	}
+	
+	
+	
+}

@@ -1,0 +1,22 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd}
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd}
+
+vcom -93 -work work {D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd}
+
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  top_tb
+
+do D:/Work_from_home/LPRS1/2023_ispiti/4_Jun/Ostali/Exam_Bundle/LPRS1_X_Y_Z_Q/Jun_ostali/LPRS1_X_Y_Z/Zadatak2/top_tb_run.do

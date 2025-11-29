@@ -1,0 +1,65 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oPRINT",
+					"strict" : false
+				},
+				{
+					"name" : "oERROR",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "iRST",
+					"strict" : false
+				},
+				{
+					"name" : "iPRINT",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iADD_PAPER",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iAMOUNT[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

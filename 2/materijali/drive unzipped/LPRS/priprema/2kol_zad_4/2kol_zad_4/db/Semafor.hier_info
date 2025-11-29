@@ -1,0 +1,36 @@
+|Semafor
+iclk => count[0].CLK
+iclk => count[1].CLK
+iclk => count[2].CLK
+iclk => sstate~1.DATAIN
+inRst => count[0].ACLR
+inRst => count[1].ACLR
+inRst => count[2].ACLR
+inRst => sstate~3.DATAIN
+istart => snextstate.OUTPUTSELECT
+istart => snextstate.OUTPUTSELECT
+istart => snextstate.OUTPUTSELECT
+istart => snextstate.OUTPUTSELECT
+iA0 => sAi.DATAB
+iA1 => sAi.DATAB
+iA2 => sAi.DATAB
+iA3 => sAi.DATAB
+iA4 => sAi.DATAB
+iA5 => sAi.DATAB
+iA6 => sAi.DATAB
+iA7 => sAi.DATAA
+iB0 => sBi.DATAB
+iB1 => sBi.DATAB
+iB2 => sBi.DATAB
+iB3 => sBi.DATAB
+iB4 => sBi.DATAB
+iB5 => sBi.DATAB
+iB6 => sBi.DATAB
+iB7 => sBi.DATAA
+oDONE <= oDONE.DB_MAX_OUTPUT_PORT_TYPE
+oE <= oE.DB_MAX_OUTPUT_PORT_TYPE
+oOUT[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+oOUT[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+oOUT[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+
+

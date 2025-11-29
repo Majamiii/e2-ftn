@@ -1,0 +1,11 @@
+package bojice_K3;
+
+public class Bojica implements IzracunavanjeCene {
+
+	@Override
+	public boolean akcijskaCena(double cena) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

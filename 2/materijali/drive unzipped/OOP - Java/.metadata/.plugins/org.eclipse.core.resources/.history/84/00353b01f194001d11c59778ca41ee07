@@ -1,0 +1,27 @@
+package ognjen_k3_prep;
+
+public class Predmet implements IPredmet {
+
+	private String naziv;
+	private ArrayList<Test>;
+
+	
+	@Override
+	public boolean dodajTest(Test t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean polozio() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int izracunajPoene() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

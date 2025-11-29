@@ -1,0 +1,505 @@
+Analysis & Synthesis report for LPRS1_CPU
+Wed Jul 12 20:55:49 2023
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r0_i
+ 13. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r1_i
+ 14. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r2_i
+ 15. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r3_i
+ 16. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r4_i
+ 17. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r5_i
+ 18. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r6_i
+ 19. Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r7_i
+ 20. Port Connectivity Checks: "cpu_top:cpu_top_i"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jul 12 20:55:49 2023       ;
+; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Revision Name                      ; LPRS1_CPU                                   ;
+; Top-level Entity Name              ; top                                         ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 7,692                                       ;
+;     Total combinational functions  ; 3,492                                       ;
+;     Dedicated logic registers      ; 4,235                                       ;
+; Total registers                    ; 4235                                        ;
+; Total pins                         ; 18                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M16SAU169C8G     ;                    ;
+; Top-level entity name                                            ; top                ; LPRS1_CPU          ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation              ; 4                  ;                    ;
+; VHDL Show LMF Mapping Messages                                   ; Off                ;                    ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                      ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------+---------+
+; src/hdl/top.vhd                  ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd          ;         ;
+; src/hdl/register.vhd             ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd     ;         ;
+; src/hdl/mux.vhd                  ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd          ;         ;
+; src/hdl/instr_rom.vhd            ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd    ;         ;
+; src/hdl/data_ram.vhd             ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd     ;         ;
+; src/hdl/cpu_top.vhd              ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd      ;         ;
+; src/hdl/control_unit.vhd         ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd ;         ;
+; src/hdl/cnt.vhd                  ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd          ;         ;
+; src/hdl/alu.vhd                  ; yes             ; User VHDL File  ; D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd          ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Estimated Total logic elements              ; 7,692      ;
+;                                             ;            ;
+; Total combinational functions               ; 3492       ;
+; Logic element usage by number of LUT inputs ;            ;
+;     -- 4 input functions                    ; 3090       ;
+;     -- 3 input functions                    ; 335        ;
+;     -- <=2 input functions                  ; 67         ;
+;                                             ;            ;
+; Logic elements by mode                      ;            ;
+;     -- normal mode                          ; 3421       ;
+;     -- arithmetic mode                      ; 71         ;
+;                                             ;            ;
+; Total registers                             ; 4235       ;
+;     -- Dedicated logic registers            ; 4235       ;
+;     -- I/O registers                        ; 0          ;
+;                                             ;            ;
+; I/O pins                                    ; 18         ;
+;                                             ;            ;
+; Embedded Multiplier 9-bit elements          ; 0          ;
+;                                             ;            ;
+; Maximum fan-out node                        ; iCLK~input ;
+; Maximum fan-out                             ; 4235       ;
+; Total fan-out                               ; 30463      ;
+; Average fan-out                             ; 3.92       ;
++---------------------------------------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                      ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
+; |top                       ; 3492 (0)            ; 4235 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 18   ; 0            ; 0          ; |top                                     ; top          ; work         ;
+;    |cpu_top:cpu_top_i|     ; 3131 (0)            ; 139 (3)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i                   ; cpu_top      ; work         ;
+;       |alu:alu_i|          ; 210 (210)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|alu:alu_i         ; alu          ; work         ;
+;       |cnt:pc_i|           ; 8 (8)               ; 8 (8)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|cnt:pc_i          ; cnt          ; work         ;
+;       |control_unit:cu_i|  ; 15 (15)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|control_unit:cu_i ; control_unit ; work         ;
+;       |mux:muxa_i|         ; 2818 (2818)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|mux:muxa_i        ; mux          ; work         ;
+;       |mux:muxb_i|         ; 80 (80)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|mux:muxb_i        ; mux          ; work         ;
+;       |reg:r0_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r0_i          ; reg          ; work         ;
+;       |reg:r1_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r1_i          ; reg          ; work         ;
+;       |reg:r2_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r2_i          ; reg          ; work         ;
+;       |reg:r3_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r3_i          ; reg          ; work         ;
+;       |reg:r4_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r4_i          ; reg          ; work         ;
+;       |reg:r5_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r5_i          ; reg          ; work         ;
+;       |reg:r6_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r6_i          ; reg          ; work         ;
+;       |reg:r7_i|           ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|cpu_top:cpu_top_i|reg:r7_i          ; reg          ; work         ;
+;    |data_ram:data_ram_i|   ; 289 (289)           ; 4096 (4096)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|data_ram:data_ram_i                 ; data_ram     ; work         ;
+;    |instr_rom:instr_rom_i| ; 72 (72)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|instr_rom:instr_rom_i               ; instr_rom    ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------+
+; Registers Removed During Synthesis                          ;
++----------------------------------------+--------------------+
+; Register name                          ; Reason for Removal ;
++----------------------------------------+--------------------+
+; cpu_top:cpu_top_i|cnt:pc_i|sCNT[8..15] ; Lost fanout        ;
+; Total Number of Removed Registers = 8  ;                    ;
++----------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 4235  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 4235  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4227  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; data_ram:data_ram_i|rMEM[2][1]         ; 1       ;
+; data_ram:data_ram_i|rMEM[1][1]         ; 1       ;
+; data_ram:data_ram_i|rMEM[1][2]         ; 1       ;
+; data_ram:data_ram_i|rMEM[0][2]         ; 1       ;
+; data_ram:data_ram_i|rMEM[1][3]         ; 1       ;
+; data_ram:data_ram_i|rMEM[3][4]         ; 1       ;
+; data_ram:data_ram_i|rMEM[1][4]         ; 1       ;
+; data_ram:data_ram_i|rMEM[0][4]         ; 1       ;
+; data_ram:data_ram_i|rMEM[3][5]         ; 1       ;
+; Total number of inverted registers = 9 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |top|instr_rom:instr_rom_i|oQ[5]                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |top|instr_rom:instr_rom_i|oQ[10]                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |top|cpu_top:cpu_top_i|control_unit:cu_i|oREG_WE[6] ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |top|cpu_top:cpu_top_i|mux:muxb_i|oQ[14]            ;
+; 11:1               ; 13 bits   ; 91 LEs        ; 91 LEs               ; 0 LEs                  ; No         ; |top|cpu_top:cpu_top_i|alu:alu_i|oC[1]              ;
+; 317:1              ; 16 bits   ; 3376 LEs      ; 2800 LEs             ; 576 LEs                ; No         ; |top|cpu_top:cpu_top_i|mux:muxa_i|oQ[13]            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r0_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r1_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r2_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r3_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r4_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r5_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r6_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu_top:cpu_top_i|reg:r7_i ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; width          ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu_top:cpu_top_i"                                                                          ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; opc[15..8]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; oaddr[15..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 18                          ;
+; cycloneiii_ff         ; 4235                        ;
+;     CLR SLD           ; 8                           ;
+;     ENA CLR           ; 4227                        ;
+; cycloneiii_lcell_comb ; 3492                        ;
+;     arith             ; 71                          ;
+;         2 data inputs ; 39                          ;
+;         3 data inputs ; 32                          ;
+;     normal            ; 3421                        ;
+;         0 data inputs ; 4                           ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 303                         ;
+;         4 data inputs ; 3090                        ;
+;                       ;                             ;
+; Max LUT depth         ; 27.40                       ;
+; Average LUT depth     ; 19.50                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:15     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+    Info: Processing started: Wed Jul 12 20:55:22 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LPRS1_CPU -c LPRS1_CPU
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/top_tb.vhd
+    Info (12022): Found design unit 1: top_tb-behavior File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd Line: 18
+    Info (12023): Found entity 1: top_tb File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd Line: 15
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/top.vhd
+    Info (12022): Found design unit 1: top-arch File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd Line: 26
+    Info (12023): Found entity 1: top File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/register.vhd
+    Info (12022): Found design unit 1: reg-Behavioral File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd Line: 24
+    Info (12023): Found entity 1: reg File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd Line: 15
+Warning (12090): Entity "mux" obtained from "src/hdl/mux.vhd" instead of from Quartus Prime megafunction library File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd Line: 15
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/mux.vhd
+    Info (12022): Found design unit 1: mux-Behavioral File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd Line: 29
+    Info (12023): Found entity 1: mux File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd Line: 15
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/instr_rom.vhd
+    Info (12022): Found design unit 1: instr_rom-Behavioral File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd Line: 12
+    Info (12023): Found entity 1: instr_rom File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/data_ram.vhd
+    Info (12022): Found design unit 1: data_ram-Behavioral File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd Line: 25
+    Info (12023): Found entity 1: data_ram File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd Line: 16
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/cpu_top.vhd
+    Info (12022): Found design unit 1: cpu_top-arch File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 32
+    Info (12023): Found entity 1: cpu_top File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/control_unit.vhd
+    Info (12022): Found design unit 1: control_unit-arch File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd Line: 35
+    Info (12023): Found entity 1: control_unit File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd Line: 16
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/cnt.vhd
+    Info (12022): Found design unit 1: cnt-arch File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd Line: 29
+    Info (12023): Found entity 1: cnt File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd Line: 19
+Info (12021): Found 2 design units, including 1 entities, in source file src/hdl/alu.vhd
+    Info (12022): Found design unit 1: alu-arch File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd Line: 29
+    Info (12023): Found entity 1: alu File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd Line: 17
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Info (12128): Elaborating entity "cpu_top" for hierarchy "cpu_top:cpu_top_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd Line: 37
+Info (12128): Elaborating entity "alu" for hierarchy "cpu_top:cpu_top_i|alu:alu_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 51
+Info (12128): Elaborating entity "cnt" for hierarchy "cpu_top:cpu_top_i|cnt:pc_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 77
+Info (12128): Elaborating entity "control_unit" for hierarchy "cpu_top:cpu_top_i|control_unit:cu_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 86
+Info (12128): Elaborating entity "mux" for hierarchy "cpu_top:cpu_top_i|mux:muxa_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 104
+Info (12128): Elaborating entity "reg" for hierarchy "cpu_top:cpu_top_i|reg:r0_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd Line: 134
+Info (12128): Elaborating entity "instr_rom" for hierarchy "instr_rom:instr_rom_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd Line: 50
+Info (12128): Elaborating entity "data_ram" for hierarchy "data_ram:data_ram_i" File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd Line: 56
+Warning (10492): VHDL Process Statement warning at data_ram.vhd(36): signal "sMEM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd Line: 36
+Info (13000): Registers with preset signals will power-up high File: D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd Line: 34
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 7726 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 7708 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4814 megabytes
+    Info: Processing ended: Wed Jul 12 20:55:49 2023
+    Info: Elapsed time: 00:00:27
+    Info: Total CPU time (on all processors): 00:00:38
+
+

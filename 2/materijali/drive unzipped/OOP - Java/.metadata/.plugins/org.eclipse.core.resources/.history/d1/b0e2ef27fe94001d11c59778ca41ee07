@@ -1,0 +1,12 @@
+package ognjen_k3_prep;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Main m = new Main();
+		m.testirajKolokvijum();
+		m.testirajPredmet();
+		m.testirajStudent();
+	}
+
+}

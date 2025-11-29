@@ -1,0 +1,31 @@
+package ognjen_k3_prep;
+
+public abstract class Test {
+	protected String naziv;
+	protected int osvojeni_bodovi;
+	
+	public Test(String naziv, int osvojeni_bodovi) {
+		super();
+		this.naziv = naziv;
+		this.osvojeni_bodovi = osvojeni_bodovi;
+	}
+
+	public Test() {
+		super();
+		this.naziv = "";
+		this.osvojeni_bodovi = 0;
+	}
+
+	public int getOsvojeni_bodovi() {
+		return osvojeni_bodovi;
+	}
+
+	public void setOsvojeni_bodovi(int osvojeni_bodovi) {
+		this.osvojeni_bodovi = osvojeni_bodovi;
+	}
+	public String getNaziv() {
+		return naziv;
+	}
+	public abstract boolean polozio();
+	
+ }

@@ -1,0 +1,81 @@
+/*
+	// .data
+	
+	short N = 4;				// Matrica je veličine 4x4
+	short i = 2;				// Vrsta za koju je potrebno izračunati SUMU
+	short* p_result	= 0x1B;
+	short* p_done		= 0x20;
+	
+   short a[4][4] =  {{0,  1,  2,  3}
+                     {4,  5,  6,  7}
+                     {8,  9,  10, 11}	// Suma 2. vrste je 38
+                     {12, 13, 14, 15}};
+
+*/
+.data
+4
+2
+0x1B
+0x20
+0, 1, 2, 3,
+4, 5, 6, 7,
+8, 9, 10, 11
+12, 13, 14, 15
+
+/*
+	// .text
+	short sum = 0;
+	for(short j=0; j<N; j++)
+	{
+		sum += a[i][j];		// a[i + j*N]
+	}
+	
+	if(sum < 1)
+		*p_result = sum;
+	else
+		*(p_result+1) = sum;
+
+	*p_done = 1;
+*/
+
+.text
+/*
+	Recommended register list:
+	R0 - N
+	R1 - i
+	R2 - j
+	R3 - a[j + i*N]
+	R4 - p_result
+	R5 - p_done
+	R6 - tmp
+	R7 - sum
+*/
+
+begin:
+		sub R7, R7, R7				// sum = 0;
+		sub R2, R2, R2				// j = 0;
+		
+for_petlja:
+		sub R6, R2, R0				// j - N
+		jmps kraj_for_petlje		// ukoliko nije ispunjeno j <= N
+		inc R2, R2					// j++
+		add R7, R7, R3				// sum += a[j + i*N]
+		jmp for_petlja
+
+kraj_for_petlje:
+		sub R6, R6, R6
+		sub R5, R5, R5
+		inc R5, R5
+		sub R6, R7, R5 
+		jmps kraj_if_naredbe		// ukoliko nije ispunjeno sum < 1
+		mov R4, R7					// *p_result = sum 
+		jmp for_petlja;
+		
+kraj_if_naredbe:
+		sub R6, R6, R6
+		shl R6, R4
+		mov R4, R6					// *(p_result+1) = sum
+		jmp for_petlja
+		
+end:
+	jmp end

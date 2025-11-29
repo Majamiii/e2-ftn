@@ -1,0 +1,33 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oOPEN",
+					"strict" : false
+				},
+				{
+					"name" : "oWARNING",
+					"strict" : false
+				},
+				{
+					"name" : "icar[0]",
+					"strict" : false
+				},
+				{
+					"name" : "icar[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "inRST",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

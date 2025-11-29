@@ -1,0 +1,30 @@
+# Ignore common video files everywhere in the repo (all subfolders)
+# This helps keep large media files out of version control.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.m4v
+*.mpeg
+*.mpg
+*.3gp
+*.ogv
+*.mts
+*.ts
+*.vob
+*.m2ts
+*.m2v
+*.qt
+*.asf
+*.rmvb
+*.divx
+*.xvid
+*.svi
+*.f4v
+
+# Optional: ignore a common videos directory (uncomment if you use a /videos/ folder)
+# videos/
+

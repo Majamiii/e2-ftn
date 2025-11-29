@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+D:\DOCs, PDFs\008 II Godina\Java\.metadata\.plugins\org.eclipse.jdt.core
+571919429.index
+752773968.index
+1865797976.index
+2725445274.index
+1082023229.index
+4287379094.index

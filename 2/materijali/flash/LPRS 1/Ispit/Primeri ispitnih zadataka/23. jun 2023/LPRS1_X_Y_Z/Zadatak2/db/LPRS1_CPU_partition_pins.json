@@ -1,0 +1,81 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oLED[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[2]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[3]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[4]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[5]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[6]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[7]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[8]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[9]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[10]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[11]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[12]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[13]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[14]",
+					"strict" : false
+				},
+				{
+					"name" : "oLED[15]",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "inRST",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

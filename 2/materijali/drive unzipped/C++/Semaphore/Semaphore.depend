@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1667061538 source:d:\docs, pdfs\008 ii godina\c++\semaphore\main.cpp
+	<iostream>
+	"Semaphore.hpp"
+
+1667054612 d:\docs, pdfs\008 ii godina\c++\semaphore\semaphore.hpp
+	<iostream>
+
+1667057641 source:d:\docs, pdfs\008 ii godina\c++\semaphore\semaphore_methods.cpp
+	"semaphore.hpp"
+

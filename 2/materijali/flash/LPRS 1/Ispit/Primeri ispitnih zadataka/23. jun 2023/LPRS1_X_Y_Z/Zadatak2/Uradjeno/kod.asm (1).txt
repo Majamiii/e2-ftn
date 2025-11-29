@@ -1,0 +1,99 @@
+/*
+	// .data
+	
+	const short a = 20;
+	const short b = 30;
+	const short dx = 2;
+	const short* p_result = 0x30;
+*/
+
+.data
+20		// adresa 0
+30		// adresa 1
+2		// adresa 2
+0x30		// adresa 3
+
+
+/*
+	// .text
+	
+	short P = 0;
+	for(short x = a; x <= b; x += dx){
+		short y = 33*x + 5;
+		short dP = y*dx;
+		P += dP;
+	}
+
+	*p_result = P;
+*/
+
+.text
+/*
+ * R0 - a
+ * R1 - b
+ * R2 - dx  
+ * R3 - x     
+ * R4 - y
+ * R5 - za mnozenje sa dx  
+ * R6 - dP
+ * R7 - P
+ */
+begin:
+	ld R0, R0	// R0 = a = 20
+	inc R1, R1	
+	ld R1, R1	// R1 = b = 30
+	inc R2, R2
+	inc R2, R2
+	ld R2, R2	// R2 = dx = 2
+	mov R3, R0	// x = a
+for:
+	// for(short x = a; x <= b; x += dx)
+	sub R4, R3, R1	// R4 = x - b
+	jmpns end_for
+	//jmpnz end_for uvijek ce skocit na ovo 
+	
+	mov R5, R1	// R5 = 30
+	inc R5, R5
+	inc R5, R5
+	inc R5, R5	// R5 = 33
+	sub R7, R7, R7
+mnozenje_for:
+	inc R7, R7	// R7 = 1 = i
+	sub R4, R4, R4	
+	sub R4, R7, R3	// R4 = i - x
+	jmpz end_mnozenje
+	add R6, R6, R5	// R6 = R6 + 33
+	jmp mnozenje_for
+end_mnozenje:
+	add R6, R6, R5
+	sub R4, R4, R4	// R4 = y = 0
+	inc R4, R4
+	inc R4, R4
+	inc R4, R4
+	inc R4, R4
+	inc R4, R4	// R4 = 5 = y
+	add R4, R4, R6	// R4 = 33 * x + 5
+	sub R7, R7, R7
+	sub R6, R6, R6
+mnozenje2_for:
+	inc R7, R7	// R7 = 1 = i
+	sub R5, R5, R5	
+	sub R5, R7, R2	// R4 = i - dx
+	jmpz end_mnozenje2
+	add R6, R6, R4	// dP = dP + y
+	jmp mnozenje2_for
+end_mnozenje2:	
+	add R6, R6, R4	// dP = dP + y
+	sub R7, R7, R7	// al ce u svakom foru postavit R7 na 0
+	add R7, R7, R6	// P = P + dP
+	add R3, R3, R2	// x = x + dx
+	jmp for
+end_for:
+	sub R0, R0, R0
+	inc R0, R0
+	inc R0, R0
+	inc R0, R0	// R0 = 3
+	ld R0, R0	// R0 = 0x30
+	st R7, R0
+end:
+	jmp end

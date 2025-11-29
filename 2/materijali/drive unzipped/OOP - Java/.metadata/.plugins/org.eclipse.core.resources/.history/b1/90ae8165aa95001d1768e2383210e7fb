@@ -1,0 +1,35 @@
+package bojice_K3;
+
+import java.util.HashMap;
+
+public class Pernica{
+	private int raspolozivoMesta = 5;
+	private HashMap<String, Bojica> bojice;
+	
+	public Pernica(int raspolozivoMesta) {
+		super();
+		this.raspolozivoMesta = raspolozivoMesta;
+		this.bojice = new HashMap<String, Bojica>();
+		
+	}
+	
+	public boolean dodaj(Bojica b) {
+		if (bojice.containsKey(b.getSerijskiBroj()) || bojice.size() == 5) {
+			return false;
+		} else {
+			bojice.put(b.getSerijskiBroj(), b);
+			return true;
+		}
+	}
+	
+	public int prebroj(double kriterijumCene) {
+		int counter = 0;
+		for(Bojica pen : bojice.values()) {
+			if(pen.getCena() >= kriterijumCene) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+    
+}

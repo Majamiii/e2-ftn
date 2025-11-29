@@ -1,0 +1,64 @@
+package bojice_K3;
+
+import java.util.HashMap;
+
+import bojice_klk.Pernica;
+
+public class Pernica{
+	private int raspolozivoMesta = 5;
+	private HashMap<String, Bojica> bojice;
+	
+	public Pernica(int raspolozivoMesta) {
+		super();
+		this.raspolozivoMesta = raspolozivoMesta;
+		this.bojice = new HashMap<String, Bojica>();
+		
+	}
+	
+	public boolean dodaj(Bojica b) {
+		if (bojice.containsKey(b.getSerijskiBroj()) || bojice.size() == 5) {
+			return false;
+		} else {
+			bojice.put(b.getSerijskiBroj(), b);
+			return true;
+		}
+	}
+	
+	public int prebroj(double kriterijumCene) {
+		int counter = 0;
+		for(Bojica pen : bojice.values()) {
+			if(pen.getCena() >= kriterijumCene) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+	
+	@Override
+	public String toString() {
+		System.out.println("smara da redefinisem lmao"); ///has to be rewritten
+		return super.toString();
+	}
+    
+	public static void main(String[] args) {
+		Bojica b1 = new Bojica("123abc", 23.9, "drvena", "zelena");
+		Bojica b2 = new Bojica("456mnk", 57.4, "vostana", "plava");
+		Bojica b3 = new Bojica("789edf", 45.6, "drvena", "zuta");
+		Bojica b4 = new Bojica("035sdv", 68.3, "vostana", "bela");
+		Bojica b = new Bojica(b1);
+		
+		System.out.println(b);
+		b.akcijskaCena(60);
+	
+		Pernica p = new Pernica(8);
+		
+		p.dodaj(b1);
+		p.dodaj(b2);
+		p.dodaj(b3);
+		p.dodaj(b4);
+		System.out.println(p.toString());
+	
+		System.out.println("broj bojica sa cenom vecom od zadate: " + p.prebroj(50.5));	
+	
+	}
+}

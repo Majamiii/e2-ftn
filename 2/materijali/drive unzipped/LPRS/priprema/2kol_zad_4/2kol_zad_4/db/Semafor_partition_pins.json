@@ -1,0 +1,105 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oDONE",
+					"strict" : false
+				},
+				{
+					"name" : "oE",
+					"strict" : false
+				},
+				{
+					"name" : "oOUT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oOUT[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oOUT[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iA6",
+					"strict" : false
+				},
+				{
+					"name" : "iA5",
+					"strict" : false
+				},
+				{
+					"name" : "iA4",
+					"strict" : false
+				},
+				{
+					"name" : "iA7",
+					"strict" : false
+				},
+				{
+					"name" : "iA2",
+					"strict" : false
+				},
+				{
+					"name" : "iA1",
+					"strict" : false
+				},
+				{
+					"name" : "iA0",
+					"strict" : false
+				},
+				{
+					"name" : "iA3",
+					"strict" : false
+				},
+				{
+					"name" : "iB6",
+					"strict" : false
+				},
+				{
+					"name" : "iB5",
+					"strict" : false
+				},
+				{
+					"name" : "iB4",
+					"strict" : false
+				},
+				{
+					"name" : "iB7",
+					"strict" : false
+				},
+				{
+					"name" : "iB1",
+					"strict" : false
+				},
+				{
+					"name" : "iB2",
+					"strict" : false
+				},
+				{
+					"name" : "iB0",
+					"strict" : false
+				},
+				{
+					"name" : "iB3",
+					"strict" : false
+				},
+				{
+					"name" : "istart",
+					"strict" : false
+				},
+				{
+					"name" : "iclk",
+					"strict" : false
+				},
+				{
+					"name" : "inRst",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

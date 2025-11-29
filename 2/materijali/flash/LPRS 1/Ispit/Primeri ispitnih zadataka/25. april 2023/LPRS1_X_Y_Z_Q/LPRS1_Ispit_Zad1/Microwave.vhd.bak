@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.ALL;
+
+entity Microwave is port ( 
+	iCLK  	: in  std_logic;
+	iRST  	: in  std_logic;
+	iREQ  	: in  std_logic;
+	iDOOR  	: in  std_logic;
+	iTIME		: in 	std_logic_vector(5 downto 0);
+	oDONE   	: out std_logic;
+	oLAMP		: out std_logic;
+	oTIME		: out std_logic_vector(5 downto 0)
+	);
+end entity;
+
+architecture Behavioral of Microwave is
+
+	
+	
+begin
+
+
+
+end Behavioral;

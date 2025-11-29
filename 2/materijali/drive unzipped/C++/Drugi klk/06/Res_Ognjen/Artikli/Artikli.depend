@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1670186102 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\dinstring.cpp
+	"dinstring.hpp"
+
+1670186103 d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\dinstring.hpp
+	<iostream>
+
+1670198663 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\main.cpp
+	<iostream>
+	"artikal.hpp"
+
+1670198276 d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\artikal.hpp
+	"dinstring.hpp"
+	<iomanip>
+
+1670186102 d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\dinstring.cpp
+	"dinstring.hpp"
+
+1670198287 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\artikli\artikal.cpp
+	"artikal.hpp"
+

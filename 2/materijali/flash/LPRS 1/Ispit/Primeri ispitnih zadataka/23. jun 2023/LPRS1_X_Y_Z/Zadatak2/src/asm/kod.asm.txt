@@ -1,0 +1,111 @@
+/*
+	// .data
+	
+	const short a = 20;
+	const short b = 30;
+	const short dx = 2;
+	const short* p_result = 0x30;
+*/
+
+.data
+20			// adresa 0
+30			// adresa 1
+2			// adresa 2
+0x30		// adresa 3
+
+
+/*
+	// .text
+	
+	short P = 0;
+	for(short x = a; x <= b; x += dx){
+		short y = 33*x + 5;
+		short dP = y*dx;
+		P += dP;
+	}
+
+	*p_result = P;
+*/
+
+.text
+/*
+ * R0 - a
+ * R1 - b
+ * R2 - dx  
+ * R3 - x      // pored x, koristio sam ga na kraju za upis resenja na adresu 0x30
+ * R4 - y
+ * R5 - za mnozenje sa dx  //koristio sam ga za +5
+ * R6 - dP
+ * R7 - P
+ */
+begin:
+
+	ld R0,R0 //ucitamo R0 = a = 20
+	
+	inc R1,R1 // R1 = 1
+	ld R1,R1 // ucitamo u R1 adresu 1 tj R1 = b = 30
+	
+	inc R5,R5
+	inc R5,R5
+	inc R5,R5
+	inc R5,R5
+	inc R5,R5 //stavljamo R5 na vrednost 5 tako sto ga inkrementiramo 5 puta kako bi ga iskoristili u formuli 
+	
+	inc R2,R2
+	inc R2,R2 //stavljamo R2 na 2 kako bismo uzeli vrednost sa druge adrese
+	ld R2,R2 // loadujemo dx u R2 (R2=2) ovo i nije potrebno jer je R2 vec bilo 2 ali da ispostujem
+	
+loaduj:
+
+sub R3,R3,R3 //ponistimo registar R3 na nulu
+st R0,R3 //postavimo (novo) a na adresu nula
+ld R3,R3 //ucitamo novo a u R3 (to nam je x)
+jmp mnozenje // nije potrebno ali nema veze 
+	
+mnozenje:
+
+//16 puta shiftujemo u levo R3 tako ga mnozimo sa 32 (jedan shift u levo mnozi za 2)
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3 //sada imamo 32*R3 (32*x)
+
+add R3,R3,R0 // dodamo jos jedno a i sada imamo 33*x
+
+add R4,R3,R5 // sabiranje y=33x+5 (sada nam je R4 y)
+shl R6,R4 // dobijamo dp -> mnozimo y sa dx (shiftovanje u levo se mnozi sa 2) dp=y*dx (dp = y*2) i stavljamo ga u registar R6
+add R7,R7,R6 // P+= dp
+
+add R0,R0,R2 //dodaje dx (2) na a
+
+sub R3,R1,R0 // oduzima a od b i proverava ako je a vece onda skace na kraj (mozemo koristiti R3 ovde kao tmp registar jer nam vise ne treba)
+jmps end_mnozenje
+jmpns loaduj; //ako a nije vece od b vraca se na loaduj
+	
+end_mnozenje:
+
+sub R3,R3,R3 //cistimo registar R3
+
+inc R3,R3
+inc R3,R3
+inc R3,R3 //postavljamo R3 na R3=3 kako bismo pristupili adresi od 0x30
+ld R3,R3 //postavljamo 0x30 u R3
+
+st R7,R3 //i na kraju store-ujemo nas rezultat P na adresu 0x30
+
+jmp end
+
+end:
+	jmp end

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1668896252 source:d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\main.cpp
+	<iostream>
+	"pravougaonik.hpp"
+	"kvadrat.hpp"
+	"elipsa.hpp"
+	"krug.hpp"
+	"oblik.hpp"
+	<math.h>
+
+1668894680 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\pravougaonik.hpp
+	"figura.hpp"
+
+1668895210 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\figura.hpp
+	<math.h>
+
+1668894724 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\kvadrat.hpp
+	<iostream>
+	"pravougaonik.hpp"
+
+1668896292 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\elipsa.hpp
+	"figura.hpp"
+
+1668896221 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\krug.hpp
+	"elipsa.hpp"
+
+1668896387 d:\docs, pdfs\008 ii godina\c++\apstraktna_figura\apstr_figura\oblik.hpp
+	"krug.hpp"
+	"kvadrat.hpp"
+

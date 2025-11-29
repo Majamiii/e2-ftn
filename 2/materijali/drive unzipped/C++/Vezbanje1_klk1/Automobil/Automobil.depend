@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1667661513 source:d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\automobil\main.cpp
+	<iostream>
+	"Auto.hpp"
+	"Menjac.hpp"
+	"Skoljka.hpp"
+
+1667660137 d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\automobil\auto.hpp
+	"Menjac.hpp"
+	"Skoljka.hpp"
+	<iostream>
+
+1667612035 d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\automobil\menjac.hpp
+	<iostream>
+
+1667612029 d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\automobil\skoljka.hpp
+

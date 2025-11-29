@@ -1,0 +1,81 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "o150w",
+					"strict" : false
+				},
+				{
+					"name" : "o300w",
+					"strict" : false
+				},
+				{
+					"name" : "o650w",
+					"strict" : false
+				},
+				{
+					"name" : "o800w",
+					"strict" : false
+				},
+				{
+					"name" : "oWARN",
+					"strict" : false
+				},
+				{
+					"name" : "iSel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iSel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "istart",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iduration[7]",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "iRST",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

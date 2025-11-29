@@ -1,0 +1,22 @@
+package ognjen_k3_prep;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Main m = new Main();
+		m.testirajKolokvijum();
+		m.testirajPredmet();
+		m.testirajStudent();
+	}
+	
+	private void testirajKolokvijum() {
+		Kolokvijum k1 = new Kolokvijum();
+		Kolokvijum k2 = new Kolokvijum("K1", 20);
+		System.out.println(k1.getNaziv());
+		System.out.println(k1.getOsvojeni_bodovi());
+		System.out.println(k1);
+		
+		
+	}
+
+}

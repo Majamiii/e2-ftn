@@ -1,0 +1,6 @@
+#ifndef ELIPSA_H_INCLUDED
+#define ELIPSA_H_INCLUDED
+
+
+
+#endif // ELIPSA_H_INCLUDED

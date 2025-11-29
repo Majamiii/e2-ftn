@@ -1,0 +1,45 @@
+
+/*
+// Equivalent C code:
+const short N = 10;
+short d[10] = {26, 12, 27, 19, 2, 26, 12, 27, 6, 5};
+short b[10] = {25, 30, 16, 26, 19, 32, 6, 17, 3, 9};
+short c[10];
+short a[10];
+void main() {
+	short* pa;
+	short* pb;
+	short* pc;
+	short* pd;
+	short* pae;
+	short* pbe;
+	short* pce;
+	short* pde;
+	short e;
+	for(
+		pd = d, pb = b+N-1, pc = c, pde = d+N;
+		pd != pde;
+		pd++, pb--, pc++
+	){
+		*pc = *pd + *pb;
+	}
+	for(
+		pc = c, e = 0, pce = c + N;
+		pc != pce;
+		pc++
+	){
+		e += *pc;
+	}
+}
+
+	
+*/
+
+.data
+//TODO
+
+.text
+main:
+//TODO
+end:
+	jmp end

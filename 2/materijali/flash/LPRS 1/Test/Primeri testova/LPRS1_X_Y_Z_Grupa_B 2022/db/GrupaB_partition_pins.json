@@ -1,0 +1,101 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oCODE[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oCODE[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oCODE[2]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTG[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTG[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTG[2]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTG[3]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTS[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTS[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTS[2]",
+					"strict" : false
+				},
+				{
+					"name" : "oCNTS[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iLOAD",
+					"strict" : false
+				},
+				{
+					"name" : "iRST",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "iEN",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

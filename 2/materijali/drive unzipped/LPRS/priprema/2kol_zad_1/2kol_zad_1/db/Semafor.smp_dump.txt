@@ -1,0 +1,8 @@
+
+State Machine - |Semafor|sstate
+Name sstate.RED_1 sstate.RED_0 sstate.YELLOW sstate.GREEN sstate.IDLE 
+sstate.IDLE 0 0 0 0 0 
+sstate.GREEN 0 0 0 1 1 
+sstate.YELLOW 0 0 1 0 1 
+sstate.RED_0 0 1 0 0 1 
+sstate.RED_1 1 0 0 0 1 

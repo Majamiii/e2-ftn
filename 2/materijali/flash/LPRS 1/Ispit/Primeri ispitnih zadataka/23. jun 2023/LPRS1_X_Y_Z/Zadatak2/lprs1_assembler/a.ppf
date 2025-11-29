@@ -1,0 +1,83 @@
+# 1 "D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/asm/kod.asm.txt"
+# 1 "<command-line>"
+# 1 "D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/asm/kod.asm.txt"
+# 10 "D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/asm/kod.asm.txt"
+.data
+20
+30
+2
+0x30
+# 30 "D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/asm/kod.asm.txt"
+.text
+# 41 "D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/asm/kod.asm.txt"
+begin:
+
+ ld R0,R0
+
+ inc R1,R1
+ ld R1,R1
+
+ inc R5,R5
+ inc R5,R5
+ inc R5,R5
+ inc R5,R5
+ inc R5,R5
+
+ inc R2,R2
+ inc R2,R2
+ ld R2,R2
+
+loaduj:
+
+sub R3,R3,R3
+st R0,R3
+ld R3,R3
+jmp mnozenje
+
+mnozenje:
+
+
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+shl R3,R3
+
+add R3,R3,R0
+
+add R4,R3,R5
+shl R6,R4
+add R7,R7,R6
+
+add R0,R0,R2
+
+sub R3,R1,R0
+jmps end_mnozenje
+jmpns loaduj;
+
+end_mnozenje:
+
+sub R3,R3,R3
+
+inc R3,R3
+inc R3,R3
+inc R3,R3
+ld R3,R3
+
+st R7,R3
+
+jmp end
+
+end:
+ jmp end

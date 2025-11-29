@@ -1,0 +1,8 @@
+
+State Machine - |Semafor|sstate
+Name sstate.OPEN_GUEST sstate.FREE_ENTRY sstate.OPEN_MEMBER sstate.WARNING sstate.IDLE 
+sstate.IDLE 0 0 0 0 0 
+sstate.WARNING 0 0 0 1 1 
+sstate.OPEN_MEMBER 0 0 1 0 1 
+sstate.FREE_ENTRY 0 1 0 0 1 
+sstate.OPEN_GUEST 1 0 0 0 1 

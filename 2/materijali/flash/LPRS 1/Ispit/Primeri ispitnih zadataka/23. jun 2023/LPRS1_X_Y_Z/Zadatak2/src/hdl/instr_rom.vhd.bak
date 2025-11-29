@@ -1,0 +1,65 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_SIGNED.ALL;
+
+entity instr_rom is
+    Port ( iA : in  STD_LOGIC_VECTOR (7 downto 0);
+           oQ : out  STD_LOGIC_VECTOR (14 downto 0));
+end instr_rom;
+
+-- ubaciti sadrzaj *.txt datoteke generisane pomocu lprsasm ------
+architecture Behavioral of instr_rom is
+begin
+    oQ <= "100000000000000"  when iA = 0 else
+          "000110001001000"  when iA = 1 else
+          "100000001000001"  when iA = 2 else
+          "000110010010000"  when iA = 3 else
+          "000110010010000"  when iA = 4 else
+          "100000010000010"  when iA = 5 else
+          "100000011000100"  when iA = 6 else
+          "000010000000000"  when iA = 7 else
+          "001000000000000"  when iA = 8 else
+          "001000000000000"  when iA = 9 else
+          "001000000000000"  when iA = 10 else
+          "001000000000000"  when iA = 11 else
+          "000110000000000"  when iA = 12 else
+          "000010100001011"  when iA = 13 else
+          "010010000101010"  when iA = 14 else
+          "000010100100100"  when iA = 15 else
+          "000110100100000"  when iA = 16 else
+          "100000100000100"  when iA = 17 else
+          "000110100100000"  when iA = 18 else
+          "000110100100000"  when iA = 19 else
+          "000110100100000"  when iA = 20 else
+          "000000101100000"  when iA = 21 else
+          "010000000100110"  when iA = 22 else
+          "001000100100000"  when iA = 23 else
+          "001000100100000"  when iA = 24 else
+          "001000100100000"  when iA = 25 else
+          "001000100100000"  when iA = 26 else
+          "000001100101100"  when iA = 27 else
+          "000010110110110"  when iA = 28 else
+          "000110110110000"  when iA = 29 else
+          "000110110110000"  when iA = 30 else
+          "000110110110000"  when iA = 31 else
+          "000110110110000"  when iA = 32 else
+          "000110110110000"  when iA = 33 else
+          "000001100100110"  when iA = 34 else
+          "001000110100000"  when iA = 35 else
+          "000001111111110"  when iA = 36 else
+          "010000000001100"  when iA = 37 else
+          "000010110011000"  when iA = 38 else
+          "010001000010111"  when iA = 39 else
+          "000001101101100"  when iA = 40 else
+          "010000000100110"  when iA = 41 else
+          "000010000000000"  when iA = 42 else
+          "000110000000000"  when iA = 43 else
+          "000110000000000"  when iA = 44 else
+          "000110000000000"  when iA = 45 else
+          "100000001000000"  when iA = 46 else
+          "110000000111001"  when iA = 47 else
+          "010000000110000"  when iA = 48 else
+          "000000000000000";
+end Behavioral;
+------------------------------------------------------------------

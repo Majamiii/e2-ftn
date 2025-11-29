@@ -1,0 +1,6 @@
+package ognjen_k3_prep;
+
+public class Student {
+	private String prezime;
+	
+}

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1670186083 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\dinstring.cpp
+	"dinstring.hpp"
+
+1670186082 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\dinstring.hpp
+	<iostream>
+
+1670283412 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\main.cpp
+	<iostream>
+	"putnik_dete.hpp"
+	"zicara.hpp"
+
+1670276356 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\karta.hpp
+	<iomanip>
+
+1670283088 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\putnik.hpp
+	"karta.hpp"
+	"dinstring.hpp"
+
+1670283165 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\putnik_dete.hpp
+	"putnik.hpp"
+
+1670282844 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\zicara.hpp
+	"putnik.hpp"
+	"list.hpp"
+
+1670186083 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\zivara\list.hpp
+	<stdlib.h>
+	<iostream>
+

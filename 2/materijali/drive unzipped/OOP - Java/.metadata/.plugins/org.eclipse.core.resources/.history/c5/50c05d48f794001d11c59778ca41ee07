@@ -1,0 +1,68 @@
+package ognjen_k3_prep;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Predmet implements IPredmet {
+
+	private String naziv;
+	private ArrayList<Test> testovi;
+	
+	
+	
+	public Predmet() {
+		super();
+		this.naziv = "";
+		this.testovi = new ArrayList <Test>();
+	}
+
+	public Predmet(String naziv, ArrayList<Test> predmeti) {
+		super();
+		this.naziv = naziv;
+		this.testovi = new ArrayList <Test>();
+	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+	
+	@Override
+	public boolean dodajTest(Test t) {
+		for (Test test : testovi) {
+			if (test.getNaziv().equals(t.getNaziv())) {
+				Scanner in = new Scanner(System.in);
+				String newName = in.nextLine();
+				in.close();
+				t.setNaziv(newName);
+				for (Test helpTest : testovi) {
+					if(helpTest.equals(t.getNaziv())) {
+						return false;
+					}
+				}
+			}
+			
+		}
+	return false;
+	}
+
+	@Override
+	public boolean polozio() {
+
+		for(Test t : testovi) {
+			if (t.polozio() != true || t.getOsvojeni_bodovi() < 55) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public int izracunajPoene() {		
+		int SUM = 0;
+		
+		for(Test t : testovi)
+			SUM += t.getOsvojeni_bodovi();
+		return SUM;
+	}
+	
+}

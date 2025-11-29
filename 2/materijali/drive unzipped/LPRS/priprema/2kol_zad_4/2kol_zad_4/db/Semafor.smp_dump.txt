@@ -1,0 +1,7 @@
+
+State Machine - |Semafor|sstate
+Name sstate.DUE sstate.DE sstate.C sstate.IDLE 
+sstate.IDLE 0 0 0 0 
+sstate.C 0 0 1 1 
+sstate.DE 0 1 0 1 
+sstate.DUE 1 0 0 1 

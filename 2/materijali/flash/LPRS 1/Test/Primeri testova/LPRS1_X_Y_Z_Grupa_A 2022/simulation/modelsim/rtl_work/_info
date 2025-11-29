@@ -1,0 +1,92 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/simulation/modelsim
+Egrupaa
+Z1 w1701596054
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA.vhd
+Z7 FC:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA.vhd
+l0
+L5
+V90l36OcejZBgn9WkP:ZUO2
+!s100 @ozk]NlZ`fXSNfSh?M4Y>3
+Z8 OV;C;10.5b;63
+31
+Z9 !s110 1701597051
+!i10b 1
+Z10 !s108 1701597051.000000
+Z11 !s90 -reportprogress|300|-93|-work|work|C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA.vhd|
+Z12 !s107 C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA.vhd|
+!i113 1
+Z13 o-93 -work work
+Z14 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 6 grupaa 0 22 90l36OcejZBgn9WkP:ZUO2
+l25
+L17
+VlhcHADC6efna2>Pn?Fhmk3
+!s100 C:B9L52dn8n4gb]Nm<ikR3
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Egrupaa_tb
+Z15 w1701596922
+R4
+R5
+R0
+Z16 8C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA_tb.vhd
+Z17 FC:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA_tb.vhd
+l0
+L4
+VJbR5ze]2Nm]bDLGT0Xb:I1
+!s100 <Za:V0h3VEFDPBmc6=_?32
+R8
+31
+R9
+!i10b 1
+R10
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA_tb.vhd|
+Z19 !s107 C:/Users/janko/FTN/Druga godina E2/LPRS 1/Test/Primeri testova/LPRS1_X_Y_Z_Grupa_A 2022/GrupaA_tb.vhd|
+!i113 1
+R13
+R14
+Atest
+R4
+R5
+DEx4 work 9 grupaa_tb 0 22 JbR5ze]2Nm]bDLGT0Xb:I1
+l33
+L7
+V8MjDMWnRGQB>=3jhleQ]K1
+!s100 MC1ledhM[9e3Q]RPd;d2U1
+R8
+31
+R9
+!i10b 1
+R10
+R18
+R19
+!i113 1
+R13
+R14

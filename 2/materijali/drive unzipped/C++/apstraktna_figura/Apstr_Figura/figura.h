@@ -1,0 +1,6 @@
+#ifndef FIGURA_H_INCLUDED
+#define FIGURA_H_INCLUDED
+
+
+
+#endif // FIGURA_H_INCLUDED

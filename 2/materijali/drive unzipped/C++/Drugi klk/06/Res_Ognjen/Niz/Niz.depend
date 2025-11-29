@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1670201385 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\niz\main.cpp
+	"niz.hpp"
+	"dinstring.hpp"
+
+1670202007 d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\niz\niz.hpp
+	<iostream>
+
+1670186102 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\niz\dinstring.cpp
+	"dinstring.hpp"
+
+1670186103 d:\docs, pdfs\008 ii godina\c++\drugi klk\06\res_ognjen\niz\dinstring.hpp
+	<iostream>
+

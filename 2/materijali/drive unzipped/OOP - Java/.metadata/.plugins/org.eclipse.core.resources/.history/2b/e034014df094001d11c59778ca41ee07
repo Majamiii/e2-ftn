@@ -1,0 +1,25 @@
+package ognjen_k3_prep;
+
+public class Kolokvijum extends Test{
+
+	
+	public Kolokvijum() {
+		super();
+		
+	}
+
+	public Kolokvijum(String naziv, int osvojeni_bodovi) {
+		super(naziv, osvojeni_bodovi);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public boolean polozio() {
+		if (osvojeni_bodovi > 12) 
+			return true;
+		return false;
+	}
+	
+	
+
+}

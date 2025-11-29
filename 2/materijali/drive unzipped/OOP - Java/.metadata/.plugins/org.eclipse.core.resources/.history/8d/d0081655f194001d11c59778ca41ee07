@@ -1,0 +1,42 @@
+package ognjen_k3_prep;
+
+import java.util.ArrayList;
+
+public class Predmet implements IPredmet {
+
+	private String naziv;
+	private ArrayList<Test> predmeti;
+	
+	
+	
+	public Predmet() {
+		super();
+		this.naziv = "";
+		this.predmeti = new ArrayList <Test>();
+	}
+
+	public Predmet(String naziv, ArrayList<Test> predmeti) {
+		super();
+		this.naziv = naziv;
+		this.predmeti = new ArrayList <Test>();
+	}
+
+	@Override
+	public boolean dodajTest(Test t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean polozio() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int izracunajPoene() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

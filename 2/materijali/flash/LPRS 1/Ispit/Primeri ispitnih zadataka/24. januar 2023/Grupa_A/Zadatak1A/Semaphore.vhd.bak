@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.ALL;
+
+entity Semaphore is port ( 
+	iCLK  	: in  std_logic;
+	iRST  	: in  std_logic;
+	iSTART  	: in  std_logic;
+	oRED   	: out std_logic;
+	oGREEN	: out std_logic;
+	oCNT		: out std_logic_vector(5 downto 0)
+	);
+end entity;
+
+architecture Behavioral of Semaphore is
+
+	
+begin
+	
+
+end Behavioral;

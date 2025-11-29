@@ -1,0 +1,8 @@
+
+State Machine - |Printer|state
+Name state.ERROR state.PRINT state.CHECK_PAPER state.SLEEP state.IDLE 
+state.IDLE 0 0 0 0 0 
+state.SLEEP 0 0 0 1 1 
+state.CHECK_PAPER 0 0 1 0 1 
+state.PRINT 0 1 0 0 1 
+state.ERROR 1 0 0 0 1 

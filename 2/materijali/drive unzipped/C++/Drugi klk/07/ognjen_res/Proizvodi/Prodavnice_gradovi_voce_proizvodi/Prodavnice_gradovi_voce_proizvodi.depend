@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1670186083 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\dinstring.cpp
+	"dinstring.hpp"
+
+1670186083 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\dinstring.hpp
+	<iostream>
+
+1670272297 source:d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\main.cpp
+	<iostream>
+	"voce.hpp"
+	"odeca.hpp"
+	"prodavnica.hpp"
+
+1670261019 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\voce.hpp
+	"proizvod.hpp"
+
+1670273350 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\proizvod.hpp
+	"dinstring.hpp"
+
+1670273947 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\odeca.hpp
+	"proizvod.hpp"
+
+1670274094 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\prodavnica.hpp
+	"list.hpp"
+	"dinstring.hpp"
+
+1670186083 d:\docs, pdfs\008 ii godina\c++\drugi klk\07\ognjen_res\proizvodi\prodavnice_gradovi_voce_proizvodi\list.hpp
+	<stdlib.h>
+	<iostream>
+

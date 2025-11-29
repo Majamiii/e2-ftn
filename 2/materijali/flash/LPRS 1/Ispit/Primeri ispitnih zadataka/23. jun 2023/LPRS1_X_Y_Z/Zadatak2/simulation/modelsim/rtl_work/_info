@@ -1,0 +1,427 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/simulation/modelsim
+Ealu
+Z1 w1672765412
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd
+Z7 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd
+l0
+L17
+V?l9eC3Y7k<j1X8aOJAa?O0
+!s100 Rd4l_R6Dle61bUHX<7h?e0
+Z8 OV;C;10.5b;63
+31
+Z9 !s110 1689188286
+!i10b 1
+Z10 !s108 1689188286.000000
+Z11 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd|
+Z12 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/alu.vhd|
+!i113 1
+Z13 o-93 -work work
+Z14 tExplicit 1 CvgOpt 0
+Aarch
+R2
+R3
+R4
+R5
+Z15 DEx4 work 3 alu 0 22 ?l9eC3Y7k<j1X8aOJAa?O0
+l35
+L29
+VknfhXEF7JTM?:o8P5^Bn`1
+!s100 KMc5JL]EIo9S9;ZUdC04X0
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Ecnt
+Z16 w1639058474
+R2
+R3
+R4
+R5
+R0
+Z17 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd
+Z18 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd
+l0
+L19
+VoMWE70GR38K4_DeSII=7E3
+!s100 U;k[d:`Hl=CiWhA9@0ig33
+R8
+31
+Z19 !s110 1689188285
+!i10b 1
+Z20 !s108 1689188285.000000
+Z21 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd|
+Z22 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cnt.vhd|
+!i113 1
+R13
+R14
+Aarch
+R2
+R3
+R4
+R5
+Z23 DEx4 work 3 cnt 0 22 oMWE70GR38K4_DeSII=7E3
+l33
+L29
+VkDoEV:<0`HKXf7ckH?OfO0
+!s100 9SIVb62LYJz>Q7mfU28h>3
+R8
+31
+R19
+!i10b 1
+R20
+R21
+R22
+!i113 1
+R13
+R14
+Econtrol_unit
+Z24 w1672765390
+R4
+R5
+R0
+Z25 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd
+Z26 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd
+l0
+L16
+Vc^gaVnYNM>SEn6[;7[35f2
+!s100 K=^EO11P]@F>lM[_dAKz=1
+R8
+31
+R19
+!i10b 1
+R20
+Z27 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd|
+Z28 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/control_unit.vhd|
+!i113 1
+R13
+R14
+Aarch
+R4
+R5
+Z29 DEx4 work 12 control_unit 0 22 c^gaVnYNM>SEn6[;7[35f2
+l48
+L35
+V6FD@SoMSP:A]8jZbegagN2
+!s100 l8H4AXRT9mDXj>65FbJ^=1
+R8
+31
+R19
+!i10b 1
+R20
+R27
+R28
+!i113 1
+R13
+R14
+Ecpu_top
+Z30 w1672765358
+R4
+R5
+R0
+Z31 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd
+Z32 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd
+l0
+L18
+VfmWi1aP>W@QVzk7n:PAio2
+!s100 l]5A7GnlPNB]KfzWmNI7Z2
+R8
+31
+R9
+!i10b 1
+R10
+Z33 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd|
+Z34 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/cpu_top.vhd|
+!i113 1
+R13
+R14
+Aarch
+Z35 DEx4 work 3 reg 0 22 lBeQHJ5]]DRa^35NzL`[G2
+Z36 DEx4 work 3 mux 0 22 AIzMgjPazR<OQfS2<3zU[0
+R29
+R23
+R2
+R3
+R15
+R4
+R5
+Z37 DEx4 work 7 cpu_top 0 22 fmWi1aP>W@QVzk7n:PAio2
+l49
+L32
+VJ=V^41<G?Q:76TDajRl7A1
+!s100 6U>T]QN4WE8DCa9kQ1:GU3
+R8
+31
+R9
+!i10b 1
+R10
+R33
+R34
+!i113 1
+R13
+R14
+Edata_ram
+Z38 w1689188118
+Z39 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R4
+R5
+R0
+Z40 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd
+Z41 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd
+l0
+L16
+V^0HM3QbCAi^8@l`2YPJZ`3
+!s100 zzkC`AX7Kdz@D1YZBQ7RN1
+R8
+31
+R19
+!i10b 1
+R20
+Z42 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd|
+Z43 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/data_ram.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R39
+R4
+R5
+Z44 DEx4 work 8 data_ram 0 22 ^0HM3QbCAi^8@l`2YPJZ`3
+l31
+L25
+Vn4VR1EaMFYZFX2]B2;zRJ3
+!s100 _b8`iCb9?ClDV]dBmfkC61
+R8
+31
+R19
+!i10b 1
+R20
+R42
+R43
+!i113 1
+R13
+R14
+Einstr_rom
+R38
+R2
+Z45 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+R4
+R5
+R0
+Z46 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd
+Z47 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd
+l0
+L6
+Vnk04g^zzflKzTA;0eTgLn2
+!s100 o@Iim9<mCGjLCJ2VEbWAJ0
+R8
+31
+R19
+!i10b 1
+R20
+Z48 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd|
+Z49 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/instr_rom.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R45
+R4
+R5
+Z50 DEx4 work 9 instr_rom 0 22 nk04g^zzflKzTA;0eTgLn2
+l13
+L12
+V7PEDlE:gQ=aoLR5@H]]VN3
+!s100 8nfLoH9T=n3S>=?NhPCcP1
+R8
+31
+R19
+!i10b 1
+R20
+R48
+R49
+!i113 1
+R13
+R14
+Emux
+Z51 w1316007784
+R4
+R5
+R0
+Z52 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd
+Z53 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd
+l0
+L15
+VAIzMgjPazR<OQfS2<3zU[0
+!s100 4PDjQ?OU_EC>_W5N>c=K11
+R8
+31
+R19
+!i10b 1
+R20
+Z54 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd|
+Z55 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/mux.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R4
+R5
+R36
+l31
+L29
+VPY6MX=lbcmPjGB4X:z@kJ1
+!s100 MhCUAQP4hIX0c@B;;HdAX3
+R8
+31
+R19
+!i10b 1
+R20
+R54
+R55
+!i113 1
+R13
+R14
+Ereg
+Z56 w1639342158
+R4
+R5
+R0
+Z57 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd
+Z58 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd
+l0
+L15
+VlBeQHJ5]]DRa^35NzL`[G2
+!s100 >O3C8Io5_hLNlNAUmP2GA3
+R8
+31
+R19
+!i10b 1
+R20
+Z59 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd|
+Z60 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/register.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R4
+R5
+R35
+l28
+L24
+VA<QG9VPBjQ[]3[lL2FZ982
+!s100 7z8FJQ:6Ba7n[JXcc3>kd3
+R8
+31
+R19
+!i10b 1
+R20
+R59
+R60
+!i113 1
+R13
+R14
+Etop
+Z61 w1642205806
+R4
+R5
+R0
+Z62 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd
+Z63 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd
+l0
+L18
+VQGINekTN87gWgo1;4fB0j3
+!s100 LI^A=]SFJ2W3ESA<HWRS93
+R8
+31
+R9
+!i10b 1
+R10
+Z64 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd|
+Z65 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top.vhd|
+!i113 1
+R13
+R14
+Aarch
+R39
+R44
+R2
+R45
+R50
+R37
+R4
+R5
+DEx4 work 3 top 0 22 QGINekTN87gWgo1;4fB0j3
+l35
+L26
+VjM90O1@N`hn>ji[FI:KP32
+!s100 o[846[BQT4Hgg8^[S^Fzi1
+R8
+31
+R9
+!i10b 1
+R10
+R64
+R65
+!i113 1
+R13
+R14
+Etop_tb
+Z66 w1607864478
+R4
+R5
+R0
+Z67 8D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd
+Z68 FD:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd
+l0
+L15
+V0LhGFJFCP=P93]`aCIR;J1
+!s100 0EZWNUY6oJLiR7zBa]3[N1
+R8
+31
+R9
+!i10b 1
+R10
+Z69 !s90 -reportprogress|300|-93|-work|work|D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd|
+Z70 !s107 D:/Work_from_home/LPRS1/2023_ispiti/5_Jul/RA/LPRS1_X_Y_Z/Zadatak2/src/hdl/top_tb.vhd|
+!i113 1
+R13
+R14
+Abehavior
+R4
+R5
+DEx4 work 6 top_tb 0 22 0LhGFJFCP=P93]`aCIR;J1
+l39
+L18
+VIc9QBhHIVI:dfmbMUNW]Z0
+!s100 AnVGdgi7;bJllL0DY<[HA1
+R8
+31
+R9
+!i10b 1
+R10
+R69
+R70
+!i113 1
+R13
+R14

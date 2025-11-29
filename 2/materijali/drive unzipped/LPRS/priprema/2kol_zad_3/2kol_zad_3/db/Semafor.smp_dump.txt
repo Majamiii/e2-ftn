@@ -1,0 +1,6 @@
+
+State Machine - |Semafor|sstate
+Name sstate.WARNING sstate.HEAT sstate.IDLE 
+sstate.IDLE 0 0 0 
+sstate.HEAT 0 1 1 
+sstate.WARNING 1 0 1 

@@ -1,0 +1,45 @@
+/*
+	// .data
+	
+	short N = 10;				// N = 10
+	short* p_result = 0x30;	// adresa novog niza
+	short* p_done	 = 0x50;	// adresa za kraj programa
+
+	short a[10] = {5, -3, 7, -6, -5, -4, -1, 0, 1, -7};
+*/
+
+.data
+10
+0x30
+0x50
+5, -3, 7, -6, -5, -4, -1, 0, 1, -7
+
+/*
+	// .text
+	for(short i=0; i<N; i++)
+	{
+		if(a[i] < 0) and a[i]%2 != 0)	
+          *p_result = a[i];
+		p_result++;
+	}
+
+	*p_done = 1;
+*/
+
+.text
+/*
+	Recommended register list:
+	R0 - N
+	R1 - p_result
+	R2 - p_done
+	R3 - a[i]
+	R4 - a[i] koji zadovoljava uslove
+	R5 - i
+	R6 - tmp
+	R7 - tmp
+*/
+
+begin:
+	
+end:
+	jmp end

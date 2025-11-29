@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1667854398 source:d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\screen_project\main.cpp
+	<iostream>
+	"Monitor.hpp"
+	"Screen.hpp"
+
+1667840688 d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\screen_project\monitor.hpp
+	"Screen.hpp"
+	<iostream>
+
+1667839066 d:\docs, pdfs\008 ii godina\c++\vezbanje1_klk1\screen_project\screen.hpp
+

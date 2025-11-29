@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1668507975 source:/home/stud/ra118-2021/OOP - OP/termin4/zad1/Trougao/main.cpp
+	"trougao.hpp"
+	"JKtrougao.hpp"
+
+1668507913 /home/stud/ra118-2021/OOP - OP/termin4/zad1/Trougao/trougao.hpp
+	<iostream>
+	<cmath>
+
+1668507798 /home/stud/ra118-2021/OOP - OP/termin4/zad1/Trougao/JKtrougao.hpp
+	"trougao.hpp"
+

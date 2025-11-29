@@ -1,0 +1,16 @@
+|Semafor
+iCLK => sCNT[0].CLK
+iCLK => sCNT[1].CLK
+iCLK => sCNT[2].CLK
+iCLK => sCNT[3].CLK
+iCLK => sstate~1.DATAIN
+inRST => sCNT[0].ACLR
+inRST => sCNT[1].ACLR
+inRST => sCNT[2].ACLR
+inRST => sCNT[3].ACLR
+inRST => sstate~3.DATAIN
+o_R <= o_R.DB_MAX_OUTPUT_PORT_TYPE
+o_Y <= o_Y.DB_MAX_OUTPUT_PORT_TYPE
+o_G <= o_G.DB_MAX_OUTPUT_PORT_TYPE
+
+

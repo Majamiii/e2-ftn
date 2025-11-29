@@ -1,0 +1,90 @@
+package ognjen_k3_prep;
+
+import java.util.HashMap;
+
+public class Student {
+	private String prezime;
+	private String index;
+	private HashMap<String, Predmet> predmeti;
+	
+	public Student() {
+		super();
+		this.prezime = "";
+		this.index = "";
+		this.predmeti = new HashMap<String, Predmet>();
+	}
+
+	public Student(String prezime, String index, HashMap<String, Predmet> predmeti) {
+		super();
+		this.prezime = prezime;
+		this.index = index;
+		this.predmeti = new HashMap<String, Predmet>();
+	}
+	
+	public boolean dodajPredmet(Predmet subj) {
+		if(predmeti.containsKey(subj.getNaziv()))
+			return false;
+		if(predmeti.size() < 10) {
+			predmeti.put(subj.getNaziv(), subj);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public String formEmailAdress() {
+		
+		String output = index.substring(0, 2)
+				+ "." + prezime + "."
+			    + index.substring(2, 4) + "-" 
+				+ index.substring(2, index.length()) 
+				+ "@uns.ac.rs";
+		return output;
+	}
+	
+	public boolean polozioGodinu(){
+		for (Predmet subj : predmeti.values())
+			if (subj.polozio() == false)
+				return false;
+		
+		predmeti.clear();
+		return true;
+	}
+	
+	public int trajanjeStudija() {
+		int godinaPocetka = 0;
+		int aktuelnaGodina = 2023;
+		
+		try {
+			
+			godinaPocetka = Integer.parseInt(
+				index.substring(5, index.length()));
+		
+			int trajanje = aktuelnaGodina - godinaPocetka;
+			
+			return trajanje;
+			
+		} catch (NumberFormatException e) {
+			System.out.println("Greska pri konvertovanju vrednosti :( ");
+			return -1;
+		}
+	}
+		
+		public String toString() {
+			String s = "Student: \n";
+			s += "Indeks: " + index + "\n";
+			s += "Prezime: " + prezime + "\n";
+			s += "Godine studieranja: " + trajanjeStudija() + "\n";
+			if (predmeti.size() == 0) {
+				s += "Trenutno nema predmeta";
+				return s;
+			}
+			for (Predmet p : predmeti.values()) {
+				s += p;
+				s += "\n";
+			}
+			return s;
+	}
+	
+	
+}

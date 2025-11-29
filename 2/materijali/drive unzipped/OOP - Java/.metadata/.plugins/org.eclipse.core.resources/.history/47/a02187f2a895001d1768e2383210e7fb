@@ -1,0 +1,16 @@
+package bojice_K3;
+
+import java.util.HashMap;
+
+public class Pernica{
+	private int raspolozivoMesta = 5;
+	private HashMap<String, Bojica> bojice;
+	public Pernica(int raspolozivoMesta) {
+		super();
+		this.raspolozivoMesta = raspolozivoMesta;
+		this.bojice = new HashMap<String, Bojica>();
+		
+	}
+	
+    
+}

@@ -1,0 +1,144 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.ALL;
+
+entity Signal_light is port ( 
+	iCLK  	: in  std_logic;
+	iRST  	: in  std_logic;
+	iLEFT  	: in  std_logic;
+	iRIGHT  	: in  std_logic;
+	oLEFT		: out std_logic_vector(2 downto 0);
+	oRIGHT	: out std_logic_vector(2 downto 0)
+	);
+end entity;
+
+architecture Behavioral of Signal_light is
+	type stanje is (IDLE,L1,L2,L3,R1,R2,R3);
+	signal sstate,snextstate:stanje;
+	signal sL_EN: std_logic;
+	signal sR_EN: std_logic;
+	signal sRST_L: std_logic;
+	signal sRST_R: std_logic;
+	signal sL_TC: std_logic;
+	signal sR_TC: std_logic;
+	signal sRightCnt: std_logic_vector(3 downto 0);
+	signal sLeftCnt: std_logic_vector(3 downto 0);
+begin
+
+	process(irsT,iclk) begin
+		
+		if(irst='1') then
+			sstate<=IDLE;
+		else
+			sstate<=snextstate;
+		end if;
+	
+	end process;
+
+	process(sstate,snextstate,iLeFT,iRight,iclk) begin
+	
+		snextstate<=sstate;
+		
+		case(sstate) is
+		
+			when IDLE => 
+				if(iLEFT='1') then
+					snextstate<=L1;
+				elsif(iRiGHT='1') then
+					snextstate<=R1;
+				end if;
+				
+			when L1=>
+				if(iLeFT='0') then
+					snextstate<=IDLE;
+				elsif(sL_TC='1' and iLeFT='1') then
+					snextstate<=L2;
+				end if;
+			when L2=>
+				if(iLeFT='0') then
+					snextstate<=IDLE;
+				elsif(sL_TC='1' and iLeFT='1') then
+					snextstate<=L3;
+				end if;
+			when L3=>
+			  if(sL_TC='1' or iLeFT='0') then
+					snextstate<=IDLE;
+				end if;
+				
+			when R1=>
+				if(iriGHT='0') then
+					snextstate<=IDLE;
+				elsif(sR_TC='1' and iriGHT='1') then
+					snextstate<=R2;
+				end if;
+			when R2=>
+				if(iriGHT='0') then
+					snextstate<=IDLE;
+				elsif(sR_TC='1' and iriGHT='1') then
+					snextstate<=R3;
+				end if;
+			when R3=>
+			  if(sR_TC='1' or iriGHT='0') then
+					snextstate<=IDLE;
+				end if;
+			when others=>
+				snextstate<=IDLE;
+		end case;
+	
+	end process;
+	
+	sL_EN<='1' when sstate=L1 or sstate=L2 or sstate=L3 else	
+			 '0';
+	sR_EN<='1' when sstate=R1 or sstate=R2 or sstate=R3 else	
+			 '0';
+	
+	sRST_L<='1' when sstate=IDLE or sstate=R1 or sstate=R2 or sstate=R3 else	
+			  '0';
+	sRST_R<='1' when sstate=IDLE or sstate=L1 or sstate=L2 or sstate=L3 else	
+			  '0';
+	
+	oLEFT<="001" when sstate=L1 else
+			 "011" when sstate=L2 else
+			 "111" when sstate=L3 else
+			 "000";
+			 
+	oRIGHT<="100" when sstate=R1 else
+			  "110" when sstate=R2 else
+			  "111" when sstate=R3 else
+			  "000";
+	--levi brojac
+	process (iclk, sRsT_L) begin
+		
+		if(sRsT_L='1') then
+			sLeftCnt<=(others=>'0');
+		elsif(rising_edge(iclk)and sL_EN='1') then
+			if(sLeftCnt<10-1) then
+				sLeftCnt<=sleftCnt+1;
+			else
+				sLeftCnt<=(others=>'0');
+			end if;			
+		end if;
+
+	end process;
+	
+	sL_TC<='1' when sLeftCnt=9 else
+			'0';
+	--desni brojac
+	process (iclk, sRsT_R) begin
+		
+		if(sRsT_R='1') then
+			sRightCnt<=(others=>'0');
+		elsif(rising_edge(iclk) and sR_EN='1') then
+			if(sRIghtCnt<10-1) then
+				srightCnt<=srightCnt+1;
+			else
+				srightCnt<=(others=>'0');
+			end if;			
+		end if;
+	end process;
+	
+	
+	sR_TC<='1' when sRightCnt=9 else
+			'0';
+	
+end Behavioral;

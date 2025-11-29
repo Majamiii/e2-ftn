@@ -1,0 +1,117 @@
+
+/*
+// Equivalent C code:
+const short N = 10;
+short d[10] = {26, 12, 27, 19, 2, 26, 12, 27, 6, 5};
+short b[10] = {25, 30, 16, 26, 19, 32, 6, 17, 3, 9};
+short c[10];
+short a[10]; //ne koristi se
+void main() {
+	short* pa; //ne koristi se
+	short* pb;
+	short* pc;
+	short* pd;
+	short* pae; //ne koristi se
+	short* pbe; //ne koristi se
+	short* pce;
+	short* pde;
+	short e;
+	for(
+		pd = d, pb = b+N-1, pc = c, pde = d+N;
+		pd != pde;
+		pd++, pb--, pc++
+	) {
+		*pc = *pd + *pb;
+	}
+	for(
+		pc = c, e = 0, pce = c + N;
+		pc != pce;
+		pc++
+	){
+		e += *pc;
+	}
+}
+
+	
+*/
+
+.data
+
+	10
+	26, 12, 27, 19, 2, 26, 12, 27, 6, 5 //d krece na poziciji 1
+	25, 30, 16, 26, 19, 32, 6, 17, 3, 9 //b krece na poziciji 11
+	//c treba da je na 21
+	//
+	
+.text
+/*
+	potrebni registri:
+	R0 - N 
+	R1 - pd
+	R2 - pb
+	R3 - pc 
+	R4 - pde - nakon prve petlje moze da se obrise
+	pomocni registri: R5, R6, R7
+*/
+
+main:
+ 	
+	priprema1:
+		priprema1:
+		ld R0, R0 //R0 - N 
+		inc R1, R1 //R1 je na 1 - pd
+		add R2, R0, R0 //R2 je na 20 - pb 
+		add R3, R2, R1 //R3 - 21 - pc 
+		add R4, R0, R1 //R4 - 11 - pde
+		sub R5, R5, R5 
+		sub R6, R6, R6
+		sub R7, R7, R7
+
+
+	for1:
+		sub R5, R1, R4 
+		jmpz izlaz1
+		ld R6, R1 //u pomocni registar upisujem vrednost na adresi pd
+		ld R7, R2 //u pomocni registar upisujem vrednost na adresi pb
+		add R7, R6, R7 // u r7 rezultat zbira
+		st R7, R3 //store na adresu
+		inc R1, R1
+		dec R2, R2
+		inc R3, R3 
+		jmp for1
+		
+	izlaz1: //praznjenje registara
+		sub R1, R1, R1
+		sub R2, R2, R2
+		sub R3, R3, R3
+		sub R4, R4, R4
+		sub R5, R5, R5
+		sub R6, R6, R6
+		sub R7, R7, R7
+
+/*
+Potrebni registri:
+R0 = N - vec ubaceno
+R1 = pd 
+R2 = e - vec je postavljen na 0
+R3 = pce 
+Pomocni registri: R4, R5
+*/
+
+priprema2:
+	add R1, R0, R0 //R1 je na 20 
+	add R1, R0, R1 //R1 je na 30
+	sub R3, R1, R0 //R3 je na 20 
+for2:
+	sub R5, R1, R3 
+	jmpz lab1
+	ld R4, R1 //upisujem sa adrese R1 
+	add R2, R2, R4
+	dec R1, R1
+	jmp for2
+
+lab1: 
+	add R7, R0, R0
+	add R7, R7, R7 //40
+	st R2, R7
+
