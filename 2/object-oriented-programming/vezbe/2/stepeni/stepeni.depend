@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1764504378 source:d:\faks\2\object-oriented-programming\vezbe\2\stepeni\main.cpp
+	"XnaY.hpp"
+
+1764504658 d:\faks\2\object-oriented-programming\vezbe\2\stepeni\xnay.hpp
+	<cmath>
+	<iostream>
+
+1764504810 source:d:\faks\2\object-oriented-programming\vezbe\2\stepeni\xnay.cpp
+	"XnaY.hpp"
+

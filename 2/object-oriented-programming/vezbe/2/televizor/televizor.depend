@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1764502770 source:d:\faks\2\object-oriented-programming\vezbe\2\televizor\televizor.cpp
+	"televizor.hpp"
+
+1764502691 d:\faks\2\object-oriented-programming\vezbe\2\televizor\televizor.hpp
+	<iostream>
+

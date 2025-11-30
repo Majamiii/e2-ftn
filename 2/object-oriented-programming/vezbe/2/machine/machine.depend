@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1764498564 source:d:\faks\2\object-oriented-programming\vezbe\2\machine\main.cpp
+	"machine.hpp"
+
+1764496663 d:\faks\2\object-oriented-programming\vezbe\2\machine\machine.hpp
+	<iostream>
+
+1764496784 source:d:\faks\2\object-oriented-programming\vezbe\2\machine\machine.cpp
+	"machine.hpp"
+
