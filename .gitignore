@@ -28,6 +28,16 @@
 2/materijali/drive unzipped/SAU/octave-8.1.0-w64-installer.exe
 2/materijali/flash/MISS/Usmeni/MISS skripta.pdf
 
-# Optional: ignore a common videos directory (uncomment if you use a /videos/ folder)
-# videos/
+*.o
+*.layout
+*.out
+*.bin
+*.elf
+*.obj
+*.lib
+*.a
+*.so
+*.dll
+*.class
+*.jar
 

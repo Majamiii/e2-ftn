@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1764612706 source:d:\faks\2\object-oriented-programming\vezbe\3\screen\main.cpp
+	"monitor.hpp"
+
+1764613566 d:\faks\2\object-oriented-programming\vezbe\3\screen\monitor.hpp
+	"screen.hpp"
+
+1764612833 d:\faks\2\object-oriented-programming\vezbe\3\screen\screen.hpp
+	<iostream>
+
