@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1764604367 source:d:\faks\2\object-oriented-programming\vezbe\3\automobil\main.cpp
+	<iostream>
+	"automobil.hpp"
+
+1764602315 d:\faks\2\object-oriented-programming\vezbe\3\automobil\menjac.hpp
+
+1764603746 d:\faks\2\object-oriented-programming\vezbe\3\automobil\automobil.hpp
+	"menjac.hpp"
+	"skoljka.hpp"
+
+1764603578 d:\faks\2\object-oriented-programming\vezbe\3\automobil\skoljka.hpp
+
