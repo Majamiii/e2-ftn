@@ -40,4 +40,6 @@
 *.dll
 *.class
 *.jar
-
+*.exe
+./vscode/
+.vscode/

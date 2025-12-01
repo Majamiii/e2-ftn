@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1764627834 source:d:\faks\2\object-oriented-programming\vezbe\k1 priprema\igrac\main.cpp
+	"igra.hpp"
+
+1764626760 d:\faks\2\object-oriented-programming\vezbe\k1 priprema\igrac\igra.hpp
+	"igrac.hpp"
+
+1764627073 d:\faks\2\object-oriented-programming\vezbe\k1 priprema\igrac\igrac.hpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+

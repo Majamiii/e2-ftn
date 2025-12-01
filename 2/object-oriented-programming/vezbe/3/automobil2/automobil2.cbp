@@ -32,7 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="automobil.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menjac.hpp" />
+		<Unit filename="skoljka.hpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
