@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1765838453 source:d:\faks\2\oop\vezbe\5\apstraktne\main.cpp
+	<iostream>
+	"figura.hpp"
+	"kvadrat.hpp"
+	"krug.hpp"
+	"oblik.hpp"
+
+1765838054 d:\faks\2\oop\vezbe\5\apstraktne\figura.hpp
+	<cmath>
+
+1765837925 d:\faks\2\oop\vezbe\5\apstraktne\kvadrat.hpp
+	"pravougaonik.hpp"
+
+1765837804 d:\faks\2\oop\vezbe\5\apstraktne\pravougaonik.hpp
+	"figura.hpp"
+
+1765837997 d:\faks\2\oop\vezbe\5\apstraktne\krug.hpp
+	"elipsa.hpp"
+
+1765838120 d:\faks\2\oop\vezbe\5\apstraktne\elipsa.hpp
+	"figura.hpp"
+
+1765838319 d:\faks\2\oop\vezbe\5\apstraktne\oblik.hpp
+	"krug.hpp"
+	"kvadrat.hpp"
+

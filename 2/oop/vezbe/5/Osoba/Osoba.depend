@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1634370226 source:d:\faks\2\oop\vezbe\5\osoba\dinstring.cpp
+	"dinstring.hpp"
+
+1634370232 d:\faks\2\oop\vezbe\5\osoba\dinstring.hpp
+	<iostream>
+
+1765836243 source:d:\faks\2\oop\vezbe\5\osoba\main.cpp
+	<iostream>
+	"osoba.hpp"
+	"Student.hpp"
+	"PhDStudent.hpp"
+
+1765836519 d:\faks\2\oop\vezbe\5\osoba\osoba.hpp
+	"dinstring.hpp"
+
+1765836417 d:\faks\2\oop\vezbe\5\osoba\student.hpp
+
+1765836422 d:\faks\2\oop\vezbe\5\osoba\phdstudent.hpp
+

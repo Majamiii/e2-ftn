@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1766011680 source:d:\faks\2\oop\vezbe\5\3-1\main.cpp
+	<iostream>
+	"pravilanoblik.hpp"
+
+1766010599 d:\faks\2\oop\vezbe\5\3-1\oblik.hpp
+	"elipsa.hpp"
+	"pravougaonik.hpp"
+
+1766010113 d:\faks\2\oop\vezbe\5\3-1\elipsa.hpp
+	"figura.hpp"
+	<cmath>
+
+1766009824 d:\faks\2\oop\vezbe\5\3-1\figura.hpp
+
+1766009282 d:\faks\2\oop\vezbe\5\3-1\pravougaonik.hpp
+	"figura.hpp"
+
+1766011811 d:\faks\2\oop\vezbe\5\3-1\pravilanoblik.hpp
+	"oblik.hpp"
+
