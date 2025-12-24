@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1766449176 source:d:\faks\2\oop\vezbe\6\trezor\main.cpp
+	"dijamant.hpp"
+	"trezor.hpp"
+
+1766448827 d:\faks\2\oop\vezbe\6\trezor\dijamant.hpp
+	<iostream>
+
+1766449387 d:\faks\2\oop\vezbe\6\trezor\trezor.hpp
+
