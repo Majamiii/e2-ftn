@@ -1,0 +1,447 @@
+ STANDARDNE KOMBINACIONE MREŽE
+
+Sledi lista od 12 četo korišćenih u praksi standardnih kombinacionih mreža. 
+Naravno svaka od ovih implementacija može da varira, zavisno od potreba.
+Kao pripremu za laboratorijsku proveru za svaku od njih kreirati 
+top.vhd i top_tb.vhd datoteke i pokrenuti analizu i sintezu, a zatim simulaciju u QuartusLite okruženju.
+
+U okviru svakog VHD fajla na početku je potrebno uključiti neophodne biblioteke
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+1) MULTIPLEKSER (MUX) 
+
+Motivacija:
+Multiplekser bira jedan od više ulaza i prosleđuje ga na izlaz na osnovu selekcionog ulaza.
+Osnov je za usmeravanje podataka, implementaciju uslovnih izraza i selekciju izvora.
+
+--mux4_to_1
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.ALL;
+
+entity top is
+  port (
+    iSEL : in  std_logic_vector(1 downto 0);
+    iD   : in  std_logic_vector(3 downto 0);
+    oY   : out std_logic
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iSEL, iD)  --(all)
+  begin
+    oY <= '0';  -- izlaz na nulu
+    case iSEL is
+      when "00"   => oY <= iD(0);
+      when "01"   => oY <= iD(1);
+      when "10"   => oY <= iD(2);
+      when others => oY <= iD(3);
+    end case;
+  end process;
+end behavioral;
+----------------------------------------------------------
+2) DEMULTIPLEKSER (DEMUX)
+
+Motivacija:
+Usmerava jedan ulaz ka jednoj od više izlaznih linija, na osnovu selekcionog signala.
+
+--demux1_to_4
+
+entity top is
+  port (
+    iSEL : in  std_logic_vector(1 downto 0);
+    iD   : in  std_logic;
+    oY   : out std_logic_vector(3 downto 0)
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iSEL, iD) --(all)
+  begin
+    oY <= (others => '0');  -- svi izlazi na nulu
+    case iSEL is
+      when  "00"  => oY(0) <= iD;
+      when  "01"  => oY(1) <= iD;
+      when  "10"  => oY(2) <= iD;
+      when others => oY(3) <= iD;
+    end case;
+  end process;
+end behavioral;
+
+3) DEKODER (N→2^N)
+
+Motivacija:
+Pretvara binarni kod u one-hot izlaz; koristi se za adresiranje i selekciju blokova.
+
+entity decoder_n_to_2n is
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- 2→4 dekoder
+-- Pretvara binarni kod sa ulaza iSEL u "one-hot" izlaz oY(3:0).
+-- Signal iEN (enable) mora biti '1' da bi dekoder bio aktivan.
+
+entity top is
+  port (
+    iEN  : in  std_logic;
+    iSEL : in  std_logic_vector(1 downto 0);
+    oY   : out std_logic_vector(3 downto 0)
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iEN, iSEL) --(all)
+  begin
+    oY <= (others => '0');  -- podrazumevano svi izlazi neaktivni
+    if iEN = '1' then
+      case iSEL is
+        when "00"   => oY(0) <= '1';
+        when "01"   => oY(1) <= '1';
+        when "10"   => oY(2) <= '1';
+        when others => oY(3) <= '1';
+      end case;
+    end if;
+  end process;
+end behavioral;
+
+
+4) KODER (2^N→N)
+
+Motivacija:
+Obrnuto od dekodera: one-hot ulaz u binarni kod (bez prioriteta).
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- 4→2 koder
+-- Pretvara "one-hot" ulaz iX(3:0) u binarni kod na izlazu oY(1:0).
+-- Ako je više ulaza aktivno, rezultat zavisi od prioriteta zadatog u konstrukciji.
+
+entity top is
+  port (
+    iX : in  std_logic_vector(3 downto 0);
+    oY : out std_logic_vector(1 downto 0)
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iX) --(all)
+  begin
+    oY <= (others => '0');  -- podrazumevano svi izlazi neaktivni
+    case iX is
+      when "0001"  => oY <= "00";
+      when "0010"  => oY <= "01";
+      when "0100"  => oY <= "10";
+      when others  => oY <= "11";  -- poslednja kombinacija obuhvaćena u others
+    end case;
+  end process;
+end behavioral;
+
+
+5) PRIORITETNI KODER
+ 
+Motivacija:
+Za više aktivnih ulaza vraća kod najvišeg prioriteta; koristi se u arbitraži i prekidima.
+
+entity top is
+  port (
+    iX   : in  std_logic_vector(3 downto 0);
+    oY   : out std_logic_vector(1 downto 0);
+    oVALID : out std_logic
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iX) --(all)
+  begin
+    oY <= (others => '0');  -- podrazumevano svi izlazi neaktivni
+    if    iX(3) = '1' then
+      oY <= "11"; oVALID <= '1';
+    elsif iX(2) = '1' then
+      oY <= "10"; oVALID <= '1';
+    elsif iX(1) = '1' then
+      oY <= "01"; oVALID <= '1';
+    elsif iX(0) = '1' then
+      oY <= "00"; oVALID <= '1';
+    else
+      oY <= "00"; oVALID <= '0';
+    end if;
+  end process;
+end behavioral;
+
+
+
+6) KOMPARATOR
+
+Motivacija:
+Daje odnose <, =, >; osnova kontrole toka i adresiranja.
+
+entity top is
+  port (
+    iA  : in  std_logic_vector(3 downto 0);
+    iB  : in  std_logic_vector(3 downto 0);
+    oLT : out std_logic;
+    oEQ : out std_logic;
+    oGT : out std_logic
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iA, iB) --(all)
+  begin
+    -- Resetuj sve izlaze
+    oLT <= '0';
+    oEQ <= '0';
+    oGT <= '0';
+    -- Grananje po uslovima
+    if iA < iB then
+      oLT <= '1';
+    elsif iA = iB then
+      oEQ <= '1';
+    else
+      oGT <= '1';
+    end if;
+  end process;
+end behavioral;
+
+7) GENERATOR PARITETA 
+
+Motivacija:
+Even/odd paritet — detekcija grešaka; 
+
+-- Paritet nekog vektora koji sadrži neparan broj '1' = NEPARAN PARITET (ODD PARITY) 
+-- Paritet nekog vektora koji sadrži paran broj '1' = PARAN PARITET (EVEN PARITY)
+
+-- 4-bitni generator parite
+-- Ukoliko signal oPAR dobijamo kao XOR za ulazni vektor iD(3:0), 
+-- tada je signal oPAR detektor neparne parnosti vektora iD. 
+-- Ukoliko oPAR dobijamo kao negirani XOR za ulazni vektor iD(3:0), 
+-- tada je oPAR detektor parne parnosti vektora iD. 
+
+-- Važan detalj sledi:
+-- Ukolko vektor iD proširimo detektorom oPAR parne parnosti dobijamo 
+-- vektor (oPAR & iD) neparne parnosti i obrnuto.
+
+
+entity top is
+  port (
+    iD   : in  std_logic_vector(3 downto 0);
+    oPAR : out std_logic
+  );
+end entity;
+
+
+-- Proširenje u PARNI paritet
+architecture behavioral of top is
+begin
+  oPAR <= iD(0) xor iD(1) xor iD(2) xor iD(3); --detektujemo neparnu parnost
+end behavioral;
+--vektor (oPAR & iD) sad uvek sadrži paran broj '1'. 
+--Kažemo da prošireni vektor (oPAR & iD) ima parni paritet
+
+-- Proširenje u NEPARNI paritet
+architecture behavioral of top is
+begin
+  oPAR <= not(iD(0) xor iD(1) xor iD(2) xor iD(3)); --detektujemo parnu parnost 
+end behavioral;
+--vektor (oPAR & iD) sad uvek sadrži neparan broj '1'. 
+--Kažemo da prošireni vektor (oPAR & iD) ima neparni paritet
+
+
+8) ŠIFTER / BARREL ŠIFTER
+
+Motivacija:
+Pomeraj za proizvoljan iznos u jednom taktu; ključno u ALU/DSP.
+Upraznjena mesta popuniti nulama.
+
+entity top is
+  port (
+    iD    : in  std_logic_vector(3 downto 0);
+    iSTEP  : in  std_logic_vector(1 downto 0);
+    iLEFT : in  std_logic;
+    oY    : out std_logic_vector(3 downto 0)
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iD, iSTEP, iLEFT) --(all)
+  begin
+    oY <= "0000";
+    case iLEFT is
+      when '1' =>  -- pomeranje ulevo
+        case iSTEP is
+          when "00"   => oY <= iD;
+          when "01"   => oY <= iD(2 downto 0) & '0';
+          when "10"   => oY <= iD(1 downto 0) & "00";
+          when others => oY <= iD(0) & "000";
+        end case;
+      when others =>  -- pomeranje udesno
+        case iSTEP is
+          when "00"   => oY <= iD;
+          when "01"   => oY <= '0' & iD(3 downto 1);
+          when "10"   => oY <= "00" & iD(3 downto 2);
+          when others => oY <= "000" & iD(3);
+        end case;
+    end case;
+  end process;
+end behavioral;
+
+
+
+9) VEĆINSKI ELEMENT
+
+Motivacija:
+Većina od tri ulaza; primer Booleove algebre i pouzdanosti.
+
+-- Većinski element sa 3 ulaza (MAJ3)
+-- Ulaz iX(2:0) predstavlja tri bita glasanja.
+-- Izlaz oY = '1' ako su najmanje dva od tri ulaza jednaka '1'.
+-- Implementirano pomoću CASE konstrukcije.
+
+entity top is
+  port (
+    iX : in  std_logic_vector(2 downto 0);
+    oY : out std_logic
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iX) --(all)
+  begin
+    oY <= '0';
+    case iX is
+      when "111" => oY <= '1';
+      when "110" => oY <= '1';
+      when "101" => oY <= '1';
+      when "011" => oY <= '1';
+      when others => oY <= '0';
+    end case;
+  end process;
+end behavioral;
+
+
+10) LUT (LOOK-UP TABLE)
+
+Motivacija:
+Funkcija kao tabela; osnov FPGA logike (npr. LUT4).
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- LUT4 (Look-Up Table)
+-- Ulaz iX(3:0) predstavlja adresu (4 bita = 16 kombinacija).
+-- Izlaz oY je vrednost funkcije za odgovarajuću adresu.
+-- Implementirano pomoću CASE konstrukcije.
+
+entity top is
+  port (
+    iX : in  std_logic_vector(3 downto 0);
+    oY : out std_logic
+  );
+end entity;
+
+architecture behavioral of top is
+begin
+  process(iX) --(all)
+  begin
+    oY <= '0';
+    case iX is
+      when "0000" => oY <= '0';
+      when "0001" => oY <= '1';
+      when "0010" => oY <= '0';
+      when "0011" => oY <= '1';
+      when "0100" => oY <= '0';
+      when "0101" => oY <= '0';
+      when "0110" => oY <= '1';
+      when "0111" => oY <= '1';
+      when "1000" => oY <= '0';
+      when "1001" => oY <= '1';
+      when "1010" => oY <= '1';
+      when "1011" => oY <= '0';
+      when "1100" => oY <= '1';
+      when "1101" => oY <= '1';
+      when "1110" => oY <= '0';
+      when others => oY <= '1';  -- pokriva "1111"
+    end case;
+  end process;
+end behavioral;
+
+11 BINARY to GRAY
+
+-- Binary2Gray konvertor (4 bita)
+-- Ulaz iBIN(3:0) predstavlja binarnu vrednost.
+-- Izlaz oGRAY(3:0) je odgovarajući Gray kod, kod koga se 
+-- susedne vrednosti razlikuju u samo jednom bitu.
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity top is
+    port (
+        iBIN  : in  std_logic_vector(3 downto 0);
+        oGRAY : out std_logic_vector(3 downto 0)
+    );
+end entity top;
+
+architecture Behavioral of top is
+    signal sGRAY : std_logic_vector(3 downto 0);
+begin
+
+    -------------------------------------------------------------------
+    -- Binary → Gray conversion (4-bit)
+    -------------------------------------------------------------------
+    sGRAY(3) <= iBIN(3);
+    sGRAY(2 downto 0) <= iBIN(3 downto 1) xor iBIN(2 downto 0);
+
+    oGRAY <= sGRAY;
+
+end architecture Behavioral;
+
+12. GRAY to BINARY
+
+-- Gray2Binary konvertor (4 bita)
+-- Ulaz iGRAY(3:0) predstavlja Gray kod, kod koga se 
+-- susedne vrednosti razlikuju u samo jednom bitu.
+-- Izlaz oBIN(3:0) je odgovarajuća binarna vrednost.
+-- Implementacija koristi kaskadni XOR, jer se svaki
+-- binarni bit dobija XOR-ovanjem svih viših Gray bitova.
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity top is
+    port (
+        iGRAY : in  std_logic_vector(3 downto 0);
+        oBIN  : out std_logic_vector(3 downto 0)
+    );
+end entity top;
+
+architecture Behavioral of top is
+    signal sBIN : std_logic_vector(3 downto 0);
+begin
+
+    -------------------------------------------------------------------
+    -- Gray → Binary conversion (4-bit)
+    -------------------------------------------------------------------
+    sBIN(3) <= iGRAY(3);
+    sBIN(2 downto 0) <= sBIN(3 downto 1) xor iGRAY(2 downto 0);
+
+    oBIN <= sBIN;
+
+end architecture Behavioral;
+
+
+
