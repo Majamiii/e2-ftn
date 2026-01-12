@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1634371384 source:d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\dinstring.cpp
+	"dinstring.hpp"
+
+1634371390 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\dinstring.hpp
+	<iostream>
+
+1768247760 source:d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\main.cpp
+	"voce.hpp"
+	"odeca.hpp"
+	"prodavnica.hpp"
+
+1768247919 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\voce.hpp
+	"proizvod.hpp"
+
+1768246971 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\proizvod.hpp
+	<iostream>
+	"dinstring.hpp"
+	"list.hpp"
+
+1634371760 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\list.hpp
+	<stdlib.h>
+	<iostream>
+
+1768246499 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\odeca.hpp
+	"proizvod.hpp"
+
+1768247864 d:\faks\2\oop\vezbe\k2 priprema\7-7 prodavnica\prodavnica\prodavnica.hpp
+	"proizvod.hpp"
+

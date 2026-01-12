@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1634371384 source:d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\dinstring.cpp
+	"dinstring.hpp"
+
+1634371390 d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\dinstring.hpp
+	<iostream>
+
+1768235418 source:d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\main.cpp
+	"kolokvijum.hpp"
+	"predmet.hpp"
+
+1768235374 d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\kolokvijum.hpp
+	"test.hpp"
+
+1768233126 d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\test.hpp
+	<iostream>
+	"dinstring.hpp"
+	"list.hpp"
+
+1634371760 d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\list.hpp
+	<stdlib.h>
+	<iostream>
+
+1768235565 d:\faks\2\oop\vezbe\k2 priprema\7-5 test\test\predmet.hpp
+	"kolokvijum.hpp"
+

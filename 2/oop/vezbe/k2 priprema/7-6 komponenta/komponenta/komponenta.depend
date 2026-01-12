@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1634371384 source:d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\dinstring.cpp
+	"dinstring.hpp"
+
+1634371390 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\dinstring.hpp
+	<iostream>
+
+1768243021 source:d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\main.cpp
+	"label.hpp"
+	"checkbox.hpp"
+	"panel.hpp"
+
+1768241769 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\checkbox.hpp
+	"component.hpp"
+
+1768241406 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\component.hpp
+	<iostream>
+	"dinstring.hpp"
+	"list.hpp"
+
+1634371760 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\list.hpp
+	<stdlib.h>
+	<iostream>
+
+1768242246 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\label.hpp
+	"component.hpp"
+
+1768243095 d:\faks\2\oop\vezbe\k2 priprema\7-6 komponenta\komponenta\panel.hpp
+	"component.hpp"
+	"list.hpp"
+

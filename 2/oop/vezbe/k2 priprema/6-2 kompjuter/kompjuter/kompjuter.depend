@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1634371384 source:d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\dinstring.cpp
+	"dinstring.hpp"
+
+1634371390 d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\dinstring.hpp
+	<iostream>
+
+1768229564 source:d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\main.cpp
+	"desktopapp.hpp"
+	"androidapp.hpp"
+	"androidapp.hpp"
+	"desktopapp.hpp"
+
+1768229613 d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\desktopapp.hpp
+	"aplikacija.hpp"
+	"kompjuter.hpp"
+
+1768228287 d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\aplikacija.hpp
+	"kompjuter.hpp"
+
+1768226409 d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\kompjuter.hpp
+	<iostream>
+	"dinstring.hpp"
+
+1768228391 d:\faks\2\oop\vezbe\k2 priprema\6-2 kompjuter\kompjuter\androidapp.hpp
+	"aplikacija.hpp"
+

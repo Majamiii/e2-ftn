@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1634371384 source:d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\dinstring.cpp
+	"dinstring.hpp"
+
+1634371390 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\dinstring.hpp
+	<iostream>
+
+1768253208 source:d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\main.cpp
+	"zicara.hpp"
+
+1768250300 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\karta.hpp
+	<iostream>
+	"dinstring.hpp"
+	"list.hpp"
+
+1634371760 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\list.hpp
+	<stdlib.h>
+	<iostream>
+
+1768250222 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\putnik.hpp
+	"karta.hpp"
+
+1768253239 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\zicara.hpp
+	"putnikdete.hpp"
+
+1768250879 d:\faks\2\oop\vezbe\k2 priprema\priprema za k2\zicara\putnikdete.hpp
+	"putnik.hpp"
+
