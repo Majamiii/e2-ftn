@@ -12,17 +12,13 @@ public:
 
     bool dodajProizvod(Proizvod& p){
         Proizvod* temp;
-        bool postoji=false;
         for(int i=1;i<=proizvodi.size();i++){
             proizvodi.read(i,temp);
             if(temp->getNaziv() == p.getNaziv()){
                 return false;
             }
         }
-        if(!postoji){
-            return proizvodi.add(1,&p);
-        }
-        return false;
+        return proizvodi.add(1,&p);
     }
     void obrisiProizvod(const DinString& ime){
         Proizvod* temp;

@@ -9,13 +9,14 @@ architecture Test of Semafor_tb is
     -- Component Declaration for the Unit Under Test (UUT)
  
     component Semafor
-    port(	iCLK    : in  std_logic;
-				iRST    : in  std_logic;
-				iOK     : in  std_logic;
-				iHAZ    : in  std_logic;
-				oRED    : out std_logic;
-				oYELLOW : out std_logic;
-				oGREEN  : out std_logic);
+    port(
+         iCLK    : in  std_logic;
+         iRST    : in  std_logic;
+         iOK     : in  std_logic;
+         iHAZ    : in  std_logic;
+         oRED    : out std_logic;
+         oYELLOW : out std_logic;
+			oGREEN  : out std_logic);
     end component;
     
    --Inputs
@@ -57,7 +58,7 @@ begin
    -- Stimulus process
    stim_proc: process
    begin		
-	
+      
 		sRST <= '1';
 		wait for 2.25 * iCLK_period;
 		sRST <= '0';
@@ -84,7 +85,7 @@ begin
 		sRST <= '1';
 		wait for 2 * iCLK_period;
 		sRST <= '0';
-      
+		
       wait;
    end process;
 
