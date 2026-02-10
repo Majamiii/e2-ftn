@@ -1,0 +1,50 @@
+
+/*
+	Ekvivalentan C kod:
+
+	int N = 10;
+	short a[10] = {-3, 0, 0, 7, 12, -6, 15, -1, 0, 11};
+*/
+.data
+10	// N = 10, adresa 0
+-3	// a[0], adresa 1
+0 	// a[1], adresa 2
+0 	// a[2], adresa 3
+7 	// a[3], adresa 4
+12 	// a[4], adresa 5
+-6 	// a[5], adresa 6
+15 	// a[6], adresa 7
+-1 	// a[7], adresa 8
+0 	// a[8], adresa 9
+11 	// a[9], adresa 10
+
+/*
+	Ekvivalentan C kod (viši nivo):
+	
+	for(i=0; i<N; i++)
+	{
+		R1 = a[i];
+		if(R1 == 0)
+			R5++;
+		elsif(R1 < 0)
+			R6++;
+		else
+			R7++;
+	}
+*/
+.text
+/*
+	Spisak registara:
+
+	R0 - i - adresa elementa iz memorije.
+	R1 - učitan element iz memorije a[i]
+	R3 - N = 10
+	R5 - broj NULA
+	R6 - broj negativnih
+	R7 - broj pozitivnih
+*/
+begin:
+	
+end:
+	jmp end // Beskonačna petlja.
+

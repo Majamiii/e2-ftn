@@ -1,0 +1,47 @@
+/*
+	// .data
+	short* p_result		= 0x1A;
+	short* p_done		= 0x20;
+	short N = 5;
+	short a[5] = {-1, -2, -3, -4,  6};
+*/
+.data
+0x1A
+0x20
+5
+-1, -2, -3, -4, 6
+
+/*
+	// .text
+	short res = 0;
+	short pow = 0;
+	
+	pow = 2^N;
+	
+	for(int i = 0; i<N; i++)
+	{
+		res += a[i];
+	}
+	res += pow;
+	res /= 4;
+	
+	*p_result = res;
+	*p_done = 1;
+*/
+
+.text
+/*
+	Recommended register list:
+	R0 - res
+	R1 - pow
+	R2 - N
+	R3 - a[i]
+	R4 - p_result
+	R5 - p_done
+	R6 - tmp
+	R7 - tmp
+*/
+begin:
+	
+end:
+	jmp end

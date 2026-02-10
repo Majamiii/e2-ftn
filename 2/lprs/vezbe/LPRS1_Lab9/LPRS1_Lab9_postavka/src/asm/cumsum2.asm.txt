@@ -1,0 +1,46 @@
+
+/*
+	Ekvivalentan C kod:
+	
+	short niz[3] = {15, -3, -7};
+*/
+.data
+15 			// niz[0], adresa 0
+-3 			// niz[1], adresa 1
+-7 			// niz[2], adresa 2
+
+/*
+	Ekvivalentan C kod (viši nivo):
+	
+	short tmp, acc = 0, i = 0, N = 3;
+	do{
+		tmp = niz[i];
+		acc += tmp;
+		niz[i] = acc;
+		i++;
+	}while(i != N);
+*/
+.text
+/*
+	Spisak registara:
+	R0 - privremeni registar.
+	R1 - dužina niza.
+	R2 - indeks/adresa niza.
+	R3 - akumulator.
+*/
+begin:
+	ld R0, R2			// R0 = niz[0]
+	inc R2, R2			// i = 1
+	ld R1, R2			// R1 = niz[1]
+	add R7, R0, R1		//	acc = niz[0] + niz[1]
+	inc R2, R2			// R2 = 2
+	ld R3, R2			// R3 = niz[2]
+	add R7, R7, R3		// acc = niz[0] + niz[1] + niz[2]
+	
+	// adresa 0x7
+	shl R2, R2			// R2 = 4
+	shl R2, R2			// R2 = 8
+	dec R2, R2			// R2 = 7
+	st R7, R2			// mem[7] = acc
+end:
+jmp end // Beskonačna petlja. Rezultat je u R3.

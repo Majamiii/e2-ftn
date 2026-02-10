@@ -1,0 +1,61 @@
+
+/*
+	Ekvivalentan C kod:
+	
+	short niz[10] = {1, 2, 3, -5, -4, 10, 13, 0, 3, -3};
+*/
+.data
+
+10		// N = 10
+1
+2
+3
+-5
+-4
+10
+13
+0
+3
+-3
+
+/*
+	Ekvivalentan C kod (viši nivo):
+	
+	int N = 10;
+	int i = 0;
+	while (N != 0) {
+		R1 = a[i];
+		i++;
+		N--;
+		if(R1(0) == 1)
+		R7++;
+	}
+	MEM[0xF] = R7;
+*/
+.text
+/*
+	Spisak registara:
+	R0 - N = 10.
+	R1 - učitani element niza
+	R2 - i - indeks/adresa niza.
+	R6 - maska za and
+	R7 - ukupan broj neparnih.
+*/
+begin:
+	ld R0, R0			// R0 = N = 10
+	sub R2, R2, R2		// R2 = i = 0
+	
+	inc R6, R2			// R6 = 1 (maska)
+while:
+	dec R0, R0			// N--
+	jmps end
+	inc R2, R2			// i++
+	
+	ld R1, R2			// R1 = a[i]
+	and R5, R1, R6		// da li je paran?
+	jmpz while
+neparan:
+	inc R7, R7			// R7 ++
+	jmp while
+end:
+	jmp end // Beskonačna petlja. Rezultat je u R3.

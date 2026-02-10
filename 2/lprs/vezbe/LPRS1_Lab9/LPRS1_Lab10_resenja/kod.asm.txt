@@ -1,0 +1,87 @@
+/*
+	// .data
+	short* p_result		= 0x1A;
+	short* p_done		= 0x20;
+	short N = 5;
+	short a[5] = {-1, -2, -3, -4,  6};
+*/
+.data
+0x1A
+0x20
+5
+-1, -2, -3, -4, 6
+
+/*
+	// .text
+	short res = 0;
+	short pow = 0;
+	
+	pow = 2^N;
+	
+	for(int i = 0; i<N; i++)
+	{
+		res += a[i];
+	}
+	res += pow;
+	res /= 4;
+	
+	*p_result = res;
+	*p_done = 1;
+*/
+
+.text
+/*
+	Recommended register list:
+	R0 - res
+	R1 - pow
+	R2 - N
+	R3 - a[i]
+	R4 - p_result
+	R5 - p_done
+	R6 - tmp
+	R7 - tmp
+*/
+begin:
+	sub R0, R0, R0		// res = 0
+	sub R1, R1, R1		// pow = 0
+	
+	inc R1, R1			// pow = 1
+	inc R2, R1			// R2 = 2 (address of N)
+	ld R2, R2			// R2 = N = 5
+pow:
+	sub R7, R2, R5		// i<N
+	jmpz pow_end
+	shl R1, R1
+	inc R5, R5
+	jmp pow
+pow_end:
+	sub R5, R5, R5		// R5 = 0
+	sub R6, R6, R6		// R6 = 0
+	inc R6, R6
+	inc R6, R6
+	inc R6, R6			// R6 = 3 (početak niza)
+res:
+	sub R7, R2, R5		// j<N
+	jmpz res_end
+	ld R3, R6			// R3 = a[i]
+	add R0, R0, R3
+	inc R5, R5			// j++
+	inc R6, R6			// i++
+	jmp res
+	
+res_end:
+	add R0, R0, R1		// res += pow
+	shr R0, R0
+	shr R0, R0			// res /= 4
+	
+	ld R4, R4			// R4 = &p_result
+	st R0, R4			// *p_result = res
+	
+	sub R5, R5, R5
+	inc R5, R5			
+	sub R2, R2, R2
+	inc R2, R2			// R2 = 1
+	ld R5, R5			// R5 = &p_done
+	st R2, R5			// *p_done = 1
+end:
+	jmp end
