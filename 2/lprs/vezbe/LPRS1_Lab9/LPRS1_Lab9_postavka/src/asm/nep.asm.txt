@@ -1,0 +1,84 @@
+
+/*
+	Ekvivalentan C kod:
+	
+	short niz[10] = {1, 2, 3, -5, -4, 10, 13, 0, 3, -3};
+*/
+.data
+
+10		// N = 10
+1
+2
+3
+-5
+-4
+10
+13
+0
+3
+-3
+
+/*
+	Ekvivalentan C kod (viši nivo):
+	
+	int N = 10;
+	int i = 0;
+	while (N != 0) {
+		R1 = a[i];
+		i++;
+		N--;
+		if(R1(0) == 1)
+		R7++;
+	}
+	MEM[0xF] = R7;
+*/
+.text
+/*
+	Spisak registara:
+	R0 - N = 10.
+	R1 - učitani element niza
+	R2 - i - indeks/adresa niza.
+	R6 - maska za and
+	R7 - ukupan broj neparnih.
+*/
+begin:
+	sub R0, R0, R0;
+	sub R2, R2, R2;
+	ld R0, R2;	// N=10 -> R0
+	inc R2, R2;		// sad pokazuje na prvi clan niza
+
+	// maska za and - 000...0001 u R6
+	sub R6, R6, R6;
+	inc R6, R6;
+
+petlja:
+	sub R3, R0, R4;	// od broja N oduzmi 0 -> u principu smesti ga u R3
+	jmps kraj;
+		
+	ld R1, R2;	// R1 = a[i]
+	inc R2, R2;		// i++
+	dec R0, R0;		// N--
+
+	and R4, R6, R1;
+	jmpnz uvecaj;
+	jmp petlja;
+
+uvecaj:
+	inc R7, R7;
+	jmp petlja;
+	
+kraj:
+	sub R4, R4, R4;	// R4=0
+	// F = 1111
+	inc R4, R4;		// 0001
+	shl R4, R4;	// 0010
+	inc R4, R4;		// 0011
+	shl R4, R4;	// 0110
+	inc R4, R4;		// 0111
+	shl R4, R4;	// 1110
+	inc R4, R4;		// 1111
+
+	st R7, R4;	// smesta na adresu koja je u R4 (0xF) sadrzaj iz R7
+	
+end:
+	jmp end // Beskonačna petlja.

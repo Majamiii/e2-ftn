@@ -4,7 +4,7 @@
 # Author: Milos Subotic <milos.subotic@uns.ac.rs>
 ###############################################################################
 
-set asm_file "src/asm/cumsum.asm.txt"
+set asm_file "src/asm/nep.asm.txt"
 
 ###############################################################################
 

@@ -42,6 +42,59 @@
 	R7 - tmp
 */
 begin:
+
+	sub R0, R0, R0;		// nuliramo res - R0
+	sub R1, R1, R1;		// nuliramo pow - R1
 	
+	inc R6, R6;
+	inc R6, R6;		// njega cemo koristi da pokazuje sad na drugo mesto u mem za br 5
+	ld R2, R6;		// R2=N=5
+
+// ---- pow = R1 = 2^N; ----------
+	inc R1, R1;			// u R1 je 2 na nulti, tj 1
+stepen:
+	dec R2, R2;
+	jmps nastavi;	
+	shl R1, R1;			// R1 (pow) *= 2
+	jmp stepen;
+
+nastavi:
+	ld R2, R6; 		// u R2 je opet broj 5
+	inc R6, R6;		// R6 pokazuje sad na prvi el u nizu
+
+cumsum:
+	sub R7, R2, R6;		// u R7 stavi razliku broja 5 i tren indeksa
+	inc R7, R7;
+	inc R7, R7;
+	inc R7, R7;
+	jmpz nastavi_2;
+
+	ld R3, R6;		// r3 = a[i]
+	add R0, R0, R3;		// res += a[i];
+	inc R6, R6;		// i++
+	jmp cumsum;
+
+nastavi_2:
+	add R0, R0, R1;		// res+=pow
+	ashr R0, R0;
+	ashr R0, R0;		// res /= 4
+/*
+short* p_result		= 0x1A;
+short* p_done		= 0x20;
+*/
+	sub R7, R7, R7;
+	ld R4, R7;
+	inc R7, R7;
+	ld R5, R7;
+	
+	// *p_result = res; R0 - res; R4 - p_result
+	st R0, R4;
+	
+	sub R7, R7, R7;			// nuliramo R7
+	inc R7, R7;			// sad je tu jedinica
+
+	// *p_done = 1;
+	st R7, R5;
+
 end:
 	jmp end
