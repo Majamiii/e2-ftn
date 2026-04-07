@@ -1,0 +1,87 @@
+/*
+	// .data
+	
+	short N = 10;				// N = 10
+	short* p_result = 0x30;	// adresa novog niza
+	short* p_done	 = 0x50;	// adresa za kraj programa
+
+	short a[10] = {5, -3, 7, -6, -5, -4, -1, 0, 1, -7};
+*/
+
+.data
+10
+0x30
+0x50
+5, -3, 7, -6, -5, -4, -1, 0, 1, -7
+
+/*
+	// .text
+	for(short i=0; i<N; i++)
+	{
+		if(a[i] < 0) and a[i]%2 != 0)	
+          *p_result = a[i];
+		p_result++;
+	}
+
+	*p_done = 1;
+*/
+
+.text
+/*
+	Recommended register list:
+	R0 - N
+	R1 - p_result
+	R2 - p_done
+	R3 - a[i]
+	R4 - a[i] koji zadovoljava uslove
+	R5 - i
+	R6 - tmp
+	R7 - tmp
+*/
+
+begin:
+	ld R0, R6;	// N=10
+	inc R6, R6;
+	ld R1, R6;	//  short* p_result = 0x30;		// decimalno 48 binarno 00110000
+	inc R6, R6;
+	ld R2, R6;	// short* p_done = 0x50;
+	inc R6, R6;
+
+	inc R5, R5;
+	inc R5, R5;
+	inc R5, R5;
+
+petlja:
+	ld R3, R5;	// R3 - a[i]
+	
+	sub R7, R5, R6;	// oduzimamo 3 od mem jer niz krece od 3. lokacije
+	sub R7, R0, R7;
+	jmpz kraj;
+
+	or R3, R3, R3;
+	jmpns nastavi;
+	
+	sub R7,R7,R7;
+	inc R7,R7;	// 00..00001 - maska za proveru parnosti - ako je neparan belezimo ga
+	
+	and R7, R7, R3;
+	jmpz nastavi;
+	
+	ld R4, R5;	// u R4 ce biti svi br koji zadovoljavaju uslove
+	st R3, R1;	// *p_result = a[i];
+	inc R1, R1;
+	
+// sad smo ispunili sve uslove
+	
+	
+nastavi:
+	inc R5, R5;
+	jmp petlja;
+
+kraj:
+	sub R7, R7, R7;
+	inc R7, R7;
+	st R7, R2;	// na lokaciju 0x50 stavlja 1 sto je decimalno 80
+	
+end:
+	jmp end

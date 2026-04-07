@@ -10,6 +10,16 @@ import sys
 
 if __name__=="__main__":
 
+    print("pajton skriptica za vodjenje statistike o ucenju ispitnih pitanja")
+    print("uneti br pitanja (meni priprema ima 91 slajd ali eto bila sam srce)")
+    print()
+    print("napisi 0 ako ne znas")
+    print("napisi 5 ako polovicno znas")
+    print("napisi bilo koji drugi broj ako znas")
+    print()
+    print("statistika se nalazi u stats.txt")
+    print("xx srecno")
+    print()
     br_pitanja = int(input("uneti broj pitanja: "))
 
     n = 0

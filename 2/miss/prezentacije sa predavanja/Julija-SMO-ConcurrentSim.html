@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<HTML lang = "en">
+<HEAD>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  
+  
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+  </script>
+
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+  
+<style>
+pre.hljl {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
+    overflow-x: auto;
+    color: rgb(68,68,68); background-color: rgb(251,251,251); }
+pre.hljl > span.hljl-t { }
+pre.hljl > span.hljl-w { }
+pre.hljl > span.hljl-e { }
+pre.hljl > span.hljl-eB { }
+pre.hljl > span.hljl-o { }
+pre.hljl > span.hljl-k { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kc { color: rgb(59,151,46); font-style: italic; }
+pre.hljl > span.hljl-kd { color: rgb(214,102,97); font-style: italic; }
+pre.hljl > span.hljl-kn { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kp { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kr { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kt { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-n { }
+pre.hljl > span.hljl-na { }
+pre.hljl > span.hljl-nb { }
+pre.hljl > span.hljl-nbp { }
+pre.hljl > span.hljl-nc { }
+pre.hljl > span.hljl-ncB { }
+pre.hljl > span.hljl-nd { color: rgb(214,102,97); }
+pre.hljl > span.hljl-ne { }
+pre.hljl > span.hljl-neB { }
+pre.hljl > span.hljl-nf { color: rgb(66,102,213); }
+pre.hljl > span.hljl-nfm { color: rgb(66,102,213); }
+pre.hljl > span.hljl-np { }
+pre.hljl > span.hljl-nl { }
+pre.hljl > span.hljl-nn { }
+pre.hljl > span.hljl-no { }
+pre.hljl > span.hljl-nt { }
+pre.hljl > span.hljl-nv { }
+pre.hljl > span.hljl-nvc { }
+pre.hljl > span.hljl-nvg { }
+pre.hljl > span.hljl-nvi { }
+pre.hljl > span.hljl-nvm { }
+pre.hljl > span.hljl-l { }
+pre.hljl > span.hljl-ld { color: rgb(148,91,176); font-style: italic; }
+pre.hljl > span.hljl-s { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sa { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sb { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sc { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sd { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdC { color: rgb(201,61,57); }
+pre.hljl > span.hljl-se { color: rgb(59,151,46); }
+pre.hljl > span.hljl-sh { color: rgb(201,61,57); }
+pre.hljl > span.hljl-si { }
+pre.hljl > span.hljl-so { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sr { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ss { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ssB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-nB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nbB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nfB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nh { color: rgb(59,151,46); }
+pre.hljl > span.hljl-ni { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nil { color: rgb(59,151,46); }
+pre.hljl > span.hljl-noB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-oB { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-ow { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-p { }
+pre.hljl > span.hljl-c { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-ch { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cm { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cp { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cpB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cs { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-csB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-g { }
+pre.hljl > span.hljl-gd { }
+pre.hljl > span.hljl-ge { }
+pre.hljl > span.hljl-geB { }
+pre.hljl > span.hljl-gh { }
+pre.hljl > span.hljl-gi { }
+pre.hljl > span.hljl-go { }
+pre.hljl > span.hljl-gp { }
+pre.hljl > span.hljl-gs { }
+pre.hljl > span.hljl-gsB { }
+pre.hljl > span.hljl-gt { }
+</style>
+
+
+
+  <style type="text/css">
+  @font-face {
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+}
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  font-family: monospace, monospace;
+  font-size : 0.8em;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+thead th {
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+tr:nth-child(odd){
+  background-color: rgb(248,248,248);
+}
+
+
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222; }
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 3.6rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.4rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.2rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.8rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 2.4rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+p {
+  margin-top: 0; }
+a {
+  color: #1EAEDB; }
+a:hover {
+  color: #0FA0CE; }
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+ul {
+  list-style: circle; }
+ol {
+  list-style: decimal; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li > p {margin : 0;}
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 1.0rem; }
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1; }
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre.hljl {
+  margin: 0 0 10px;
+  display: block;
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding : 5px;
+}
+
+pre.output {
+  background: #ffffff;
+}
+
+pre.code {
+  background: #ffffff;
+}
+
+pre.julia-error {
+  color : red
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+
+@media (min-width: 400px) {}
+@media (min-width: 550px) {}
+@media (min-width: 750px) {}
+@media (min-width: 1000px) {}
+@media (min-width: 1200px) {}
+
+h1.title {margin-top : 20px}
+img {max-width : 100%}
+div.title {text-align: center;}
+
+  </style>
+</HEAD>
+
+<BODY>
+  <div class ="container">
+    <div class = "row">
+      <div class = "col-md-12 twelve columns">
+        <div class="title">
+          
+          
+          
+        </div>
+
+        <h1><strong>Simulacija diskretnih događaja u Julija jeziku upotrebom ConcurrentSim paketa</strong></h1>
+<p>Simulacija diskretnih događaja se može vršiti pomoću više paketa, među kojima su <em>ConcurrentSim</em> i <em>DiscreteEvents</em>.  ConcurrentSim je 2023. godine nasledio ranije korišćen <em>SimJulia</em> paket i zadržao je ideju zasnovanu na korutinama &#40;implementiranim u <em>ResumableFunctions</em>&#41;, dok DiscreteEvents upotrebljava asinhrone metode koje komuniciraju preko kanala &#40;<em>Channels</em>&#41;.  Tokom simulacije <em>DiscreteEvents</em> prolazi kroz ekvidistantne vremenske trenutke sa konačnom &#40;zadatom&#41; rezolucijom,  dok u <em>ConcurrentSim</em> rešenju korutine skaču u proizvoljne vremenske trenutke.</p>
+<p>Treba naglasiti da se implementacija navedenih funkcionalnosti menja u zavisnosti od verzija korišćenih paketa  &#40;navedeni primeri su rađeni za verzije <em>ConcurrentSim v1.5.0</em>&#41;.</p>
+<h2>Osnove ConcurrentSim paketa</h2>
+<p>Inspirisan je Simula bibliotekom - DISCO i Python bibliotekom SimPy. Ponašanje aktivnih komponenti &#40;poput klijenata,  automobila, mašina, itd&#41; se modeluje procesima.  Svi procesi postoje i izvršavaju u se u okruženju i interaguju sa okruženjem i međusobno preko događaja. Rad je zasnovan na asinhronoj obradi događaja u toku simulacije, pri čemu događaji mogu biti sortirani  po prioritetu, vremenu nastanka, i sl. Komponente koje učestvuju u simulaciji su: simulaciono okruženje &#40;<em>Simulation</em>&#41;, procesi &#40;<em>process</em>&#41; i događaji &#40;<em>event</em>&#41;. Događaji mogu da imaju listu <em>callback</em>-ova i povratne vrednosti.  Pored toga, simulacija obezbeđuje tri i tipa deljenih resursa: resurse &#40;<em>Resources</em>&#41;, kontejnere &#40;<em>Containers</em>&#41;  i magacine &#40;<em>Stores</em>&#41;.  </p>
+<p>Procesi u ConcurrentSim su korutine koje raspoređuje implementacija iz <em>ResumableFunctions</em> paketa. Znači, proces se definiše kao <em>@resumable function</em> i unutar njega se generišu događaji i/ili se čeka na njih.  Ako funkcija procesa očekuje događaj, njeno izvršavanje se obustavlja dok se događaj ne desi i obradi. Događaji se kreiraju uz upotrebu @yield makroa i smeštaju se u listu događaja koja se procesuira tokom simulacije.  Tu je upravljanje procesima zasnovano na kontrolama raspoređivanja procesa implementiranim u <em>ResumableFunctions</em> paketu. </p>
+<p>Osnovni koncept za simulaciju diskretnih događaja podrazumeva definisanje okruženja u okviru koga se definišu procesi i  ti procesi programski generišu događaje, a rad procesa se obustavlja sve do trenutka kada se događaj dogodi &#40;trigeruje&#41;.  Posebna vrsta događaja je <em>timeout</em> koji se raspoređuju u tačno definisano vreme &#40;između koga proces „spava“&#41;, a koji se definiše u okviru okruženja &#40;env&#41; kao:</p>
+<blockquote>
+<p>@yield timeout&#40;env, time&#41;</p>
+</blockquote>
+<p>pri čemu <em>time</em> predstavlja vremenski period nakon koga proces „oživljava“.</p>
+<p>Kada se događaj desi proces koji čeka na njega nastavlja sa radom i tada dobija i vrednost događaja. Na primer:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ResumableFunctions</span><span class='hljl-t'>
+</span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>example</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>event</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>value</span><span class='hljl-oB'>=</span><span class='hljl-ni'>42</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>value</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-n'>event</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;now=&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;, value=&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>value</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>example</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+now&#61;1.0, value&#61;42
+</pre>
+
+
+<p>U gornjem primeru je u procesu <em>example</em> kreiran događaj <em>timeout</em> sa argumentima okruženjam &#40;<em>env</em>&#41;,  vremenom čekanja &#40;1&#41; i povratnom vrednošću &#40;<em>value&#61;42</em>&#41; koja se vraća nakon aktiviranja događaja,  tj. nakon isteka vremena čekanja u simulacionom okruženju <em>env</em>.  U svakom trenutku moguće je očitavanje simulacionog vremena iz okruženja pozivom <em>now&#40;env&#41;</em>.</p>
+<p>Pokretanje simulacije podrazumeva da je prethodno kreirana instanca <em>Environment</em> pomoću npr. naredbe <em>Simulation</em>  u cilju sinteze svih procesa i događaja i upravljanja simulacionim vremenom.</p>
+<p>Za pokretanje simulacije se koristi:</p>
+<ul>
+<li><p><em>run&#40;env&#41;</em> – bez vremenskih ograničenja</p>
+</li>
+<li><p><em>run&#40;env,tk&#41;</em> – za unapred definisano simulaciono vreme <em>&#40;0,tk&#41;</em>, ali u 0 i tk nema događaja</p>
+</li>
+<li><p>umesto vremena simulacije, kao drugi parameter se može poslati događaj, tako npr. <em>run&#40;env, timeout&#40;env,5&#41;&#41;</em> je ekvivalentno sa <em>run&#40;env,5&#41;</em></p>
+</li>
+</ul>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>clock</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-oB'>::</span><span class='hljl-n'>Simulation</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>name</span><span class='hljl-oB'>::</span><span class='hljl-n'>String</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>tick</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>while</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>tick</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>name</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>clock</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;prošlo 15 sekundi&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nfB'>15.0</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>clock</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;prošao MINUT&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nfB'>60.0</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>120</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+15.0 prošlo 15 sekundi
+30.0 prošlo 15 sekundi
+45.0 prošlo 15 sekundi
+60.0 prošao MINUT
+60.0 prošlo 15 sekundi
+75.0 prošlo 15 sekundi
+90.0 prošlo 15 sekundi
+105.0 prošlo 15 sekundi
+</pre>
+
+
+<p>U prethodnom primeru su definisana 2 procesa gde se generišu događaji isticanja vremena.  Poziv @yield u jednom procesu prepušta izvršavanje drugog procesa i biva blokiran dok se ne desi događaj na koji čeka, tj. dok ne istekne vreme. Na kraju, događaji u 120-toj sekundi nisu procesuirani jer je vreme simulacije isteklo.</p>
+<p>Važno je primetiti da se simulacija sprovodi u simuliranom vremenu tako da se ceo proces simulacije brzo završava.</p>
+<p>Funkcija koja opisuje proces može da vraća vrednost:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>my_proc</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>1000</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-ni'>150</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>Ta vrednost može biti korišćena od strane drugog procesa:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>other_proc</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>ret_val</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>my_proc</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@assert</span><span class='hljl-t'> </span><span class='hljl-n'>ret_val</span><span class='hljl-t'> </span><span class='hljl-oB'>==</span><span class='hljl-t'> </span><span class='hljl-ni'>150</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; ret-val=&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>ret_val</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>U ovom primeru proces koji izvršava <em>other_proc</em> pokreće process <em>my_proc</em> i čeka da se završi.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>();</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>other_proc</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>);</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>);</span>
+</pre>
+
+
+<pre class="output">
+1000.0 ret-val&#61;150
+</pre>
+
+
+<p>Nadalje će biti ilustrovana upotreba paketa na nekoliko jednostavnih primera bez želje da se ilustruju sve mogućnosti paketa. </p>
+<h2>Primer - Automobil</h2>
+<p>Proces <em>car</em> opisuje ponašanje automobila gde se simuliraju stanja parkiranja i vožnje automobila  &#40;ispisuje se aktivnost automobila, tj. stanje u kome se nalazi&#41;.</p>
+<p>Ovaj primer je preuzet iz dokumentacije paketa i njegov programski kod je ostavljen neizmenjen, te su nazivi promenljivih i komentari na engleskom jeziku.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ResumableFunctions</span><span class='hljl-t'>
+</span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>while</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start parking at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>parking_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>parking_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start driving at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>trip_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>trip_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>Proces <em>car</em> je definisan kao <em>@resumable</em> funkcija u kojoj se u beskonačnoj &#40;<em>while true</em>&#41; petlji periodično izvršava sledeći postupak:</p>
+<ul>
+<li><p>Parkiranje automobila – traje 5 v.j. &#40;vremenskih jedinica&#41; nakon čega se izvršava</p>
+</li>
+<li><p>Vožnja automobila – u trajanju od 2 v.j.</p>
+</li>
+</ul>
+<p>Beskonačna petlja omogućuje da se simulacija izvršava u trajanju koje korisnik definiše, a u delu <em>@yield timeout&#40;env, parking_duration&#41;</em> se specificira vreme “trajanja” aktivnosti parkiranja &#40;praktično „uspavljivanja“ procesa&#41;, nakon čega se nastavlja izvršavanje programa.</p>
+<p>Kreiranje okruženja se vrši pomoću funkcije <em>Simulation&#40;&#41;</em> nakon čega se definiše konkretan process &#40;u ovom slučaju <em>car&#40;&#41;</em>&#41; u formiranom okruženju. Simulacija se pokreće upotrebom naredbe <em>run</em> sa definisanim okruženjem i vremenom simulacije.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>15</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+Start parking at 0.0
+Start driving at 5.0
+Start parking at 7.0
+Start driving at 12.0
+Start parking at 14.0
+</pre>
+
+
+<h3>Interakcija procesa</h3>
+<h4>Čekanje na proces</h4>
+<p>Ukoliko se u simulacionom okruženju definiše više procesa moguće je implementirati čekanja jednog procesa na drugi. Tako, na primer,  ranije definisani process <em>car&#40;&#41;</em> koji podrazumeva kretanje i parkiranje automobile može da zavisi od drugih procesa,  kao što su npr. pranje automobila, punjenje automobila &#40;električnog&#41;, popravka, i sl.  Pretpostavimo da je definisan dodatni proces <em>charge&#40;&#41;</em> za punjenje električnog automobila.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>charge</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>duration</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>Ukoliko se automobil u okviru procesa <em>car&#40;&#41;</em> parkira i puni, onda se u okviru procesa <em>car&#40;&#41;</em> pokreće novi proces <em>charge&#40;&#41;</em> i čeka se završetak procesa <em>charge&#40;&#41;</em> kako bi process <em>car&#40;&#41;</em> nastavio sa izvršavanjem. Navedena aktivnost je prikazana u kodu na sledeći način:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>while</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start parking and charging at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>charge_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-t'>
+        </span><span class='hljl-n'>charge_process</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>charge</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>charge_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>    </span><span class='hljl-cs'># registrovanje novog procesa</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-n'>charge_process</span><span class='hljl-t'>                                     </span><span class='hljl-cs'># čekanje da se proces završi</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start driving at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>trip_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>trip_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>te se nakon pokretanja nove simulacije dobija:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>15</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+Start parking and charging at 0.0
+Start driving at 5.0
+Start parking and charging at 7.0
+Start driving at 12.0
+Start parking and charging at 14.0
+</pre>
+
+
+<h4>Prekidanje drugog procesa</h4>
+<p>Pored čekanja da se drugi proces završi, moguće je i prekinuti njegovo izvršavanje. Prekid procesa se vrši upotrebom <em>interrupt&#40;&#41;</em> funkcije. Na primer, neka je formirana funkcija <em>driver&#40;&#41;</em> za opis procesa koji će prekinuti drugi proces &#40;<em>car_process</em>&#41;:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>driver</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>car_process</span><span class='hljl-oB'>::</span><span class='hljl-n'>Process</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>interrupt</span><span class='hljl-p'>(</span><span class='hljl-n'>car_process</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>i to tako da se nakon 3 v.j. prekida proces opisan drugim argumentom funkcije.</p>
+<p>Ukoliko se proces <em>car&#40;&#41;</em> definiše kao</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>while</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start parking and charging at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>charge_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-t'>
+        </span><span class='hljl-n'>charge_process</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>charge</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>charge_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-k'>try</span><span class='hljl-t'>
+            </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-n'>charge_process</span><span class='hljl-t'>
+        </span><span class='hljl-k'>catch</span><span class='hljl-t'>
+            </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Was interrupted. Hopefully, the battery is full enough ...&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-k'>end</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Start driving at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>trip_duration</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>trip_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+      </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>i ako se ponovo pokrene simulacija dobija se:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-n'>car_process</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>driver</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>car_process</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>15</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+Start parking and charging at 0.0
+Was interrupted. Hopefully, the battery is full enough ...
+Start driving at 3.0
+Start parking and charging at 5.0
+Start driving at 10.0
+Start parking and charging at 12.0
+</pre>
+
+
+<p>Može se zaključiti da je proces <em>driver</em> prekinuo aktivnost punjenja u procesu <em>car</em> nakon 3 v.j. </p>
+<h4>Deljeni resursi</h4>
+<p>Treba naglasiti da <em>ConcurrentSim</em> omogućuje tri tipa resursa za formiranje modela u okviru kojih više procesa mogu da dele korišćene resurse.</p>
+<p>Osnovni tip resursa je opisan klasom <em>Resource</em>.</p>
+<p>Neka u razmatranom primeru resurs predstavlja <em>Stanica za punjanje baterija automobile</em> i neka stanica ima dva mesta za punjenje. U tom slučaju se proces <em>car&#40;&#41;</em> može opisati funkcijom:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>name</span><span class='hljl-oB'>::</span><span class='hljl-n'>Int</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>bcs</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>driving_time</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>charge_duration</span><span class='hljl-oB'>::</span><span class='hljl-n'>Number</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>driving_time</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>name</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; arriving at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>request</span><span class='hljl-p'>(</span><span class='hljl-n'>bcs</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>name</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; starting to charge at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>charge_duration</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-n'>name</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; leaving the bcs at &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>release</span><span class='hljl-p'>(</span><span class='hljl-n'>bcs</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>pri čemu je kao drugi argument definisanog procesa naveden deljeni resurs <em>bcs</em>.  Upotreba resursa se vrši pozivanjem funkcija: </p>
+<ul>
+<li><p><em>request&#40;&#41;</em> – za generisanje događaja za zauzimanje resursa, i </p>
+</li>
+<li><p><em>release&#40;&#41;</em> – za generisanje događaja za otpuštanje resursa. </p>
+</li>
+</ul>
+<p>Ukoliko se resurs zauzima, a on je već zauzet od strane drugog procesa, <em>request</em> će čekati da se resurs oslobodi,  gde se redosled dobijanja resursa omogućava po FIFO principu. Kreiranje resursa se vrši sa:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-n'>bcs</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>);</span><span class='hljl-t'>     </span><span class='hljl-cs'># 2 mesta za punjenje, tj. 2 servisa</span>
+</pre>
+
+
+
+<p>Nakon čega se mogu kreirati procesi sa različitim trajanjem vožnje &#40;2,4,6 i 8&#41; i trajanjem punjenja 5, pri čemu svi procesi dele dva resursa &#40;<em>bsc</em>&#41;:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-ni'>4</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>car</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>bcs</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+1 arriving at 2.0
+1 starting to charge at 2.0
+2 arriving at 4.0
+2 starting to charge at 4.0
+3 arriving at 6.0
+1 leaving the bcs at 7.0
+3 starting to charge at 7.0
+4 arriving at 8.0
+2 leaving the bcs at 9.0
+4 starting to charge at 9.0
+3 leaving the bcs at 12.0
+4 leaving the bcs at 14.0
+</pre>
+
+
+<p>Može se uočiti da su prva dva automobile krenula da se pune odmah po dolasku &#40;u vremenima 2 i 4&#41; dok su 3. i 4. auto čekali  &#40;od vremena 6 do 7, odnosno, 8 do 9&#41;.</p>
+<p>U slučaju da je definisana stanica sa samo jednim mestom za punjenje, vremena ćekanja su veća:</p>
+
+<pre class="output">
+1 arriving at 2.0
+1 starting to charge at 2.0
+2 arriving at 4.0
+3 arriving at 6.0
+1 leaving the bcs at 7.0
+2 starting to charge at 7.0
+4 arriving at 8.0
+2 leaving the bcs at 12.0
+3 starting to charge at 12.0
+3 leaving the bcs at 17.0
+4 starting to charge at 17.0
+4 leaving the bcs at 22.0
+</pre>
+
+
+<h3>Događaji</h3>
+<p>ConcurrentSim omogućuje skup događaja različite namene koji su nasleđeni iz <em>AbstractEvent</em> klase. Najčešće se koriste:</p>
+<ul>
+<li><p>Event</p>
+</li>
+<li><p>timeout</p>
+</li>
+<li><p>Operator</p>
+</li>
+</ul>
+<p>Događaji mogu biti u jednom od sledećih stanja:</p>
+<ul>
+<li><p><em>idle</em> - može se dogoditi,</p>
+</li>
+<li><p><em>scheduled</em> – dogodiće se, ili</p>
+</li>
+<li><p><em>processed</em> – dogodio se.</p>
+</li>
+</ul>
+<p>Inicijalno su događaji u stanju <em>idle</em> i funkcija state vraća <em>ConcurrentSim.idle</em>.  Ako se događaj planira u određeno vreme on se postavlja u stanje <em>ConcurrentSim.scheduled</em>.</p>
+<p>Sve dok se događaj ne obradi, njemu se mogu dodati povratni pozivi &#40;<em>callback</em> funkcije&#41;.  Povratna funkcija je funkcija koja ima kao prvi parametar <em>AbstractEvent</em>.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>my_callback</span><span class='hljl-p'>(</span><span class='hljl-n'>ev</span><span class='hljl-oB'>::</span><span class='hljl-n'>AbstractEvent</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Called back from &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>ev</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-n'>ev</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Event</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@callback</span><span class='hljl-t'> </span><span class='hljl-nf'>my_callback</span><span class='hljl-p'>(</span><span class='hljl-n'>ev</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>succeed</span><span class='hljl-p'>(</span><span class='hljl-n'>ev</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+Called back from ConcurrentSim.Event 1
+</pre>
+
+
+<h2>Primer - Pošta sa jednim redom čekanja</h2>
+<p>Ovaj primer simulira jedan red čekanja gde može biti više kanala opsluživanja &#40;šaltera u pošti&#41;.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Random</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Distributions</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Printf</span><span class='hljl-t'>
+
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>0</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>UKUPNO_KLIJENATA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>10</span><span class='hljl-t'>     </span><span class='hljl-cs'># ukupan broj klijenata (stranki)</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_KLIJENTA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>5.0</span><span class='hljl-t'>   </span><span class='hljl-cs'># srednje vreme među dolazaka klijenta</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_SERVISA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>2.0</span><span class='hljl-t'>    </span><span class='hljl-cs'># srednje vreme obrade stranke</span><span class='hljl-t'>
+
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>dolasciKlijenata</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>broj</span><span class='hljl-oB'>::</span><span class='hljl-n'>Int</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>interval</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>vremenaMeđudolazaka</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>interval</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>broj</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>vremenaServisiranja</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>INTERVAL_SERVISA</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>broj</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+    </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>broj</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>vremenaMeđudolazaka</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>])</span><span class='hljl-t'>
+        </span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@sprintf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%2d&quot;</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'>        
+        </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>ponašanjeKlijenta</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>*</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-s'>&quot; &quot;</span><span class='hljl-oB'>^</span><span class='hljl-ni'>4</span><span class='hljl-n'>i</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>vremenaServisiranja</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>])</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>ponašanjeKlijenta</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-oB'>::</span><span class='hljl-n'>String</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>vremeServisiranja</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>t1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%5.2f %s ušao</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-n'>t1</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>request</span><span class='hljl-p'>(</span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>         </span><span class='hljl-cs'># klijent čeka dok se ne oslobodi šalter</span><span class='hljl-t'>
+    </span><span class='hljl-n'>dt</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-n'>t1</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%5.2f %s čeka %.2f na šalter %d</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'> </span><span class='hljl-n'>dt</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-oB'>.</span><span class='hljl-n'>level</span><span class='hljl-t'>
+
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>vremeServisiranja</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%5.2f %s gotov!</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>release</span><span class='hljl-p'>(</span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>         </span><span class='hljl-cs'># klijent &quot;oslobađa&quot; šalter</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># inicijalizacija i pokretanje simulacije</span><span class='hljl-t'>
+</span><span class='hljl-n'>Random</span><span class='hljl-oB'>.</span><span class='hljl-nf'>seed!</span><span class='hljl-p'>(</span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-p'>);</span><span class='hljl-t'>
+</span><span class='hljl-n'>env</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-n'>brojŠaltera</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>
+</span><span class='hljl-n'>šalteri</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>brojŠaltera</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>dolasciKlijenata</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>UKUPNO_KLIJENATA</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_KLIJENTA</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+0.98  1     ušao
+ 0.98  1     čeka 0.00 na šalter 1
+ 1.07  1     gotov&#33;
+ 3.23  2         ušao
+ 3.23  2         čeka 0.00 na šalter 1
+ 4.39  2         gotov&#33;
+ 6.48  3             ušao
+ 6.48  3             čeka 0.00 na šalter 1
+ 7.90  3             gotov&#33;
+15.58  4                 ušao
+15.58  4                 čeka 0.00 na šalter 1
+15.72  5                     ušao
+16.80  6                         ušao
+17.63  4                 gotov&#33;
+17.63  5                     čeka 1.91 na šalter 1
+21.26  5                     gotov&#33;
+21.26  6                         čeka 4.46 na šalter 1
+23.11  6                         gotov&#33;
+25.61  7                             ušao
+25.61  7                             čeka 0.00 na šalter 1
+26.05  7                             gotov&#33;
+35.70  8                                 ušao
+35.70  8                                 čeka 0.00 na šalter 1
+36.80  8                                 gotov&#33;
+37.30  9                                     ušao
+37.30  9                                     čeka 0.00 na šalter 1
+37.59 10                                         ušao
+43.22  9                                     gotov&#33;
+43.22 10                                         čeka 5.62 na šalter 1
+43.59 10                                         gotov&#33;
+</pre>
+
+
+<p>Treba primetiti da su prethodno dobijeni rezultati identični rezultatima simulacije gde nije upotrebljen paket ConcurrentSim. </p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>Random</span><span class='hljl-oB'>.</span><span class='hljl-nf'>seed!</span><span class='hljl-p'>(</span><span class='hljl-ni'>0</span><span class='hljl-p'>);</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>n</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>10</span><span class='hljl-t'>                          </span><span class='hljl-cs'># broj klijenata</span><span class='hljl-t'>
+</span><span class='hljl-n'>θd</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>5.0</span><span class='hljl-t'>                        </span><span class='hljl-cs'># sr. vreme izmedju dolazaka </span><span class='hljl-t'>
+</span><span class='hljl-n'>rd</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>θd</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>n</span><span class='hljl-p'>)</span><span class='hljl-t'>   </span><span class='hljl-cs'># vremena izmedju dolazaka </span><span class='hljl-t'>
+</span><span class='hljl-n'>d</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>cumsum</span><span class='hljl-p'>(</span><span class='hljl-n'>rd</span><span class='hljl-p'>)</span><span class='hljl-t'>                  </span><span class='hljl-cs'># vremena dolazaka</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>θs</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>2.0</span><span class='hljl-t'>                        </span><span class='hljl-cs'># sr. vreme između servisiranja </span><span class='hljl-t'>
+</span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>θs</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>n</span><span class='hljl-p'>)</span><span class='hljl-t'>    </span><span class='hljl-cs'># vremena trajanja servisiranja</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>zi</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-t'>                      </span><span class='hljl-cs'># idelano vreme zavrsetka servisiranja</span><span class='hljl-t'>
+</span><span class='hljl-n'>z</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-t'>
+</span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-oB'>:</span><span class='hljl-n'>n</span><span class='hljl-t'>
+    </span><span class='hljl-k'>if</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>&lt;</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-oB'>-</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-t'> 
+        </span><span class='hljl-n'>z</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-oB'>-</span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'>
+    </span><span class='hljl-k'>else</span><span class='hljl-t'>
+        </span><span class='hljl-n'>z</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-n'>c</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-n'>zi</span><span class='hljl-p'>;</span><span class='hljl-t'>                     </span><span class='hljl-cs'># vreme zadržavanja u redu</span><span class='hljl-t'>
+
+</span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>Printf</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@printf</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;  i:   d[i]   s[i]   z[i]   zi[i]    c[i]</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@printf</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot; -----------------------------------------</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>n</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot; %2d:  %5.2f  %5.2f  %5.2f  (%5.2f)  %5.2f</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-n'>zi</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-n'>c</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span>
+</pre>
+
+
+<pre class="output">
+i:   d&#91;i&#93;   s&#91;i&#93;   z&#91;i&#93;   zi&#91;i&#93;    c&#91;i&#93;
+ -----------------------------------------
+  1:   0.98   0.10   1.07  &#40; 1.07&#41;   0.00
+  2:   3.23   1.16   4.39  &#40; 4.39&#41;   0.00
+  3:   6.48   1.41   7.90  &#40; 7.90&#41;   0.00
+  4:  15.58   2.04  17.63  &#40;17.63&#41;   0.00
+  5:  15.72   3.63  21.26  &#40;19.35&#41;   1.91
+  6:  16.80   1.86  23.11  &#40;18.66&#41;   4.46
+  7:  25.61   0.44  26.05  &#40;26.05&#41;   0.00
+  8:  35.70   1.10  36.80  &#40;36.80&#41;   0.00
+  9:  37.30   5.91  43.22  &#40;43.22&#41;   0.00
+ 10:  37.59   0.37  43.59  &#40;37.96&#41;   5.62
+</pre>
+
+
+<p>Kada se prethodni primer ponovi, ali sa 2 šaltera &#40;<em>brojŠaltera &#61; 2</em>&#41; dobija se:</p>
+
+<pre class="output">
+0.98  1     ušao
+ 0.98  1     čeka 0.00 na šalter 1
+ 1.07  1     gotov&#33;
+ 3.23  2         ušao
+ 3.23  2         čeka 0.00 na šalter 1
+ 4.39  2         gotov&#33;
+ 6.48  3             ušao
+ 6.48  3             čeka 0.00 na šalter 1
+ 7.90  3             gotov&#33;
+15.58  4                 ušao
+15.58  4                 čeka 0.00 na šalter 1
+15.72  5                     ušao
+15.72  5                     čeka 0.00 na šalter 2
+16.80  6                         ušao
+17.63  4                 gotov&#33;
+17.63  6                         čeka 0.82 na šalter 2
+19.35  5                     gotov&#33;
+19.48  6                         gotov&#33;
+25.61  7                             ušao
+25.61  7                             čeka 0.00 na šalter 1
+26.05  7                             gotov&#33;
+35.70  8                                 ušao
+35.70  8                                 čeka 0.00 na šalter 1
+36.80  8                                 gotov&#33;
+37.30  9                                     ušao
+37.30  9                                     čeka 0.00 na šalter 1
+37.59 10                                         ušao
+37.59 10                                         čeka 0.00 na šalter 2
+37.96 10                                         gotov&#33;
+43.22  9                                     gotov&#33;
+</pre>
+
+
+<h2>Primer - Pošta sa dva... reda čekanja</h2>
+<p>Ovaj primer ilustruje upotrebu dva &#40;ili više&#41; reda čekanja, a može biti više kanala opsluživanja u svakom od njih. Konkretno, simulira se dva reda čekanja sa po dva šaltera.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Random</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Distributions</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Printf</span><span class='hljl-t'>
+
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>BROJ_REDOVA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>0</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>UKUPNO_KLIJENATA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>20</span><span class='hljl-t'>     </span><span class='hljl-cs'># ukupan broj klijenata (stranki)</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_KLIJENTA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>5.0</span><span class='hljl-t'>   </span><span class='hljl-cs'># srednje vreme međudolazaka klijenta</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_SERVISA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>16.0</span><span class='hljl-t'>   </span><span class='hljl-cs'># srednje vreme obrade stranke</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>dolasciKlijenata</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>broj</span><span class='hljl-oB'>::</span><span class='hljl-n'>Int</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>interval</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>vremenaMeđudolazaka</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>interval</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>broj</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>broj</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>vremenaMeđudolazaka</span><span class='hljl-p'>[</span><span class='hljl-n'>i</span><span class='hljl-p'>])</span><span class='hljl-t'>
+        </span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@sprintf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%2d&quot;</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> 
+        </span><span class='hljl-n'>red</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rem</span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>     </span><span class='hljl-cs'># izbor reda</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>ponašanjeKlijenta</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>*</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-s'>&quot; &quot;</span><span class='hljl-oB'>^</span><span class='hljl-ni'>2</span><span class='hljl-n'>i</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-p'>[</span><span class='hljl-n'>red</span><span class='hljl-p'>],</span><span class='hljl-t'> </span><span class='hljl-n'>red</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>ponašanjeKlijenta</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-oB'>::</span><span class='hljl-n'>String</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>red</span><span class='hljl-oB'>::</span><span class='hljl-n'>Int</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>t1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%6.2f %s ušao u red %d</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-n'>t1</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'> </span><span class='hljl-n'>red</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>request</span><span class='hljl-p'>(</span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>dt</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-n'>t1</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%6.2f %s čeka %.2f na šalter %d:%d</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'> </span><span class='hljl-n'>dt</span><span class='hljl-t'> </span><span class='hljl-n'>red</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-oB'>.</span><span class='hljl-n'>level</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>INTERVAL_SERVISA</span><span class='hljl-p'>)))</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@printf</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;%6.2f %s gotov!</span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-n'>naziv</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>release</span><span class='hljl-p'>(</span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># inicijalizacija i pokretanje simulacije</span><span class='hljl-t'>
+</span><span class='hljl-n'>Random</span><span class='hljl-oB'>.</span><span class='hljl-nf'>seed!</span><span class='hljl-p'>(</span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-p'>);</span><span class='hljl-t'>
+</span><span class='hljl-n'>env</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+</span><span class='hljl-n'>brojŠaltera</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
+</span><span class='hljl-n'>šalteri</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>brojŠaltera</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>brojŠaltera</span><span class='hljl-p'>)]</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>dolasciKlijenata</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>UKUPNO_KLIJENATA</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_KLIJENTA</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>šalteri</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+0.98  1   ušao u red 2
+  0.98  1   čeka 0.00 na šalter 2:1
+  3.23  2     ušao u red 1
+  3.23  2     čeka 0.00 na šalter 1:1
+  6.48  3       ušao u red 2
+  6.48  3       čeka 0.00 na šalter 2:2
+ 15.58  1   gotov&#33;
+ 15.58  4         ušao u red 1
+ 15.58  4         čeka 0.00 na šalter 1:2
+ 15.72  5           ušao u red 2
+ 15.72  5           čeka 0.00 na šalter 2:2
+ 16.80  6             ušao u red 1
+ 16.81  2     gotov&#33;
+ 16.81  6             čeka 0.00 na šalter 1:2
+ 18.69  3       gotov&#33;
+ 24.48  4         gotov&#33;
+ 25.61  7               ušao u red 2
+ 25.61  7               čeka 0.00 na šalter 2:2
+ 33.27  6             gotov&#33;
+ 35.70  8                 ušao u red 1
+ 35.70  8                 čeka 0.00 na šalter 1:1
+ 36.94  9                   ušao u red 2
+ 38.09  5           gotov&#33;
+ 38.09  9                   čeka 1.15 na šalter 2:2
+ 41.20  9                   gotov&#33;
+ 42.71  7               gotov&#33;
+ 43.87  8                 gotov&#33;
+ 45.36 10                     ušao u red 1
+ 45.36 10                     čeka 0.00 na šalter 1:1
+ 47.18 11                       ušao u red 2
+ 47.18 11                       čeka 0.00 na šalter 2:1
+ 47.80 11                       gotov&#33;
+ 50.66 12                         ušao u red 1
+ 50.66 12                         čeka 0.00 na šalter 1:2
+ 54.34 13                           ušao u red 2
+ 54.34 13                           čeka 0.00 na šalter 2:1
+ 56.50 14                             ušao u red 1
+ 58.62 15                               ušao u red 2
+ 58.62 15                               čeka 0.00 na šalter 2:2
+ 59.01 16                                 ušao u red 1
+ 60.61 17                                   ušao u red 2
+ 60.90 18                                     ušao u red 1
+ 63.82 13                           gotov&#33;
+ 63.82 17                                   čeka 3.20 na šalter 2:2
+ 65.12 12                         gotov&#33;
+ 65.12 14                             čeka 8.61 na šalter 1:2
+ 66.94 15                               gotov&#33;
+ 67.17 19                                       ušao u red 2
+ 67.17 19                                       čeka 0.00 na šalter 2:2
+ 67.37 10                     gotov&#33;
+ 67.37 16                                 čeka 8.36 na šalter 1:2
+ 67.65 20                                         ušao u red 1
+ 72.40 17                                   gotov&#33;
+ 72.81 16                                 gotov&#33;
+ 72.81 18                                     čeka 11.91 na šalter 1:2
+ 74.22 18                                     gotov&#33;
+ 74.22 20                                         čeka 6.58 na šalter 1:2
+ 80.51 20                                         gotov&#33;
+ 89.37 19                                       gotov&#33;
+110.58 14                             gotov&#33;
+</pre>
+
+
+<h2>Primer - Banka sa odustajanjem u redu čekanja</h2>
+<p>Ovaj primer proširuje prethodni tako što klijent staje u red &#40;formiran zahteva za šalter <em>rq &#61; request&#40;counter&#41;</em>&#41;, i njegovo  čekanje nije samo da se šalter oslobodi &#40;što bi bilo <em>@yield rq</em>, neko se kombinuje čekanja na dva  događaja <em>@yield rq | timeout&#40;env, patience&#41;</em>: 1&#41; da se oslobodi šalter ili 2&#41; da istekve vreme kada klijent gubi strpljenje  &#40;primetiti da je primenjena operacija &quot;|&quot; između događaja&#41;. Nakon dešavanja jednog od ova dva događaja proces klijenta &#40;<em>source</em>&#41; nastavlja sa radom i vrši se provera da li je <em>state&#40;rq&#41; &#33;&#61; ConcurrentSim.idle</em>, što znači da je klijent dobio resurs, tj. došao je  do šaltera pre nego je izgubio strpljenje.</p>
+<p>I ovaj primer je preuzet kao originalan ConcurrentSim primer, tako da su nazivi promenljivih i ispisi na engleskom jeziku.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Random</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Distributions</span><span class='hljl-t'>
+
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>150</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>NEW_CUSTOMERS</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-t'>             </span><span class='hljl-cs'># Total number of customers</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_CUSTOMERS</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>10.0</span><span class='hljl-t'>     </span><span class='hljl-cs'># Generate new customers roughly every x seconds</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>MIN_PATIENCE</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>1.0</span><span class='hljl-t'>            </span><span class='hljl-cs'># Min. customer patience</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>MAX_PATIENCE</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>3.0</span><span class='hljl-t'>            </span><span class='hljl-cs'># Max. customer patience</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>source</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>number</span><span class='hljl-oB'>::</span><span class='hljl-n'>Int</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>interval</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>counter</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>d</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>interval</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>number</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>customer</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Customer</span><span class='hljl-si'>$i</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>counter</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nfB'>12.0</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-n'>d</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>customer</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>name</span><span class='hljl-oB'>::</span><span class='hljl-n'>String</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>counter</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>time_in_bank</span><span class='hljl-oB'>::</span><span class='hljl-n'>Float64</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>arrive</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;</span><span class='hljl-si'>$arrive</span><span class='hljl-s'> </span><span class='hljl-si'>$name</span><span class='hljl-s'>: Here I am&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>patience</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Uniform</span><span class='hljl-p'>(</span><span class='hljl-n'>MIN_PATIENCE</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>MAX_PATIENCE</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    
+    </span><span class='hljl-n'>rq</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>request</span><span class='hljl-p'>(</span><span class='hljl-n'>counter</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-n'>rq</span><span class='hljl-t'> </span><span class='hljl-oB'>|</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>patience</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>wait</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-n'>arrive</span><span class='hljl-t'>
+    </span><span class='hljl-k'>if</span><span class='hljl-t'> </span><span class='hljl-nf'>state</span><span class='hljl-p'>(</span><span class='hljl-n'>rq</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>!=</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-oB'>.</span><span class='hljl-n'>idle</span><span class='hljl-t'> 
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;</span><span class='hljl-si'>$</span><span class='hljl-p'>(</span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-s'> </span><span class='hljl-si'>$name</span><span class='hljl-s'>: Waited </span><span class='hljl-si'>$wait</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>time_in_bank</span><span class='hljl-p'>)))</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;</span><span class='hljl-si'>$</span><span class='hljl-p'>(</span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-s'> </span><span class='hljl-si'>$name</span><span class='hljl-s'>: Finished&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>    
+    </span><span class='hljl-k'>else</span><span class='hljl-t'>
+        </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;</span><span class='hljl-si'>$</span><span class='hljl-p'>(</span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-s'> </span><span class='hljl-si'>$name</span><span class='hljl-s'>: RENEGED after </span><span class='hljl-si'>$wait</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>release</span><span class='hljl-p'>(</span><span class='hljl-n'>counter</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># Setup and start the simulation</span><span class='hljl-t'>
+</span><span class='hljl-n'>Random</span><span class='hljl-oB'>.</span><span class='hljl-nf'>seed!</span><span class='hljl-p'>(</span><span class='hljl-n'>RANDOM_SEED</span><span class='hljl-p'>);</span><span class='hljl-t'>
+</span><span class='hljl-n'>env</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># Start processes and run</span><span class='hljl-t'>
+</span><span class='hljl-n'>counter</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>source</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>NEW_CUSTOMERS</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>INTERVAL_CUSTOMERS</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>counter</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+0.0 Customer1: Here I am
+0.0 Customer1: Waited 0.0
+2.8585025595698266 Customer2: Here I am
+4.501185842258716 Customer2: RENEGED after 1.642683282688889
+7.10103466290858 Customer3: Here I am
+10.06269755278691 Customer3: RENEGED after 2.9616628898783297
+15.443375436969932 Customer1: Finished
+37.83240072061385 Customer4: Here I am
+37.83240072061385 Customer4: Waited 0.0
+57.26381847545134 Customer4: Finished
+58.388914261279766 Customer5: Here I am
+58.388914261279766 Customer5: Waited 0.0
+65.51947501138059 Customer5: Finished
+</pre>
+
+
+<h2>Primer - Mašine</h2>
+<p>U sistemu treba da radi <em>n</em> radnih mašina. Da bi se zaštitili od kvara mašine, dodatne mašine su na raspolaganju kao rezervni delovi.  Kad god se neka mašina pokvari, odmah se zamenjuje rezervnom i šalje se na popravku jednom serviseru koji redom popravlja neispravne mašine.  Nakon popravke mašine, ona postaje dostupna kao rezervna i može se ponovo koristiti kada se ukaže potreba. Sva vremena popravke su nezavisne slučajne promenljive koje imaju zajedničku funkciju distribucije <em>G</em>. Svaki put kada se mašina stavi u upotrebu, vreme za koje mašina funkcioniše, pre nego se pokvari, je slučajna promenljiva. Svi kvarovi su nezavisni od prošlosti, koja imaju funkciju distribucije <em>F</em>. Za sistem se kaže da će se &quot;srušiti&quot; kada mašina ne radi i ne postoje rezervne mašine. Pretpostavka je da u početku postoje <em>n &#43; s</em> ispravne mašine od kojih se <em>n</em> stavlja u upotrebu, a <em>s</em> se čuvaju kao rezervne. Treba simulirati opisani sistem da bi se odredilo prosečno vreme do rušenja sistema <em>E&#91;T&#93;</em> &#40;<em>T</em> je vreme kada se sistem ruši&#41;. </p>
+<p>Prvo se opisuju procesi rada mašine i pokretanja simulacije, kao i funkcija koja simulira procese dok se ne desi &quot;rušenje&quot;.</p>
+
+
+<pre class='hljl'>
+<span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>Distributions</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Random</span><span class='hljl-t'>
+</span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ResumableFunctions</span><span class='hljl-t'>
+</span><span class='hljl-k'>using</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-t'>
+
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>RUNS</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>N</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>10</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>S</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>SEED</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>150</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>LAMBDA</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>100</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>MU</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>Random</span><span class='hljl-oB'>.</span><span class='hljl-nf'>seed!</span><span class='hljl-p'>(</span><span class='hljl-n'>SEED</span><span class='hljl-p'>);</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>F</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>LAMBDA</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-kd'>const</span><span class='hljl-t'> </span><span class='hljl-n'>G</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Exponential</span><span class='hljl-p'>(</span><span class='hljl-n'>MU</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>machine</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>repair_facility</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>spares</span><span class='hljl-oB'>::</span><span class='hljl-nf'>Store</span><span class='hljl-p'>{</span><span class='hljl-n'>Process</span><span class='hljl-p'>})</span><span class='hljl-t'>
+    </span><span class='hljl-k'>while</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+        </span><span class='hljl-k'>try</span><span class='hljl-t'> </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>Inf</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-k'>catch</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-n'>F</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-n'>get_spare</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>get</span><span class='hljl-p'>(</span><span class='hljl-n'>spares</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-n'>get_spare</span><span class='hljl-t'> </span><span class='hljl-oB'>|</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-k'>if</span><span class='hljl-t'> </span><span class='hljl-nf'>state</span><span class='hljl-p'>(</span><span class='hljl-n'>get_spare</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>!=</span><span class='hljl-t'> </span><span class='hljl-n'>ConcurrentSim</span><span class='hljl-oB'>.</span><span class='hljl-n'>idle</span><span class='hljl-t'> 
+            </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>interrupt</span><span class='hljl-p'>(</span><span class='hljl-nf'>value</span><span class='hljl-p'>(</span><span class='hljl-n'>get_spare</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-k'>else</span><span class='hljl-t'>
+            </span><span class='hljl-nf'>throw</span><span class='hljl-p'>(</span><span class='hljl-nf'>StopSimulation</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;No more spares!&quot;</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-k'>end</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>request</span><span class='hljl-p'>(</span><span class='hljl-n'>repair_facility</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>timeout</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>rand</span><span class='hljl-p'>(</span><span class='hljl-n'>G</span><span class='hljl-p'>))</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>release</span><span class='hljl-p'>(</span><span class='hljl-n'>repair_facility</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>put</span><span class='hljl-p'>(</span><span class='hljl-n'>spares</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>active_process</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>))</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-nd'>@resumable</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>start_sim</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-oB'>::</span><span class='hljl-n'>Environment</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>repair_facility</span><span class='hljl-oB'>::</span><span class='hljl-n'>Resource</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>spares</span><span class='hljl-oB'>::</span><span class='hljl-nf'>Store</span><span class='hljl-p'>{</span><span class='hljl-n'>Process</span><span class='hljl-p'>})</span><span class='hljl-t'>
+    </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>N</span><span class='hljl-t'>
+        </span><span class='hljl-n'>proc</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>machine</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>repair_facility</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>spares</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>interrupt</span><span class='hljl-p'>(</span><span class='hljl-n'>proc</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+    </span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>S</span><span class='hljl-t'>
+        </span><span class='hljl-n'>proc</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>machine</span><span class='hljl-p'>(</span><span class='hljl-n'>env</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>repair_facility</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>spares</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-nd'>@yield</span><span class='hljl-t'> </span><span class='hljl-nf'>put</span><span class='hljl-p'>(</span><span class='hljl-n'>spares</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>proc</span><span class='hljl-p'>)</span><span class='hljl-t'> 
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>sim_repair</span><span class='hljl-p'>()</span><span class='hljl-t'>
+    </span><span class='hljl-n'>sim</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Simulation</span><span class='hljl-p'>()</span><span class='hljl-t'>                </span><span class='hljl-cs'># postavljanje simulacionog okruženja</span><span class='hljl-t'>
+    </span><span class='hljl-n'>repair_facility</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Resource</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>   </span><span class='hljl-cs'># kreiranje resursa</span><span class='hljl-t'>
+    </span><span class='hljl-n'>spares</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>Store</span><span class='hljl-p'>{</span><span class='hljl-n'>Process</span><span class='hljl-p'>}(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>      </span><span class='hljl-cs'># kolekcija procesa</span><span class='hljl-t'>
+    </span><span class='hljl-nd'>@process</span><span class='hljl-t'> </span><span class='hljl-nf'>start_sim</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>repair_facility</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>spares</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>msg</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>stop_time</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>now</span><span class='hljl-p'>(</span><span class='hljl-n'>sim</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;At time </span><span class='hljl-si'>$stop_time</span><span class='hljl-s'>: </span><span class='hljl-si'>$msg</span><span class='hljl-s'>&quot;</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>stop_time</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-p'>;</span>
+</pre>
+
+
+
+<p>Nadalje se proces simulacije ponavlja nekoliko puta:</p>
+
+
+<pre class='hljl'>
+<span class='hljl-n'>results</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>Float64</span><span class='hljl-p'>[]</span><span class='hljl-t'>
+</span><span class='hljl-k'>for</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-n'>RUNS</span><span class='hljl-t'> </span><span class='hljl-nf'>push!</span><span class='hljl-p'>(</span><span class='hljl-n'>results</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>sim_repair</span><span class='hljl-p'>())</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-nf'>println</span><span class='hljl-p'>(</span><span class='hljl-s'>&quot;Average crash time: &quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nf'>sum</span><span class='hljl-p'>(</span><span class='hljl-n'>results</span><span class='hljl-p'>)</span><span class='hljl-oB'>/</span><span class='hljl-n'>RUNS</span><span class='hljl-p'>)</span>
+</pre>
+
+
+<pre class="output">
+At time 3808.592503689798: No more spares&#33;
+At time 5236.944636193095: No more spares&#33;
+At time 1426.6639723485018: No more spares&#33;
+At time 24454.190141051124: No more spares&#33;
+At time 48416.47613603584: No more spares&#33;
+Average crash time: 16668.573477863672
+</pre>
+
+
+
+        <HR/>
+        <div class="footer">
+          <p>
+            Published from <a href="Julija-SMO-ConcurrentSim.jmd">Julija-SMO-ConcurrentSim.jmd</a>
+            using <a href="http://github.com/JunoLab/Weave.jl">Weave.jl</a> v0.10.12 on 2026-02-10.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BODY>
+
+</HTML>

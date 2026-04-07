@@ -1,0 +1,40 @@
+
+/*
+	Ekvivalentan C kod:
+	
+	short N=7;
+*/
+.data
+
+5		// N=5 - treba izracunati 3 na 5
+
+/*
+	Ekvivalentan C kod (viši nivo):
+	
+	int R1= 1;	// kao 3 na 0
+	R1 = Math.pow(3, 5);
+*/
+.text
+/*
+	Spisak registara:
+	R0 - N = 5.
+	R1 - stepen trenutni
+	R2 - i - indeks
+	R6 - temp
+*/
+begin:
+	
+	ld R0, R0;		// R0 = 5
+	inc R1, R1;		// R1 = 1
+	jmp petlja;
+	
+petlja:
+	sub R6, R0, R2;		// R6 = N - i
+	jmpz end;
+	shl R6, R1;		// R6 = 2*R1
+	add R1, R6, R1;		// R1 = R6 + R1 = 3*R1	
+	inc R2, R2;		// i += 1
+	jmp petlja;
+	
+end:
+	jmp end // Beskonačna petlja.
