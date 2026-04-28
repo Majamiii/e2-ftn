@@ -17,6 +17,8 @@ using namespace std;
 
 mutex term_mx;                          // Globalni mutex terminala da bi se sprečila štetna preplitanja na terminalu.
 
+int Koordinator::broj_zavrsenih_niti = 0;
+
 void a(Koordinator& k) {                // Nit a. Prosleđuje se referenca na Koordinator, kako bi sve niti radile na istom k.
     {
         unique_lock<mutex> lock(term_mx);
