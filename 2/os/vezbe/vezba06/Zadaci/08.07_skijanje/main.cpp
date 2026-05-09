@@ -37,13 +37,42 @@
 #define MINIMALNA_IDEALNA_TEMPERATURA -5
 #define MAKSIMALNA_IDEALNA_TEMPERATURA 3
 
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <mutex>
+#include <condition_variable>
+#include <vector>
+#include <string>
+#include <queue>
+#include <thread>
+
 using namespace std;
 
 class StanjeSkijalistaNaDan {
 private:
-    // TODO dodati polja po potrebi
+    string skijaliste;
+    string dan;
+    string datum;
+    int najveca,najmanja;
+    bool dobra;
 public:
-    // TODO dodati metode po potrebi
+    StanjeSkijalistaNaDan() {}
+    StanjeSkijalistaNaDan(string s, string dn, string dt, int max, int min) : skijaliste(s), dan(dn), datum(dt), najveca(max), najmanja(min) {
+        if((najveca<=MAKSIMALNA_IDEALNA_TEMPERATURA)&&(najmanja>=MINIMALNA_IDEALNA_TEMPERATURA)){
+            dobra = true;
+        }else{
+            dobra = false;
+        }
+    }
+    
+    string getSkijaliste(){return skijaliste;};
+    string getDanIDatum(){return "["+dan+" "+datum+"]";}
+    int getNajveca(){return najveca;}
+    int getNajmanja(){return najmanja;}
+    bool dobraTemperatura(){return dobra;}
+
 private:
     // TODO dodati metode po potrebi
 };
@@ -55,18 +84,39 @@ class RedoviIzDatoteke {
 private:
     mutex podaci_mx;                       // propusnica za sinhronizaciju nad svim poljima klase
     // TODO dodati polja po potrebi
+    bool kraj;
+    queue<T> podaci;
+    condition_variable cv;
 public:
     RedoviIzDatoteke(): kraj(false) {}
 
     void dodaj(T redIzDatoteke) {
-        // TODO
+        unique_lock<mutex> ul(podaci_mx);
+        podaci.push(redIzDatoteke);
+        cv.notify_one();
     }
 
     bool preuzmi(T &redIzDatoteke) {
-        // TODO
+        unique_lock<mutex> ul(podaci_mx);
+        
+        while(daLiCekamPodatke()){
+            cv.wait(ul);
+        }
+        if(jeLiKraj()){
+            return false;
+        }
+
+        redIzDatoteke = move(podaci.front());
+        podaci.pop();
+        return true;
     }
 
     // TODO dodati metode po potrebi
+    void objaviKraj(){
+        unique_lock<mutex> ul(podaci_mx);
+        kraj = true;
+        cv.notify_all();
+    }
 
 private:
     /**
@@ -74,7 +124,7 @@ private:
      * nema podataka ali istovremeno i nije objavljen kraj stvaranja podataka.
     */
     bool daLiCekamPodatke() {
-        // TODO
+        return !kraj && podaci.empty();
     }
 
     /**
@@ -82,7 +132,7 @@ private:
      * u kolekciji i sve niti stvaraoci podataka su se odjavili.
     */
     bool jeLiKraj() {
-        // TODO
+        return kraj && podaci.empty();
     }
 };
 
@@ -94,18 +144,48 @@ class PodaciZaIspis {
 private:
     mutex podaci_mx;                       // propusnica za sinhronizaciju nad svim poljima klase
     // TODO dodati polja po potrebi
+    bool kraj;
+    int br_stvaralaca_podataka;
+    condition_variable cv;
+    queue<T> podaci;
 public:
     PodaciZaIspis(): kraj(false), br_stvaralaca_podataka(0) {}  // na pocetku nije kraj i nema radnika
 
     void dodaj(T stanjeSkijalista) {
-        // TODO
+        unique_lock<mutex> ul(podaci_mx);
+        podaci.push(stanjeSkijalista);
+        cv.notify_one();
     }
 
     bool preuzmi(T &stanjeSkijalista) {
-        // TODO
+        unique_lock<mutex> ul(podaci_mx);
+
+        while(daLiCekamPodatke()){
+            cv.wait(ul);
+        }
+        if(jeLiKraj()){
+            return false;
+        }
+
+        stanjeSkijalista = move(podaci.front());
+        podaci.pop();
+        return true;
     }
 
     // TODO dodati metode po potrebi
+
+    void prijaviRadnika(){
+        unique_lock<mutex> ul(podaci_mx);
+        br_stvaralaca_podataka++;
+    }
+    void odjaviRadnika(){
+        unique_lock<mutex> ul(podaci_mx);
+        br_stvaralaca_podataka--;
+        if(!br_stvaralaca_podataka){
+            kraj = true;
+            cv.notify_all();
+        }
+    }
 
 private:
     /**
@@ -113,7 +193,7 @@ private:
      * nema podataka ali istovremeno i nije objavljen kraj stvaranja podataka.
     */
     bool daLiCekamPodatke() {
-        // TODO
+        return !kraj && podaci.empty();
     }
 
     /**
@@ -121,41 +201,113 @@ private:
      * u kolekciji i sve niti stvaraoci podataka su se odjavili.
     */
     bool jeLiKraj() {
-        // TODO
+        return kraj && podaci.empty();
     }
 };
 
 void citac(vector<string> imena_ulaznih_datoteka, RedoviIzDatoteke<string>& redovi_iz_ulaznih_datoteka) {
-    // TODO
+    string linija;
+    string linijaf;
+
+    for(auto it: imena_ulaznih_datoteka){
+        ifstream dat(it);
+        
+        if (dat.is_open()){
+
+            while(getline(dat,linija)){
+                linijaf = it.substr(0, it.size()-4) + " " + linija;
+                redovi_iz_ulaznih_datoteka.dodaj(linijaf);
+                // cout<<linijaf<<endl;
+            }
+            dat.close();
+        }else{
+            cerr <<"CITAC: datoteka ne postoji."<<endl;
+        }
+
+    }
+    redovi_iz_ulaznih_datoteka.objaviKraj();
 }
 
 void radnik(RedoviIzDatoteke<string>& redovi_iz_ulaznih_datoteka, PodaciZaIspis<StanjeSkijalistaNaDan>& pripremljeni_podaci){
-    // TODO
+    pripremljeni_podaci.prijaviRadnika();
+    string linija;
+
+    while(redovi_iz_ulaznih_datoteka.preuzmi(linija)){
+        vector<int> temperature;
+        stringstream s(linija);
+        string ski,dan,datum;
+
+        s>>ski>>dan>>datum;
+
+        int temp;
+        while(s>>temp){
+            temperature.push_back(temp);
+        }
+
+        int min,max;
+        min = max = temperature[0];
+
+        for(int i=1;i<BR_MERENJA_TEMPERATURE;i++){
+            int vr = temperature[i];
+            if(vr<min){
+                min = vr;
+            }
+            if(vr>max){
+                max = vr;
+            }
+        }
+        pripremljeni_podaci.dodaj(StanjeSkijalistaNaDan(ski,dan,datum,max,min));
+    }
+
+    pripremljeni_podaci.odjaviRadnika();
 }
 
 void pisac(PodaciZaIspis<StanjeSkijalistaNaDan>& pripremljeni_podaci) {
-    // TODO
+    StanjeSkijalistaNaDan skijaliste;
+    string output_filename;
+
+    while(pripremljeni_podaci.preuzmi(skijaliste)){
+        if(skijaliste.dobraTemperatura()){
+            output_filename = "idealno.txt";
+        }else{
+            output_filename = "lose.txt";
+        }
+
+        ofstream dat(output_filename, ios::app);
+        if(dat.is_open()){
+            // Kopaonik [subota 01.02.] -15 >> 2
+            dat<<skijaliste.getSkijaliste()<<" "<<skijaliste.getDanIDatum()<<" "
+                <<skijaliste.getNajmanja()<<" >> "<<skijaliste.getNajveca()<<'\n';
+            dat.close();
+        }else{
+            cerr<<"PISAC: nemoguce otvoriti izlaznu datoteku.\n";
+        }
+
+    }
+
 }
 
 
 int main() {
-    RedoviIzDatoteke<string> redovi_iz_ulaznih_datoteka;
     PodaciZaIspis<StanjeSkijalistaNaDan> pripremljeni_podaci;
-    vector<string> imena_ulaznih_datoteka = {"Kopaonik.txt", "Zlatibor.txt", "Jahorina.txt"};
+    RedoviIzDatoteke<string> redovi_iz_ulaznih_datoteka;
+    vector<string> datoteke{"Kopaonik.txt", "Jahorina.txt", "Zlatibor.txt"};
 
-    thread th_reader(citac, imena_ulaznih_datoteka, ref(redovi_iz_ulaznih_datoteka));
-    thread th_writer(pisac, ref(pripremljeni_podaci));
-    thread th_workers[BR_RADNIKA];
+    ofstream("idealno.txt").close();
+    ofstream("lose.txt").close();
 
-    for(auto &th: th_workers){
-        th = thread(radnik, ref(redovi_iz_ulaznih_datoteka), ref(pripremljeni_podaci));
+    thread t1 = thread(citac, datoteke, ref(redovi_iz_ulaznih_datoteka));
+    vector<thread> t(BR_RADNIKA);
+    for(int i=0;i<BR_RADNIKA;i++){
+        t[i] = thread(radnik, ref(redovi_iz_ulaznih_datoteka), ref(pripremljeni_podaci));
     }
+    thread t2 = thread(pisac, ref(pripremljeni_podaci));
 
-    th_reader.join();
-    for(auto &th: th_workers) {
-        th.join();
+    t1.join();
+    for(int i=0;i<BR_RADNIKA;i++){
+        t[i].join();
     }
-    th_writer.join();
-    
+    t2.join();
+
     return 0;
 }

@@ -1,0 +1,17 @@
+RedoviIzDatoteke<string> redovi_iz_ulaznih_datoteka;
+    PodaciZaIspis<StanjeSkijalistaNaDan> pripremljeni_podaci;
+    vector<string> imena_ulaznih_datoteka = {"Kopaonik.txt", "Zlatibor.txt", "Jahorina.txt"};
+
+    thread th_reader(citac, imena_ulaznih_datoteka, ref(redovi_iz_ulaznih_datoteka));
+    thread th_writer(pisac, ref(pripremljeni_podaci));
+    thread th_workers[BR_RADNIKA];
+
+    for(auto &th: th_workers){
+        th = thread(radnik, ref(redovi_iz_ulaznih_datoteka), ref(pripremljeni_podaci));
+    }
+
+    th_reader.join();
+    for(auto &th: th_workers) {
+        th.join();
+    }
+    th_writer.join();
