@@ -227,25 +227,20 @@ void citacf(string ime_ulazne_dat, UlazniPodaci<struct trio> &ulaz) {
     // TODO
     ifstream dat(ime_ulazne_dat);
     string linija;
-
-    while(getline(dat,linija)){
-        if(linija.empty()){
-            continue;
-        }
+    while(getline(dat, linija)){
+        int p1, p2;
+        string min,max,seed;
+        p1 = linija.find(":");
+        p2 = linija.find(":", p1+1);
         trio t;
 
-        size_t p1 = linija.find(':');
-        size_t p2 = linija.find(':', p1+1);
-
         t.donja = stod(linija.substr(0,p1));
-        t.gornja = stod(linija.substr(p1+1, p2-p1-1));
-        t.seed = stoull(linija.substr(p2+1));
+        t.gornja = stod(linija.substr(p1+1, p2));
+        t.seed = stoll(linija.substr(p2+1));
 
         ulaz.dodaj(t);
     }
-
-    ulaz.objavi_kraj();
-
+    
 }
 
 /**

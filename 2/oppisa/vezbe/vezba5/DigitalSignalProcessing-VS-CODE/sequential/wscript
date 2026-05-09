@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+'''
+@author: Milos Subotic <milos.subotic.sm@gmail.com>
+@license: MIT
+'''
+
+###############################################################################
+
+# Import needed function for standard library.
+from os.path import basename, splitext
+
+###############################################################################
+
+# Installing dependencies like libraries and tools.
+def prerequisites(ctx):
+	pass # Not using.
+
+# Options for waf script.
+def options(opt):
+	opt.load('gcc gxx') # Choose compiler.
+	# Option for release build.
+	opt.add_option(
+		'--release',
+		dest = 'release',
+		default = False,
+		action = 'store_true'
+	)
+	
+# Configuration of build system: setting compiler flags, searching libraries.
+def configure(cfg):
+	cfg.load('gcc gxx') # Choose compiler.
+
+	# C/C++ flags.
+	cfg.env.append_value('CXXFLAGS', '-std=c++11')
+	cfg.env.append_value('CXXFLAGS', '-fopenmp')
+	cfg.env.append_value('LDFLAGS', '-fopenmp')
+
+	if cfg.options.release:
+		cfg.env.append_value('CXXFLAGS', '-O3')
+	else:
+		# For debug.
+		cfg.env.append_value('CXXFLAGS', '-O0 -g -rdynamic'.split())
+
+	
+
+
+# Building source files: compiling and linking.
+def build(bld):
+	# Build program from all C++ files.
+	bld.program(
+		target = 'sequential',
+		source = bld.srcnode.ant_glob('*.cpp')
+	)
+			
+###############################################################################
