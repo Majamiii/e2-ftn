@@ -1,0 +1,8 @@
+1. NUM (stanje 4) - celobrojne vrednosti
+White space (stanje 9) - razmak
+error (stanje 2,6 i 10) - greska
+
+2. Terminalni simboli: begin, end, if, then, else, =, ==, ;, id, num, real
+Neterminalni simboli: Q, L, S, K, E, C, R
+
+DODATNI ZADATAK: program je nazvan program2.txt

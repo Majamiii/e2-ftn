@@ -1,0 +1,17 @@
+begin
+    x = 2 ;
+    if x == 5 then
+        begin
+            y = 3 ;
+            if y == 3 then
+                begin
+                    z = 1 ;
+                end
+            else
+                z = 0 ;
+        end
+    else
+        begin
+            result = 1 ;
+        end
+end
