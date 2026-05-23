@@ -156,6 +156,9 @@ Reg munchExp(Expression* expression)
 					// - Extract constant value from rightExp.
 					// - Build instructionString: addi `d,`s,const
 					// - Set srcExp1 to the expression that should be evaluated into source register.
+					E_Const* constExp = static_cast<E_Const*>(rightExp);
+					instructionString = "addi `d,`s," + toString(constExp->getValue());
+					srcExp1 = leftExp;
 
 				}
 				else if (leftExp->getType() == Expression::CONST_EXP)
@@ -164,6 +167,9 @@ Reg munchExp(Expression* expression)
 					// - Extract constant value from leftExp.
 					// - Build instructionString: addi `d,`s,const
 					// - Set srcExp1 to the expression that should be evaluated into source register.
+					E_Const* constExp = static_cast<E_Const*>(leftExp);
+					instructionString = "addi `d,`s," + toString(constExp->getValue());
+					srcExp1 = rightExp;
 
 				}
 				else
@@ -180,6 +186,10 @@ Reg munchExp(Expression* expression)
 				// - Build instructionString: sub `d,`s,`s
 				// - Set srcExp1 to leftExp.
 				// - Set srcExp2 to rightExp.
+
+				instructionString = "sub `d,`s,`s";
+				srcExp1 = leftExp;
+				srcExp2 = rightExp;
 
 			}
 			else
