@@ -1,0 +1,8 @@
+1. a) Ulaz iz prvog prolaza asemblera je izvorni kod napisan na asemblerskom jeziku.
+b) Izlaz iz prvog prolaza su tabela literala i tabela simbola.
+
+
+2. a) Ulaz iz drugog prolaza asemblera su tabela literala, tabela simbola i tabela koda operacija (op koda).
+b) Izlaz iz drugog prolaza je izvršni kod.
+
+3. Konverzija konstanti je potprogram koji računa vrednost literala (konstanti) koji su pronadjeni, tj. računa binarnu vrednost konstanti koje su napisane u tekstualnom obliku u izvornom kodu.
