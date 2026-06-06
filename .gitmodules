@@ -1,3 +1,6 @@
 [submodule "1/arhitektura-racunara"]
 	path = 1/arhitektura-racunara
 	url = https://github.com/Majamiii/arhitektura-racunara.git
+[submodule "2/oppisa/Projekat"]
+	path = 2/oppisa/Projekat
+	url = https://github.com/Majamiii/MAVN-to-MIPS.git
