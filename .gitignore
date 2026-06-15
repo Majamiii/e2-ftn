@@ -56,8 +56,11 @@
 *.rpt
 *.cbp
 
+2/opk/
+
 simulation/
 work/
 output_files/
 db/
 incremental_db/
+.vs/

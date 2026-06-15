@@ -89,7 +89,7 @@ int main()
 		freeInterferenceGraph(ig);
 	}
 
-	getchar();
+	// getchar();
 
 	return 0;
 }

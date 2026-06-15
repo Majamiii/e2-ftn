@@ -11,9 +11,30 @@ int getColor(Variable* notColoredVariable, InterferenceGraph* ig) {
     //        jer ne smeju dve promenljive u smetnji da dobiju isti registar (boju)
     //Napomena: smetnja je u InterferenceGraph-u oznacena kao __INTERFERENCE__
 
+    int pos = notColoredVariable->pos;
+    bool usedColors[4] = {0,0,0,0};
+
+    for (int i = 0; i < ig->size; i++) {
+        if (ig->values[pos][i] == __INTERFERENCE__) {
+            for (auto it = ig->variables->begin(); it != ig->variables->end();++it) {
+                Variable* var = *it;
+                if (var->pos == i && var->assigment != __UNDEFINE__) {
+                    usedColors[var->assigment] = 1;
+                }
+            }
+        }
+    }
 
     // TO DO: Pronaci boju koju mozemo dodeliti neobojenoj promenljivoj u skladu sa dobavljenom listom promenljivih u smetnji
-    //Napomena: ukoliko ne postoji boja koju mozemo dodeliti promenljivoj vratiti __UNDEFINE__
+    //Napomena: ukoliko ne postoji boja koju mozemo dodeliti promenljivoj vratiti 
+
+
+    for (int color = reg0; color <= reg3; color++) {
+        if (usedColors[color] == 0) {
+            return color;
+        }
+    }
+
     return __UNDEFINE__;
 }
 
@@ -55,7 +76,27 @@ bool doResourceAllocation(stack<Variable*>* simplificationStack, InterferenceGra
     return true;
 }
 
+/*
+Реализовати брисање Т_MOVE инструкција у оквиру функције removeMove у датотеци
+ResourceAllocation.cpp. Ова функција, након завршетка доделе ресурса, елиминише све инструкције које
+представљају доделу регистра самом себи.
+Instructions * removeMove(Instructions * instrs);
+*/
+
 Instructions* removeMove(Instructions* instrs) {
     Instructions* noMoveInstruction = new Instructions();
+
+    for (auto instr : *instrs) {
+        if (instr->type == T_MOVE) {
+            if (instr->dst->assigment == instr->src1->assigment) {
+                continue;
+            }
+            
+        }
+        else {
+            noMoveInstruction->push_back(instr);
+        }
+    }
+
     return noMoveInstruction;
 }

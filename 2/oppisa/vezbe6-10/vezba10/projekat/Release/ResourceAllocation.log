@@ -1,0 +1,4 @@
+﻿  ResourceAllocation.cpp
+  Start.cpp
+LINK : fatal error C1047: The object or library file 'libLivenessAnalysis-vc140-mt.lib' was created by a different version of the compiler than other objects like 'Release\ResourceAllocation.obj'; rebuild all objects and libraries with the same compiler
+LINK : fatal error LNK1257: code generation failed
