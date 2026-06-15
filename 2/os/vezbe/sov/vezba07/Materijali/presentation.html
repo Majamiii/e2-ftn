@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="sr-Cyrl"><head>
+<script src="slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="Радован Туровић - Бранислав Ристић">
+  <title>Вежбе 7 - системски позиви</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-ca0a6760da7d1b5074ef086119f358f5.css">
+  <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Вежбе 7 - системски позиви</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Радован Туровић - Бранислав Ристић 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="процеси" class="title-slide slide level1 center">
+<h1>Процеси</h1>
+<ul>
+<li>Сваки процес који се покрене има свој јединствени број, тзв. идентификатор процеса или <strong>pid</strong>.</li>
+<li>Конкретно на Јуникс оперативним системима сваки процес ствара неки други процес осим <strong>init</strong> процеса који је родитељ свих осталих процеса.</li>
+<li>Ово се може видети покретањем команде <code>pstree</code> у терминалу.
+<ul>
+<li>На системима са <strong>systemd</strong>-ом, <strong>init</strong> бива замењен њиме.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ид-процеса-primeri01_pid" class="slide level2 center">
+<h2>ИД процеса (<code>Primeri/01_pid</code>)</h2>
+<ul>
+<li>Сваки програм када се покрене добије свој јединствени идентификатор процеса, тј. <strong>pid</strong>.</li>
+<li>Могуће је пид добавити програматички користећи се системским позивом <code>getpid()</code>.</li>
+<li>Такође, могуће је добавити пид родитељског процеса за текући процес позивом <code>getppid()</code>.</li>
+<li>Повратна вредност обе функције је типа <code>pid_t</code>.</li>
+<li>Налази се у заглављу <code>&lt;unistd.h&gt;</code>.</li>
+</ul>
+</section>
+<section id="подвајање-процеса-fork" class="slide level2 center">
+<h2>Подвајање процеса (<code>fork()</code>)</h2>
+<ul>
+<li><code>fork()</code> <a href="https://man7.org/linux/man-pages/man2/fork.2.html">системски позив</a> нам омогућује да тренутни процес дуплирамо.</li>
+<li>Процес створен на овај начин је:
+<ul>
+<li>дете процесу који позива <code>fork()</code></li>
+<li>независан од позивајућег процеса</li>
+<li>има копиран читав садржај родитељског процеса</li>
+<li>једино шта деле су дескриптори раније отворених датотека</li>
+</ul></li>
+</ul>
+</section>
+<section id="подвајање-процеса-fork-1" class="slide level2 center">
+<h2>Подвајање процеса (<code>fork()</code>)</h2>
+
+<!-- На слици се подразумева да нит1 родитељског процеса позива подвајање.
+Због тога, код детета видимо само један стек, стек нити1 родитељског процеса.
+Садржај преосталих нити се не копира. -->
+<img data-src="подвајање_простор.png" class="r-stretch quarto-figure-center"><p class="caption">https://ops-class.org/slides/2017-02-10-forksynch/</p></section>
+<section id="подвајање-процеса-primeri02_fork" class="slide level2 center">
+<h2>Подвајање процеса (<code>Primeri/02_fork</code>)</h2>
+<ul>
+<li>У моменту када се позове <code>fork()</code> системски позив, након припреме новог процеса, имамо 2 процеса који настављају да извршавају код од линије где је позван <code>fork()</code> па надаље.</li>
+<li>Уколико је позив био неуспешан, повратна вредност је -1.</li>
+<li>У супротном, у сваком од процеса враћа <a href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/create.html">посебну повратну вредност</a>:
+<ul>
+<li>у детету (новостворени процес) враћа 0</li>
+<li>у родитељу (оригинални процес) враћа <strong>пид детета (позитиван број)</strong></li>
+<li>ово нам је битно да би даље у коду разликовали процесе и одлучили шта желимо да који извршава</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="дељење-меморије-међу-процесима" class="title-slide slide level1 center">
+<h1>Дељење меморије међу процесима</h1>
+<ul>
+<li>Као што смо видели, 2 процеса су скоро потпуно независна након системског позива <code>fork()</code>.</li>
+<li>Како поделити меморију између подвојених процеса?</li>
+<li>Користити системске позиве за <a href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/shm/example-1.html">рад са дељеном меморијом</a>, из <code>shm</code> фамилије системских позива.</li>
+</ul>
+</section>
+<section id="кораци-у-раду-са-дељеном-меморијом" class="slide level2 center scrollable">
+<h2>Кораци у раду са дељеном меморијом</h2>
+<ol type="1">
+<li>Алоцирање сегмента РАМа који ће бити дељен</li>
+<li>Добављање адресе сегмента</li>
+<li>Коришћење сегмента</li>
+<li>Одјава коришћења сегмента</li>
+<li>Ослобађање сегмента</li>
+</ol>
+</section>
+<section id="алокација-сегмента-shmget" class="slide level2 center scrollable">
+<h2>1. Алокација сегмента (<code>shmget()</code>)</h2>
+<ul>
+<li>У заглављу <code>&lt;sys/shm.h&gt;</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man2/shmget.2.html">Системски позив</a> <code>shmget()</code> прима 3 параметра:
+<ol type="1">
+<li>кључ сегмента, најчешће <code>IPC_PRIVATE</code> као сигнал да нам треба нов сегмент</li>
+<li>величина сегмента у бајтовима (<code>shmget()</code> ће поравнати ову меморију па се може десити да добијемо више)</li>
+</ol></li>
+</ul>
+</section>
+<section id="алокација-сегмента-shmget-1" class="slide level2 center scrollable">
+<h2>1. Алокација сегмента (<code>shmget()</code>)</h2>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man2/shmget.2.html">Системски позив</a> <code>shmget()</code> прима 3 параметра:
+<ol start="3" type="1">
+<li>опције, пример:</li>
+</ol>
+<ul>
+<li><code>IPC_CREAT|0660</code> где нам прва опција наглашава да нам треба стварање новог сегмента а друга опција регулише дозволе приступа (читај/пиши за власника тренутног процеса и његову групу а ништа за остале)</li>
+</ul></li>
+<li>Враћа ИД створеног сегмента или -1 у случају неуспеха.</li>
+</ul>
+</section>
+<section id="добављање-адресе-сегмента-shmat" class="slide level2 center scrollable">
+<h2>2. Добављање адресе сегмента (<code>shmat()</code>)</h2>
+<ul>
+<li>У заглављу <code>&lt;sys/shm.h&gt;</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man3/shmat.3p.html">Системски позив</a> <code>shmat()</code> прима 3 параметра:
+<ol type="1">
+<li>ИД сегмента којем желимо да се пријавимо као корисник</li>
+<li>адреса где желимо да нам буде сегмент</li>
+<li>опције</li>
+</ol></li>
+<li>Враћа адресу меморијског блока за коришћење у виду генералног показивача (<code>void*</code>; мора се кастовати у одговарајући тип).</li>
+</ul>
+</section>
+<section id="одјава-коришћења-сегмента-shmdt" class="slide level2 center scrollable">
+<h2>4. одјава коришћења сегмента (<code>shmdt()</code>)</h2>
+<ul>
+<li>У заглављу <code>&lt;sys/shm.h&gt;</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man3/shmdt.3p.html">Системски позив</a> <code>shmdt()</code> прима 1 параметар:
+<ol type="1">
+<li>адреса добијена у кораку 2 од <code>shmat()</code> позива</li>
+</ol></li>
+<li>Враћа -1 након неуспеха, у супротном 0.</li>
+</ul>
+</section>
+<section id="ослобађање-сегмента-shmctl" class="slide level2 center scrollable">
+<h2>5. ослобађање сегмента (<code>shmctl()</code>)</h2>
+<ul>
+<li>У заглављу <code>&lt;sys/shm.h&gt;</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man2/shmctl.2.html">Системски позив</a> <code>shmctl()</code> прима 3 параметра:
+<ol type="1">
+<li>ИД сегмента којим желимо да управљамо</li>
+<li>операција коју желимо да учинимо (у нашем случају ће бити <code>IPC_RMID</code>)</li>
+<li>структура <code>shmid_ds</code> која ће прихватити информације о сегменту (у нашем случају можемо игнорисати и послати <code>nullptr</code>)</li>
+</ol></li>
+<li>Враћа -1 након неуспеха, у супротном ненула вредност а у зависности од жељене операције.</li>
+</ul>
+</section>
+<section id="чекање-на-дете-wait-primer03_fork_sa_shm" class="slide level2 center scrollable">
+<h2>Чекање на дете (<code>wait()</code>, <code>Primer/03_fork_sa_shm</code>)</h2>
+<ul>
+<li>У заглављу <code>&lt;sys/shm.h&gt;</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man2/wait.2.html">Системски позив</a> <code>wait()</code>.</li>
+<li>Користи се за проверу стања и чекање процеса детета.</li>
+<li>Прима 1 параметар:
+<ol type="1">
+<li>адресу целог броја да би се проследио статус процеса; може бити <code>nullptr</code></li>
+</ol></li>
+<li>Враћа -1 у случају грешке, у супротном ИД терминираног дечјег процеса.</li>
+</ul>
+</section>
+<section id="стварање-новог-процеса-clone" class="slide level2 center scrollable">
+<h2>Стварање новог процеса (<code>clone()</code>)</h2>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man2/clone.2.html">Системски позив</a> <code>clone()</code>.</li>
+<li>Користи се за стварање дечјих процеса или нових нити у процесу.</li>
+<li>Прима 4 параметра:
+<ol type="1">
+<li>показивач на функцију</li>
+<li>показивач на стек</li>
+<li>опције</li>
+<li>показивач на аргументе</li>
+</ol></li>
+<li>Враћа -1 у случају грешке, у супротном ИД створеног дечјег процеса/нити.</li>
+</ul>
+</section>
+<section id="стварање-новог-процеса" class="slide level2 center scrollable">
+<h2>Стварање новог процеса</h2>
+<ul>
+<li>У примеру се прави нов процес:
+<ol type="1">
+<li>показивач на функцију; која мора да:</li>
+</ol>
+<ul>
+<li>прима као један параметар, показивач на блок меморије са аргументима (<code>void*</code>)</li>
+<li>врати цео број као информацију о успешности (0 је успех)</li>
+</ul>
+<ol start="2" type="1">
+<li>показивач на стек:</li>
+</ol>
+<ul>
+<li>притом, пошто се стек користи уназад, мора се послати адреса последњег бајта стека!</li>
+</ul></li>
+</ul>
+</section>
+<section id="стварање-новог-процеса-primeri04_clone" class="slide level2 center scrollable">
+<h2>Стварање новог процеса (<code>Primeri/04_clone</code>)</h2>
+<ul>
+<li>У примеру се прави нов процес:
+<ol start="3" type="1">
+<li>опције:</li>
+</ol>
+<ul>
+<li><code>CLONE_VM</code> - нов процес користи исти меморијски простор као родитељ</li>
+<li><code>SIGCHLD</code> - омогућење детету да пошаље сигнал родитељу након терминације (неопходно да би радило чекање на дечји процес)</li>
+</ul>
+<ol start="4" type="1">
+<li>показивач на блок меморије са аргументима:</li>
+</ol>
+<ul>
+<li>мора се пазити на начин паковања и распакивања аргумената из блока!</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="отварање-уи-токова-pipe" class="title-slide slide level1 center">
+<h1>Отварање У/И токова (<code>pipe()</code>)</h1>
+<ul>
+<li>Ради комуникације између процеса можемо и да отворимо посебне <a href="https://ops-class.org/slides/2017-02-10-forksynch/#_pipes">улазно/излазне токове</a> (и <a href="http://www.cse.cuhk.edu.hk/~ericlo/teaching/os/lab/6-IPC1/reference.html">још један извор</a>) кроз које можемо слати поруке.</li>
+<li>За разлику од дељене меморије ови токови се понашају као датотеке тако да и комуникација мора тећи као са датотекама.</li>
+<li>За ове потребе се користи <a href="https://man7.org/linux/man-pages/man2/pipe.2.html">системски позив</a> <code>pipe()</code>.</li>
+</ul>
+</section>
+<section id="отварање-уи-токова-pipe-1" class="slide level2 center scrollable">
+<h2>Отварање У/И токова (<code>pipe()</code>)</h2>
+<ul>
+<li>Налази се у заглављу <code>&lt;unistd.h&gt;</code>.</li>
+<li><code>pipe()</code> прима 1 параметар:
+<ol type="1">
+<li>адреса на низ од 2 цела броја</li>
+</ol>
+<ul>
+<li>у њима ће се редом сачувати идентификатори дескриптора тока за читање потом писање података</li>
+</ul></li>
+<li>Враћа -1 након неуспеха, у супротном 0.</li>
+</ul>
+</section>
+<section id="отварање-уи-токова-pipe-2" class="slide level2 center">
+<h2>Отварање У/И токова (<code>pipe()</code>)</h2>
+<ul>
+<li>Са токовима се мора пажљиво баратати!</li>
+<li>Након што се ток подели свим процесима, процеси су у обавези да пре свега осталог затворе ток који неће користити:
+<ul>
+<li>нити ствараоци садржаја морају затворити токове за читање података</li>
+<li>нити читачи садржаја морају затворити токове за писање података</li>
+</ul></li>
+</ul>
+</section>
+<section id="отварање-уи-токова-primeri05_fork_sa_pipe" class="slide level2 center scrollable">
+<h2>Отварање У/И токова (<code>Primeri/05_fork_sa_pipe</code>)</h2>
+<ul>
+<li>Позиви са <a href="https://man7.org/linux/man-pages/man2/write.2.html">писање</a> и <a href="https://man7.org/linux/man-pages/man2/read.2.html">читање</a> се налазе у заглављу <code>&lt;unistd.h&gt;</code>.</li>
+<li>И писање (<code>write()</code>) и читање (<code>read()</code>) користе по 3 параметра:
+<ol type="1">
+<li>ИД дескриптора за писање/читање</li>
+<li>адреса бафера за писање/читање</li>
+<li>број бајта за писање/читање</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="позивање-спољашњих-програма-execv" class="title-slide slide level1 center">
+<h1>Позивање спољашњих програма (<code>execv()</code>)</h1>
+<ul>
+<li>Позивање спољаших програма програматички је могуће уз помоћ фамилију <strong>exec</strong> <a href="https://man7.org/linux/man-pages/man3/exec.3.html">системских позива</a>.</li>
+<li>Ова фамилија системских позива је специфична по томе да спољашњи програм у потпуности преузме позивајући процес.</li>
+<li>У случају успешног системског позива, спољашњи програм преузима све, пид позиваоца, поставља свој стек испочетка итд. и више се не враћамо у позивајући код.</li>
+<li>Позивајући програм се наставља само у случају НЕУСПЕШНОГ позива спољашњег програма.</li>
+</ul>
+</section>
+<section id="позивање-спољашњих-програма-execv-primeri06_execv" class="slide level2 center scrollable">
+<h2>Позивање спољашњих програма (<code>execv()</code>, <code>Primeri/06_execv</code>)</h2>
+<ul>
+<li>Налазе се у заглављу <code>&lt;unistd.h&gt;</code>.</li>
+<li>Прима 2 параметра:
+<ol type="1">
+<li>путању до извршне датотеке</li>
+<li>низ показивача на аргументе</li>
+</ol>
+<ul>
+<li>овај низ МОРА да се заврши <code>nullptr</code> показивачем као сигналом прекида низа</li>
+</ul></li>
+<li>Повратна вредност ће постати повратна вредност програма ако је спољашњи програм успешно створен.</li>
+<li>Уколико није било успеха, просто се враћа -1 позивајућем окружењу да потом одлучи шта ће радити даље.</li>
+</ul>
+</section></section>
+<section>
+<section id="ланчање-програма-енг.-piping" class="title-slide slide level1 center">
+<h1>Ланчање програма (енг. piping)</h1>
+<ul>
+<li>Уобичајена појава у програмирању је да се не пише код за решавање проблема који је већ решен.</li>
+<li>Уместо тога, боље је искористити већ готово решење и евентуално га спојити са нашим или другим већ готовим решењем.</li>
+<li>Надовезивање више програма један на други се посебно лако може урадити ако су програми написани тако да примају параметре са стандардног улаза или као параметара а излаз шаљу на стандардни излаз.</li>
+</ul>
+</section>
+<section id="ланчање-програма-енг.-piping-1" class="slide level2 center">
+<h2>Ланчање програма (енг. piping)</h2>
+<ul>
+<li>У оваквој ситуацији се приступа ланчању програма, или познатије као пајповање програма.</li>
+<li>Веома честа појава у шел скриптовању где се резултат једне команде ланча на улаз наредне команде.</li>
+<li>Пример:
+<ul>
+<li><code>ps ax | grep firefox</code></li>
+<li>овде се излаз програма <code>ps</code> (списак свих процеса) шаље директно као улаз у <code>grep</code> програм који ће одбацити линије које не садрже реч <code>"firefox"</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ланчање-ц-dup2" class="slide level2 center">
+<h2>Ланчање: Ц++ (<code>dup2()</code>)</h2>
+<ul>
+<li>Да би се овај ефекат постигао у Ц++ коду, неопходно је:
+<ul>
+<li>пре позива спољног програма направити ток (енг. pipe)</li>
+<li>због начина на који раде <code>exec</code> позиви, подвојити процес (<code>fork()</code>)</li>
+<li>у детету пре позива <code>exec</code>, треба преусмерити стандардни излаз на ток (користећи се <code>dup2</code> позивом)</li>
+<li>у родитељу се кроз ток чита излаз спољашег програма!</li>
+</ul></li>
+</ul>
+</section>
+<section id="ланчање-ц-dup2-primeri07_execv_sa_pipe" class="slide level2 center scrollable">
+<h2>Ланчање: Ц++ (<code>dup2()</code>, <code>Primeri/07_execv_sa_pipe</code>)</h2>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man2/dup.2.html">Системски позив</a> <code>dup2()</code> се користи за дуплирање дескриптора тока.</li>
+<li>Налази се у заглављу <code>&lt;unistd.h&gt;</code>.</li>
+<li>У нашем случају ћемо га искористити за преузимање контроле над стандардним излазом.</li>
+<li>има 2 параметра:
+<ol type="1">
+<li>ИД оригиналног дескриптора (у нашем случају ИД дескриптора тока за писање)</li>
+<li>нов ИД дескриптора (у нашем случају 0, што је ИД за <code>stdout</code>)</li>
+</ol></li>
+<li>Враћа -1 у случају неуспеха, у супротном ИД новог дескриптора.</li>
+</ul>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'h.v',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
