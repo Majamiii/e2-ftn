@@ -43,6 +43,7 @@ using namespace chrono;
 // Struktura koja će se koristiti radi formiranja test scenarija:
 struct Pristup_memoriji {
     Stanje tip_pristupa;                // Tip pristupa memoriji
+    condition_variable red_citanje, red_pisanje;
     int adresa;                         // Adresa kojoj se pristupa
     char vrednost;                      // Vrednost koja se upisuje (samo ako je tip pristupa upis u memoriju)
     Pristup_memoriji(Stanje tip, int adr, char v = 0) : tip_pristupa(tip), adresa(adr), vrednost(v) {}

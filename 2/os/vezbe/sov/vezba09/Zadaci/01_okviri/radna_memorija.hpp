@@ -3,17 +3,27 @@
 
 #include "dijagnostika.hpp"
 
+#include <condition_variable>
+
 using namespace std;
 
 class Radna_memorija {
 private:
     Dijagnostika& dijagnostika;
-
+    int ukupno_okvira;
+    mutex m;
+    condition_variable red_procesa;
+    int slobodnih_stranica;
+    vector<int> okviri;
 public:
     // dijagnostika  - referenca na instancu klase Dijagnostika
 	// ukupno_okvira - ukupan broj okvira u memoriji
-    Radna_memorija(Dijagnostika& d, int ukupno_okvira) : dijagnostika(d) {
-        // Proširiti po potrebi ...
+    Radna_memorija(Dijagnostika& d, int uk_okvira) : dijagnostika(d) {
+        ukupno_okvira = uk_okvira;
+        slobodnih_stranica = ukupno_okvira;
+        for(int i=0; i<uk_okvira;i++){
+            okviri.push_back(-1);
+        }
     }
 
     Dijagnostika& getDijagnostika() {
@@ -29,14 +39,40 @@ public:
     // Kada proces uspe da dođe do potrebne radne memorije, treba da se pozove dijagnostika.proces_izvrsava. Nakon toga,
     // kada proces zauzme okvire radne memorije, potrebno je pozvati dijagnostika.ispisi_okvire kako bi se prikazalo trenutno zauzece svih okvira (podrazumeva se da zelimo da prikazemo sliku svih okvira, tako da ce se videti i okviri koje su zauzeli drugi procesi).
     void ucitaj(int broj_stranica, int id_procesa) {
-        // Implementirati ...
+        unique_lock<mutex> l(m);
+        while(broj_stranica > slobodnih_stranica){
+            dijagnostika.proces_ceka(id_procesa);
+            red_procesa.wait(l);
+        }
+
+        dijagnostika.proces_se_izvrsava(id_procesa);
+
+        int zauzete_stranice = 0;
+
+        for(auto it = okviri.begin();it != okviri.end();it++){
+            if((*it == -1)&&(zauzete_stranice<broj_stranica)){
+                *it = id_procesa;
+                zauzete_stranice++;
+            }
+        }
+        slobodnih_stranica -= broj_stranica;
+        dijagnostika.ispisi_okvire(okviri.begin(), okviri.end());
     }
 
     // Metoda koju poziva nit koja simulira izvršenje procesa kako bi oslobodila radnu memoriju koju je koristila tokom izvršenja
     //
     // id_procesa - identifikator procesa koji oslobađa memoriju
     void oslobodi(int id_procesa) {
-        // Implementirati ...
+        int br=0;
+        unique_lock<mutex> l(m);
+        for(auto it = okviri.begin();it != okviri.end();it++){
+            if(*it == id_procesa){
+                *it = -1;
+                br++;
+            }
+        }
+        slobodnih_stranica += br;
+        red_procesa.notify_all();
     }
 };
 

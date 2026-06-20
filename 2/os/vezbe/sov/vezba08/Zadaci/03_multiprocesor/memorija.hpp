@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include <condition_variable>
+#include <vector>
 
 #include "dijagnostika.hpp"
 
@@ -11,13 +12,16 @@ using namespace chrono;
 
 enum Stanje {SLOBODAN, CITANJE, UPIS };
 
+
+
 class Memorija {
 private:
     Dijagnostika& dijagnostika;
 
+
 public:
     Memorija(Dijagnostika& d, int bajtova) : dijagnostika(d) {
-        // Proširiti po potrebi ...
+
     }
 
     // Metoda koju poziva nit koja simulira proces koji pristupa memoriji kako bi obavila čitanje iz nje
@@ -28,7 +32,7 @@ public:
     // Potrebno je pozvati dijagnostika.proces_ceka_citanje kada je memorijska reč zaključana i proces mora da čeka.
     // Potrebno je pozvati dijagnostika.proces_procitao onda kada je ostvaren pristup memoriji i kada je vrednost učitana iz nje.
     char citaj(int rbp, int adresa) {
-        // Implementirati ...
+
     }
 
     // Metoda koju poziva nit koja simulira proces koji pristupa memoriji kako bi obavila upis u nju

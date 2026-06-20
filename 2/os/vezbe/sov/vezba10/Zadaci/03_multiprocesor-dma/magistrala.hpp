@@ -18,12 +18,21 @@ public:
         int kome;
     };
 
+    mutex m;
+    condition_variable red_cekanja, red_dma;
+    bool zauzeta;
+    bool kraj;
+    Memorija& memorija;
+    bool dma;
+
 private:
     Dijagnostika& dijagnostika;
 
 public:
-    Magistrala(Dijagnostika& d, Memorija& mem) : dijagnostika(d) {
-        // Proširiti po potrebi ...
+    Magistrala(Dijagnostika& d, Memorija& mem) : dijagnostika(d), memorija(mem) {
+        zauzeta = false;
+        kraj = false;
+        dma = false;
     }
 
     Dijagnostika& getDijagnostika() {
@@ -31,23 +40,41 @@ public:
     }
 
     char citaj_memoriju(int adresa) {
-        // Implementirati ...
+        unique_lock<mutex> l(m);
+
+        l.unlock();
+        this_thread::sleep_for(chrono::milliseconds(700));
+        l.lock();
+
+        return memorija.citaj(adresa);
     }
 
     void pisi_u_memoriju(int adresa, char vrednost) {
-        // Implementirati ...
+        unique_lock<mutex> l(m);
+
+        memorija.pisi(adresa, vrednost);
+
+        l.unlock();
+        this_thread::sleep_for(chrono::milliseconds(700));
+        l.lock();
     }
 
     void dma(DMA_transfer trans) {
-        // Implementirati ...
+        unique_lock<mutex> l(m);
+        while(!dma){
+            red_dma.wait(l);
+        }
     }
 
     DMA_transfer okidac_dma_kontrolera() {
-        // Implementirati ...
+        unique_lock<mutex> l(m);
+        dma = true;
+        red_dma.notify_all();
     }
     
     void zavrsi() {
-        // Implementirati ...
+        kraj = true;
+        red_cekanja.notify_all();
     }
 };
 
