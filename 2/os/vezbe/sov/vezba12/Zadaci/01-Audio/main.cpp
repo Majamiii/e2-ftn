@@ -4,7 +4,9 @@
     kao dato da je stopa semplovanja 32-bitna sa 8Khz. To znaci da 1 sekunda audio zapisa u ovom
     formatu je 8000 32-bitnih float vrednosti, odn. 32 kilobajta. Svaki sempl predstavlja 25ms
     odnosno 200 sempl vrednosti. Bafer audio uredjaja je dugacak 2 sekunde, odn. 16000 sempl vrednosti, 
-    odn. 80 semplova, ali ovo treba da je podesivo. 
+    odn. 80 semplova, ali ovo treba da je podesivo.
+
+    1 sempl = 200 sempl vrednosti
     
     Sempl sadrzi ne samo podatke, nego i trenutak u vremenu kada je namenjen da se 
     pusti. Radi jednostavnosti, predpostavimo da su ti trenuci uvek specificirani u jedinicama od 25ms
@@ -53,6 +55,7 @@
 //Other
 #include <cmath>
 #include <cstring>
+#include <vector>
 
 using namespace std;
 using namespace chrono;
@@ -176,9 +179,9 @@ void computeSample(double frequency, double time, double length, double sampleRa
     //sracunati fazu
     double phase = (time * frequency);
     phase = phase - floor(phase);
-    phase = phase * 2 * M_PI; 
+    phase = phase * 2 * 3.141; 
     int n = ceil(length * sampleRate); 
-    double incr = (2 * M_PI * frequency) / sampleRate;
+    double incr = (2 * 3.141 * frequency) / sampleRate;
     double t = phase;
     for(int i = 0; i < n; i++){
         *(data + i) = (float)(volume * ((sin(t) / 2) + 0.5));//ocuvati raspon od 0 do 1. 
@@ -189,7 +192,27 @@ void computeSample(double frequency, double time, double length, double sampleRa
 void testirajA(Dijagnostika& d){
     //TODO A Izracunati tri sample-a duzine od 0.025s frekvencija 440, 554.356, 660
     //sa stopom uzorkovanja od 8kHz i jacinom zvuka od 100% u paraleli u tri nezavisne niti. 
-    //Zatim ispisati sva tri uzorka. 
+    //Zatim ispisati sva tri uzorka.
+
+    Sample s1, s2, s3;
+    s1.time = 0;
+    s2.time = 0;
+    s3.time = 0;
+
+    double sampleRate = 8000;
+    double volume = 1.0;
+
+    thread t1(computeSample, 440.0,     0.0, 0.025, sampleRate, volume, s1.data);
+    thread t2(computeSample, 554.356,   0.0, 0.025, sampleRate, volume, s2.data);
+    thread t3(computeSample, 660.0,     0.0, 0.025, sampleRate, volume, s3.data);
+
+    t1.join();
+    t2.join();
+    t3.join();
+
+    d.stampajSample(&s1);
+    d.stampajSample(&s2);
+    d.stampajSample(&s3);
 }
 
 
@@ -229,7 +252,11 @@ void testirajC(Bafer& b){
 }
 
 int main(){
+    Dijagnostika d;
+
     //TODO A Pokrenuti 'testirajA'
+    testirajA(d);
+
     //TODO B Pokrenuti 'testirajB'
     //TODO C Pokrenuti 'testirajC'
     return 0;

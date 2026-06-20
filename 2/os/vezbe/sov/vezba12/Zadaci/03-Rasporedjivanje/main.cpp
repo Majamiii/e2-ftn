@@ -1,10 +1,17 @@
 /* Napisati konkurentni program koji simulira proporcionalni raspoređivač u jednoprocesorskom sistemu.
 
-Procesi su predstavljeni nitima. Da bi se izvršili pozivaju metodu "izvrsi" deljene promenljive tipa Rasporedjivac. Svaki proces sadrži određeni broj naredbi. Naredbe se izvršavaju jedna po jedna. Za svaku naredbu, proces mora da sačeka da procesor bude slobodan. Izvršavanje jedne naredbe traje 300 ms. Nakon izvršavanja naredbe, proces odlazi u stanje spreman, a drugi spreman proces dobija procesor.
+Procesi su predstavljeni nitima. Da bi se izvršili pozivaju metodu "izvrsi" deljene promenljive tipa Rasporedjivac. 
+Svaki proces sadrži određeni broj naredbi. Naredbe se izvršavaju jedna po jedna. Za svaku naredbu, proces mora da sačeka da procesor bude slobodan. 
+Izvršavanje jedne naredbe traje 300 ms. Nakon izvršavanja naredbe, proces odlazi u stanje spreman, a drugi spreman proces dobija procesor.
 
-Proporcionalni raspoređivač se zasniva na tome da je svakom procesu inicijalno dodeljen određeni broj vremenskih odsečaka. Npr. pretpostavimo da je ukupan broj vremenskih odsečaka u sistemu 100, i da procesi A, B i C dobijaju određeni broj odsečaka. Recimo da je A dobio 50 osečaka, B 30 a C 20 osečaka. Ovo znači da proces A treba da dobije 50% procesorskog vremena (50% šanse da sledeće preključivanje bude na njega, proces B 30% šanse i proces C 20% šanse).
+Proporcionalni raspoređivač se zasniva na tome da je svakom procesu inicijalno dodeljen određeni broj vremenskih odsečaka. 
+Npr. pretpostavimo da je ukupan broj vremenskih odsečaka u sistemu 100, i da procesi A, B i C dobijaju određeni broj odsečaka. 
+Recimo da je A dobio 50 osečaka, B 30 a C 20 osečaka. 
+Ovo znači da proces A treba da dobije 50% procesorskog vremena (50% šanse da sledeće preključivanje bude na njega, proces B 30% šanse i proces C 20% šanse).
 
-Pri izboru sledeće naredbe (sledećeg procesa) za izvršavanje treba imati u vidu ovu raspodelu. Takođe kada jedan proces završi sve svoje naredbe treba obezbediti da se njegovi odsečci više ne računaju u vremensku raspodelu - npr. kada proces A završi ostaje samo 50 osečaka procesa B i C (u raspodeli 30-20).
+Pri izboru sledeće naredbe (sledećeg procesa) za izvršavanje treba imati u vidu ovu raspodelu. 
+Takođe kada jedan proces završi sve svoje naredbe treba obezbediti da se njegovi odsečci više ne računaju u vremensku raspodelu
+ - npr. kada proces A završi ostaje samo 50 osečaka procesa B i C (u raspodeli 30-20).
 */
 
 #include <vector>
