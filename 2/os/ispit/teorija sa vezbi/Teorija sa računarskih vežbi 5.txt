@@ -1,0 +1,125 @@
+VREME, SINHRONIZACIJA
+
+VREME
+
+Ponekad je neophodno da vodimo računa o proteklom vremenu tokom programa.
+Mi to najviše koristimo za simulacije, ali se koristi i kada želimo da računar sadrži finu kontrolu vremena.
+
+Proporcija (std::ratio)
+
+Klasa za aritmetičke operacije sa racionalnim brojevima u vreme prevođenja (compile time).
+	typedef ratio<1, 1000> milli; // npr. metar 1 je 1000 milimetara
+	Ovde smo definisali da je nešto 1000 puta manje od nečega, 1:1000, ako upotrebimo to na nečemu, to će biti pomnoženo sa 1000.
+Predefinisani tipovi:
+	nano
+	micro
+	milli
+	centi
+	deci
+	deca
+	hecto
+	mega, itd...
+
+Merenje vremena u jeziku C++
+
+Sve je u prostoru imena std::chrono.
+Bitne su 3 klase:
+	std::chrono::duration - vremenski period/interval (između dva trenutka u vremenu)
+	std::chrono::time_point - trenutak u vremenu (izmeren časovnikom)
+	std::chrono::Clock - časovnik, njega ćemo koristiti za ova dva gore.
+
+Vremenski period
+
+Predstavljen klasom std::chrono::duration.
+Predefinisani tipovi:
+	hours
+	minutes
+	seconds
+	milliseconds
+	microseconds
+	nanoseconds
+	...
+
+Predefinisani tipovi vremenskih perioda:
+	typedef duration<long, ratio<60>> minutes; // ovo samo označava da je to nešto 60 puta veće od sekunde
+	typedef duration<long> seconds;
+	typedef duration<long, milli> milliseconds;
+
+Prvi parametar šablona - tip interne evidencije o vremenu (može biti bilo koji brojčani tip)
+Drugi parametar šablona - odnos (ratio) prema referentnoj jedinici: sekundi
+
+Primer:
+typedef duration<long, ration<60>> minutes;
+minutes m1(3); // 3, ali tokom upotrebe se preracunava u sekunde [180s]
+minutes m2(5);
+minutes m3 = m1 + m2; // 8 minuta [480s]
+typedef duration<double, milli> dms;
+dms dm1(1.3);
+dms dm2(5);
+dms dm3 = dm1 + dm2; // 6.3
+dms dm4 = dm1 + m1; // mozemo da sracunamo i da smestimo u manju, ako smestimo u vecu moze nekad da se desi da izgubimo nesto, pa nije preporucljivo, ovde imamo 180 001.3 = 3 min + 1.3 ms
+minutes m4 = m1 + dm2; // ovo ne mozemo raditi jer su nam minute tipa int, a milisekunde tipa double, pa dolazi do gubitka preciznosti i kompajler javlja gresku
+milliseconds m5 = dm1; // ovo isto nece proci jer ne mozemo double prebaciti u long
+
+Trenutak u vremenu
+
+Predstavljen je klasom std::chrono::time_point.
+Predstavlja epohu plus ili minus vremenski period (duration).
+Epoha je unapred fiksiran momenat u vremenu!
+Trenutno vreme se može saznati pozivom metode now() nekog od časovnika. To ćemo koristiti da izmerimo dva trenutka u vremenu i da izračunamo duration.
+
+Časovnik
+
+Beleži proteklo vreme od početka epohe. Standard definiše 8 časovnika, ali koristimo:
+	std::chrono::system_clock - baziran na sistemskom satu, podesan za prikaz kalendarskih informacija korisniku (prikaz u obliku datuma i vremena), ali zbog skokova (letnje i zimsko vreme) nije najpodesniji za merenje trajanja operacija
+	std::chrono::steady_clock - uvek monotono rastući, najadekvatniji za merenje operacija, dovoljno je da njega koristimo
+	std::chrono::high_resolution_clock - časovnik najviše moguće preciznosti
+
+steady_clock::time_point pocetak = steady_clock::now();
+
+Privremeno zaustavljanje aktivnosti niti
+
+Ponekad hoćemo da nit sačeka ne uslov već neki period vremena.
+
+using namespace chrono;
+this_thread::sleep_for(seconds(1));
+ili za novije verzije:
+this_thread::sleep_for(1s);
+
+U oba slučaja moraju biti isključivo celobrojne vrednosti prosleđene.
+
+
+SINHRONIZACIJA
+
+std::condition_variable
+
+Klasa std::condition_variable upravo rešava problem aktivnog čekanja.
+Radi isključivo sa objektima klase std::unique_lock.
+Podržava operacije:
+	wait()
+	notify_one()
+	notify_all()
+Njih koristimo ako želimo da stavimo nit u stanje čekanja i kasnije da možemo da je obavestimo o nekom pridošlom resursu.
+U praksi oponaša red čekanja jer vodi evidenciju o svim nitima koje pokušavaju da zauzmu propusnicu.
+
+Razlika između notify_one i notify_all je ta da notify_one obaveštava samo jednu nit i ona nije uvek prva koja je ušla u red čekanja, notify_all budi sve niti odjednom, ali po nekom schedule, jer ona dobija propusnicu, a ne mogu sve niti odjednom da dobiju propusnicu, vec jedna po jedna.
+
+Da bi se koristila uslovna promenljiva potrebno je ukljuciti #include <condition_variable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

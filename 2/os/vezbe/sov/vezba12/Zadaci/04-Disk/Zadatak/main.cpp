@@ -19,6 +19,9 @@ void rasporedjivac_diska(OS& os) {
     os.getDijagnostika().uredjaj_aktiviran();
 	while (true) {
 		int broj_staze = os.obradi_zahtev();
+		if(broj_staze == -1){
+			break;
+		}
 		os.getDijagnostika().zahtev_obradjen(broj_staze);
 	}
 }

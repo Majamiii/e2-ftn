@@ -1,0 +1,12 @@
+make - za kompajliranje
+make test - za proveru po testu
+make ocisti - ako hocemo da ocistimo mesto gde se sve to testira
+
+
+
+
+
+objaviKraj
+prijavaStvaraocaPodataka
+odjavaStvaraocaPodataka
+radnik

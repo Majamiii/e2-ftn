@@ -1,0 +1,8 @@
+TEST 8
+1)Koje kolone ima matrica zaštite? 
+ vlasnik, saradnik, ostali
+
+2)2. Šta omogućuju blokovske specijalne datoteke? 
+Blokovske specijalne datoteke omogućuju direktne pristupe blokovima diska, što je važno, na primer, kod pronalaženja izgubljenih blokova, kod sabijanja datoteka, ili kod pripremanja disk jedinica za korišćenje
+
+3 i4 ne mogu vise

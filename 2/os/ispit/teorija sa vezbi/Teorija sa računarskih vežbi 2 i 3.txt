@@ -1,0 +1,261 @@
+OPERATIVNI SISTEMI
+
+Računarske vežbe 2
+STL (Standardna biblioteka šablona)
+
+Dokumentacija - cppreference
+Standard Template Library - standardna biblioteka šablona
+To je deo standardne biblioteke C++ koji se odnosi na strukture podataka i najčešće algoritme.
+Ono što naročito karakteriše STL je uvođenje kontejnera kao koncepta i iteratora.
+
+Opšta ideja iza iteratora
+Iterator je apstrakcija na svim tipovima koji služe da pokazuju unutar struktura podataka. To obuhvata indekse, ključeve i ključno pokazivače. Omogućava da se, recimo, implementiraju algoritmi koji rade sa bilo kojom strukturom podataka. To je zato što umesto da prosledite celu strukturu, mi pošaljemo iterator koji pokazuje na početak i iterator koji pokazuje na kraj. Iterator sadrži informaciju o tipu sadržaja i interfejs koji nam dozvoljava da dobavimo tekuću vrednost, pređemo na sledeću i proverimo da li su iteratori ekvivalentni i par sličnih jednostavnih operacija. Sa tim može da se napravi algoritam koji se nesmetano kreće kroz strukturu, a da ne zna baš ništa o tome kako je ona dizajnirana.
+
+Kontejneri STL-a
+Kontejneri STL-a se dele na: sekvencijalne, asocijativne, neuređene asocijativne, adaptere.
+
+Sekvencijalni kontejneri
+Sekvencijalni kontejneri su oni čiji je sadržaj sadržaj poređan u nekakav definitivan redosled. Razlikuju se po tome kakve garancije nude i kako im je sadržaj raspoređen u memoriji što ima uticaj na performanse.
+array - niz statičke veličine kontinualan u memoriji
+vector - niz dinamičke veličine kontinualan u memoriji
+deque - ne-kontinualna struktura dinamičke veličine
+forward_list - jednostruko spregnuta lista
+list - dvostruko spregnuta lista
+
+v.end() - pokazuje na prvi posle poslednjeg elementa u vektoru
+STL kontejneri se mogu statički inicijalizovati.
+Ubacivanje u vektor pomoći insert metode je sporo.
+auto - dajemo kompajleru priliku da sam zaključi koji je tip, ovo se zove 'type reference' (otkrivanje tipa) i predstavlja jako korisnu osobinu.
+
+Uvek je bolje po default-u staviti da je iterator const, jer se time zapitamo da li stvarno treba da ga menjamo ili ne.
+
+Asocijativni kontejneri
+Asocijativni kontejneri su kontejneri gde umesto da element ima mesto koje je definisano redosledom, element se adresira kroz nekakvu proizvoljnu vrednost koja se zove ključ. U C++-u asocijativni kontejneri nisu bazirani na heš strukturama, već se jednostavno čuvaju sortirani po ključu što garantuje log(n) vreme pretrage. Ovo se razlikuje u odnosu na ostale programske jezike.
+set - kolekcija jedinstvenih ključeva i ničeg više
+map - kolekcija parova tipa ključ-vrednost, ključevi su jedinstveni
+multiset - kao set ali ključevi nisu jedinstveni
+multimap - kao map ali ključevi nisu jedinstveni
+
+const auto& n znači da je n referenca na trenutni element i ne smemo menjati taj element. Sama petlja menja internu poziciju(iterator), ali mi to ne diramo direktno. Dakle, const ne sprečava da se petlja kreće, samo sprečava nas da menjamo element. Misli se na primer:
+for(const auto &n : m) {cout << n.first << n.second}
+Dakle, umesto da koristimo iteratore možemo da koristimo for-each verziju for petlje. Dobijamo ključ (.first) i vrednost (.second).
+For sa destuktuiranjem:
+for(const auto& [k, v] : m) {cout << k << v << endl;}
+
+Neuređeni asocijativni kontejneri
+Ovo su iste strukture kao i već pomenute samo što su unordered_set, unordered_map, unordered_multiset i unordered_multimap takve da čuvaju ključeve preko heš vrednosti. Ovo daje jako dobro prosečno vreme (efektivno O(1)) sa rizikom da će biti O(n) u najgorem mogućem slučaju.
+Heš funkcije su takve da za neki ulaz treba da dobijemo fiksni izlaz, odnosno za ulaz proizvoljne veličine treba da dobijemo izlaz fiksne veličine. To znači da je broj varijacija ograničen, a broj ulaza neograničen, znači da mapiramo neograničen broj ulaza na ograničen broj izlaza, može da se desi preklapanje, to se zove heš kolizija. Znači da će O(n) biti kada svi ulazi imaju istu vrednost izlaza, odnosno za sve ulaze imamo koliziju.
+
+Adapteri
+Adapteri služe da sekvencijalnim kontejnerima pruže drugačiji interfejs takav da odgovara ograničenjima nekih dobro poznatih struktura podataka. Primeri su stack, queue i priority_queue.
+Stack je LIFO struktura.
+
+Algoritmi
+
+vector<int> v(1024);
+vector<int> vv(1024);
+iota(v.begin(), v.end(), 1) - popunjava od v.begin() do v.end() - 1 sa vrednostima od 1 pa nadalje, uvećavajući za 1 svaki sledeći, do 1024 jer smo napravili da bude tolika struktura
+copy_if(v.begin(), v.end(), vv.begin(), div_three) - kopira od v.begin() do v.end() u vv (nismo prosledili vv.end() jer su iste dužine, copy_if podrazumeva da su iste dužine), radiće kopiranje ako je deljivo sa 3
+accumulate - automatski algoritam za sumiranje strukture koji može da se adaptira da radi sa bilo kojom binarnom operacijom.
+
+
+Sa privatnih
+
+Vektori:
+
+v.size() - vraca broj elemenata u vektoru
+v.capacity() - vraca velicinu trenutno alocirane memorije za vektor izrazenu kao broj elemenata
+v.end() - pokazuje na nesto sto stoji iza poslednjeg elementa vektora
+advance(itp, 3) - iterator nam je bio na pocetnoj poziciji, pa ga postavljamo na trecu poziciju
+auto it1 = next(itp, 2) - slicno kao advance
+itp = prev(itp, 2) - obrnuto samo, idemo 2 mesta unazad
+v.insert(v.begin() + 1, 22); // na tu poziciju umetnemo 22, moramo da obezbedimo iterator na odgovarajuce mesto u memoriji, ne mozemo samo da kazemo postavi na drugo mesto, vec moramo sa iteratorima
+v.erase(v.begin()+3);
+
+Mape:
+
+Ne koristimo *it, vec it->first i it->second
+m.insert(pair<string,stirng>("phone", "0677240704"));
+m.erase("phone");
+m.erase(m.begin(), m.find("phone")); - pocne da trazi od prve pozicije, pa ce traziti do phone i obrisace sve one elemente koji su pre phone, najbolje je da se pre toga sortira mapa
+int k = m.count("class"); - koliko puta se javio element sa indeksom class
+map<string, string> m_copy(m.begin(), m.end()); - ovako se kopira
+
+
+
+
+Računarske vežbe 3
+Napredni C++
+
+Lambda funkcije
+
+Za ovo se koristi #include <functional>
+
+int uradiNesto(int x, function<int(int)> f) {
+	int y = f(x);
+	return y;
+}
+Sintaksa function<int(int)> znači da ova funkcija prima kao svoj parametar druge funkcije. Prosleđenu funkciju možemo da je tretiramo apsolutno isto kao bilo koju drugu funkciju i da je npr. pozovemo.
+function<int(int)> označava funkciju koja vraća integer vrednost i prima jedan integer parametar.
+function<int(int,double)> bi označavalo funkciju koja vraća int, ali prima dva parametra koja su int i double.
+
+uradiNesto(x, increment) - kada prosledimo samo naziv funkcije, prosledjujemo referencu na tu funkciju
+
+uradiNesto(x, [](int y) -> int {return y + 1;})
+Ovo je lambda izraz. Lambda izraz je literal funkcije, isto kao što je 3 literal int-a. Prvo idu uglaste zagrade, onda ide lista parametara, kao da je u pitanju funkcija, te onda simbol ->, pa povratni tip funkcije (ovde int) i onda u velikim zagradama telo funkcije. Može imati koliko god želimo redova.
+
+uradiNesto(x, [](auto y) -> auto {return y + 1;})
+Možemo koristiti i type reference, ali neki kompajleri nisu dovoljno pametni za to.
+
+uradiNesto(x, [&val](int y) -> int {return y + val;})
+Uglaste zagrade imaju posebnu namenu, one služe za tkzv. capture. To znači da želimo da sa mesta gde definišemo našu lambdu koristimo neke lokalno dostupne promenljive u telu lambde, gde god da ona na kraju bude korišćena. Ova tehnika se zove klauzura i može biti jako korisna. Ova val promenljiva je lokalna promenljiva npr. u okviru main funkcije i onda je koristimo u okviru lambda izraza.
+
+uradiNesto(x, [&val](int y) -> int {val++;return y + val;})
+Budući da klauzura postoji kroz referencu, to znači da možemo da menjamo stvari iz naše lambde.
+
+uradiNesto(x, [val](int y) -> int {return y + val;})
+Klauzura može i bez reference, ali onda nema šanse da nešto izmenimo i za svaku lambdu se pravi kopija.
+
+
+Pametni pokazivači
+
+Za korišćenje svih ovih pokazivača treba da uključimo: #include <memory> i #include <utility>
+
+class Nesto {
+	public:
+	Nesto() {...}
+	~Nesto() {...}
+	void akcija() {...}
+};
+
+struct Struktura {
+	Nesto* goli; // pokazivač na objekat klase Nešto
+	unique_ptr<Nesto> pametan;
+	shared_ptr<Nesto> deljen;
+};
+
+Problem sa običnim pokazivačima je što prvo moramo da pamtimo da ga obrišemo i drugo što on može biti smešten bilo gde, u bilo koju lokaciju, bilo kada u bilo kom broju primera što može da dovede do toga da se obriše na više mesta (greška), ne obriše nigde (greška) ili koristi mnogo pošto je obrisan (naročito loša greška). Zbog toga se upotreba ovakvih 'golih' pokazivača više ne preporučuje u produkcionom kodu.
+
+Go pointer
+{
+	Struktura s;
+	{
+		Nesto* n = new Nesto(); // pravimo objekat klase Nešto i pravimo ga na heapu i onda pravimo lokalnu promeljivu n, koja je pokazivačkog tipa koja pokazuje na taj neki objekat na heapu
+		s.goli = n; // stavljamo da je goli pokazivač, pokazivač na heapu, u stvari pokazivač n, ono što smo dobili kao povratnu vrednost prilikom pravljenja novog objekta
+		n->akcija();
+		s.goli->akcija();
+		delete n; // nakon brisanja n na heapu, objekat suštinski više ne postoji
+	}
+	// nakon izlaska iz ovog opsega obrisaće se n na steku, ne na heapu, odnosno lokalna promeljiva n
+	// neće se ništa posebno desiti, osim toga što možemo da pristupamo podacima koji su obrisani
+	s.goli->akcija(); // ovaj kod neće izazvati grešku. Uprkos tome što je ovo pokazivač na nekorišćenu memoriju (jer smo je oslobodili), podaci su ostali i kod će se izvršiti. Možda. Ako je neko alocirao tu memoriju u međuvremenu greške će biti. Ovo je užasan problem za debagovanje, jer nekad radi nekad ne radi.
+}
+
+Jedinstveni pointer
+Jedinstveni pokazivači nude mnoga poboljšanja. Prvo, jedinstveni su, to znači da ne možemo ni slučajno da ih kopiramo. Jedinstvenost je garantovana i pokušaj konstruktora kopiranja ili operatora dodele izaziva grešku. Jedino što možemo da uradimo sa jedinstvenim pokazivačem je da ga pomerimo, tj. da prestane da važi na jednom mestu i počne da važi na drugom. Ovako memorija uvek ostaje u poznatoj nadležnosti: nikada se neće desiti da ne znamo čija je to memorija. Ovo je takođe način da nam, npr. funkcija vrati memoriju i da bude jasno da je naš posao, kada dobijemo tu memoriju, da je počistimo. Još bolje, jedinstven pokazivač zna kada izađe iz opsega, odnosno kada se on obriše, tj. iz funkcije ili bloka u kome je generisan. Kada se obriše pokazivač, brišu se i podaci na heapu koji su dinamički zauzeti. Odnosno, čim se to desi, on dealocira svoju memoriju istog trenutka, odnosno memoriju na koju pokazuje. To znači da možemo da se opustimo oko delete operatora. Biće pozvan umesto nas, kada god nam je potreban, odnosno kada izađe iz opsega, odnosno kada nam ti podaci više ne budu trebali.
+{
+	Struktura s;
+	{
+		unique_ptr<Nesto> n(new Nesto()); // jedinstven pokazivač na Nesto, prosleđujemo mu adresu zauzete memorije na heapu, jer operator new vraća adresu
+		n->akcija();
+		s.pametan = move(n); // n će prestati da važi i od ove linije važi samo s.pametan
+		// Odnosno ovim se koriste takozvani konstruktori pomeranja da se n premesi u s.pametan. To znači da n više ne postoji (odnosno, n postoji ali nije upotrebljivo) i da je kontrola prebačena u s.pametan.
+		s.pametan->akcija();
+	}
+	// kada se izađe iz opsega nastaviće da važi s.pametan
+	s.pametan->akcija();
+	// Za razliku od prvog primera, ovo će raditi. Tek kada s izađe iz opsega će destruktor biti pozvan (destruktor za unique pokazivač), zato što je sada sva nadležnost prebačena u s.pametan prilikom upotrebe move operatora. Dokle god postoji pokazivač na mene (Nesto), ja ću postojati na heapu.
+}
+
+Deljeni pokazivač
+Kada treba iz dve različite lokacije da pristupamo nekom resursu, a opet želimo da imamo neku vrstu pametnog pokazivača, pa koristimo onda shared pointer. Deljeni pokazivači su kao i pametni sa jednom razlikom: mogu se kopirati slobodno, ali svaki pamti da je kopija i na centralnom mestu se broji koliko referenci ima na datu memoriju. Svaki put kada napravimo pokazivač na nešto, uveća se broj pokazivača za jedan i dokle god ima više od nula pokazivača, ta memorija ostaje zauzeta. Čim ta vrednost broja pokazivača dostigne nula, odnosno kada više nemamo nijedan pokazivač koji pokazuje na to nešto, automatski se dealocira. Odnosno, kako koji shared_ptr izlazi iz svog opsega, poziva svoj destruktor koji smanjuje globalni brojač referenci za 1. Kada on dostigne vrednost 0 dealocira se i memorija na koju pokazivač pokazuje. To znači da možemo imati dva pokazivača na neku memoriju i osloboditi je tek kada su oba izbačena iz opsega. Ovo možemo primeniti na n pokazivača i dokle god postoji jedan pokazivač na to nešto, to nešto će biti zauzeto.
+{
+	Struktura s;
+	{
+		auto n = make_shared<Nesto>(); // make_shared za nas kreira objekat na heapu i pravi pokazivač ka tom nečemu. Sa druge strane, operator dodele vrednosti shared pointera jeste dozvoljen, ali je on u pozadini implementiran tako da povećava broj referenci za jedan.
+		// Parametri 'make_shared' su ono što bi išlo u konstruktor klase 'Nesto'. Pozivanjem ovoga broj referenci je sada 1.
+		s.deljen = n; // Kopira se ovde. Broj referenci je sada 2.
+		n->akcija();
+		s.deljen->akcija();
+	} // Ovde se broj referenci smanjuje na 1, jer je 'n' izašlo iz opsega. n važi samo u okviru ovog opsega, kad se završi opseg on se briše.
+	s.deljen->akcija();
+} // Kada se izađe iz ovog opsega, struktura se briše, samim tim brišu se i sva polja, samim tim briše se i s.deljen, samim tim briše se i poslednja referenca ka nečemu i samim tim se nešto oslobađa sa heapa.
+// Destruktor se poziva tek ovde jer je broj referenci tek ovde 0 izlaskom iz opsega s, što izbacuje iz opsega sve njene elemente uključujući i 'deljen'.
+
+
+Generisanje slučajnih brojeva
+
+Potrebno je da uključimo zaglavlja: #include <random>, #include<functional> i #include<chrono>.
+
+Algoritmi uzimaju pravi nasumični broj 'seed' koji je u prostijim slučajevima vreme, a u onima gde je bezbednost bitna prava 'entropija' odnosno, istinski nasumični brojevi dobijeni šumom na magistralnim linijama, ili čak raspadom radioaktivnih izotopa. Onda od tog početka prave sekvencu brojeva koja je takva da je jako teško predvideti sledeći broj na osnovu prethodnih bez seed-a. U C++-u generator slučajnosti je odvojen od toga kakve slučajne brojeve želimo. Tako da se prvo podešava generator slučajnosti kao takve, a onda se on koristi kroz distribuciju koja specificira koje osobine hoćemo da naši slučajni brojevi imaju.
+
+typedef chrono::high_resolution_clock hrc_t;
+hrc_t::time_point start = hrc_t::now();
+// Određujemo vreme preko ovoga.
+// Uzimamo vremenski trenutak kad se izvršila ta linija, u nanosekundama.
+
+default_random_engine generator; // generator slučajnih brojeva, generator slučajnosti
+
+// Zatim želimo da dobijemo neku pseudoslučajnu vrednost, to ćemo uraditi tako što ćemo od vremenskog trenutka izvšavanja te linije oduzeti vremenski trenutak izvršenja prethodne linije (one gde smo napravili time_point start) i time ćemo dobiti neko trajanje, on je takođe u nanosekundama
+hrc_t::duration d = hrc_t::now() - start; // slučajan period vremena
+
+// Zatim dajemo generatoru kao seed to vremensko trajanje između ta dva vremenska trenutka
+generator.seed(d.count()); // Uz pomoć toga, dobijamo seed vrednost tako da se brojevi ne ponavljaju svaki put kada startujemo program. Ako uvek stavimo isti seed onda možemo uvek dobiti iste slučajne brojeve.
+
+uniform_int_distribution<int> dist(1, 6); // distribucija brojeva, ova raspodela je uniformna, što znači da su svi događaji jednako verovatni i svi događaji imaju celobrojnu vrednost. Kreiramo takve vrednosti da su moguće od 1 do 6 inkluzivno.
+
+// dist je naša kockica, a generator je naša šaka, bez kockice ne možemo dobiti slučajni broj i bez ruke ne možemo dobiti slučajni broj
+cout << dist(generator) << endl; // Distribucija se može pozvati kao funkcija kada joj se prosledi generator entropije.
+
+// Da ne bismo morali stalno da prosleđujemo generator distribuciji, možemo da koristimo nešto što se zove binding, uz pomoć funkcije bind.
+// Ako bindujemo dist za generator, možemo da je koristimo kao funkciju.
+auto d6 = bind(dist, generator);
+// Bind-u prosledimo funkciju i neke njene parametre, a on nam vrati novu funkciju koja poziva prvu sa svim tim parametrima nameštenim. Tj. za funkciju f(x) i neku vrednost 7, bind(f, 7) će vratiti funkciju g() koja vraća vrednost f(7).
+cout << d6() << " " << d6() << endl; // dva nasumična broja od 1-6, tj. dve obične kockice
+
+uniform_real_distibution<double> rdist(0, 1); // distribucija može i nad realnim brojevima
+auto dr = bind(rdist, generator);
+cout << dr() << " " << dr() << endl;
+
+normal_distribution<double> rn(0, 1);
+// Ovo je normalna distribucija, tj. nije ista verovatnoća za svaki broj, no verovatnoće variraju oko srednje vrednosti, ovde 0 tako da su vrednosti blizu nje verovatnije nego daleko, a koliko je daleko određuje standardna devijacija što je ovde 1. Ove verovatnoće formiraju čuvenu Gausovu zvonastu krivu i veliki broj prirodnih fenomena je tako raspoređen.
+auto dn = bind(rn, generator);
+cout << dn() << " " << dn() << endl;
+
+
+Regularni izrazi - Regex
+
+Regex je jedan pod-jezik koji služi da opisuje klase stringova koje zadovoljavaju neke uslove sadržaja ili forme. Recimo možemo ovim jezikom definisati šablon.
+^\d{13}$ -> On nam kaže da pričamo o string-u koji počinje (odatle ^) te ima cifru (to je \d) i to koja se ponavlja 13 puta ({13}) i onda se završava ($). Rečeno prirodnijim jezikom, to je string koji se sastoji od tačno 13 cifara i ničeg drugog.
+
+(\S+)@uns\.ac\.rs -> Ovo nam kaže da negde u stringu (nema ^ i $ znakova da nas učvrste za kraj i početak stringa) očekujemo neki karakter koji nije razmak (to je \S) ponovljen 1 ili više puta (+) i želimo da se ta grupa \S+ posebno tretira, zato je u zagradama. Posle toga sledi samo @uns.ac.rs. Jedino se . koristi u posebnom značenju "bilo koji karakter" tako da, kada se misli na stvarnu tačku, mora biti escape-ovana kroz \ simbol. Drugim rečima, ovaj šablon opisuje sve UNS mail adrese i omogućava nam da ih nađemo i, čak, brzo ekstrahujemo korisničko ime, zbog zagrada.
+
+Zagrade se mogu koristiti i za šablone koji služe za modifikaciju stringova. Primer: hoćemo da izmenimo listu imena i prezimena oblika Gorana Goranović u Goranović, G.
+Samo nam trebaju dva šablona, jedan za selekciju stringa i jedan za modifikovanje.
+Šablon prvi: ([[:upper:]])[[:alpha:]]+ ([[:alpha:]]+)
+Šablon drugi: $2, $1.
+Prvi šablon kaže 'Jedno veliko slovo' (to je ovo [[:alpha:]]. Da hoćemo samo engleski mogli smo mnogo jednostavnije [A-Z] što znači sve od A do Z) koje želimo da zapamtimo za kasnije, zato je u zagradama. To što smo ga prvog stavili u zagrade znači da je on grupa za prepoznavanje 1. Onda sledi bilo koje slovo (to je ono [[:alpha:]]) ponovljeno jedan ili više puta (to je +). Zatim razmak (koji smo ovde otkucali kao običan razmak), zatim bilo koje slovo ponovljeno više puta koje pamtimo kao grupu 2.
+Drugi šablon se samo oslanja na prvi i kažeČ Rezultat druge grupe (prezime) pa zarez pa razmak, pa rezultat prve grupe, pa tačka.
+
+Regex služi za validaciju i za izvlačenje podataka iz stringova. Treba da uključimo zaglavlja: #include <string> i #include <regex>.
+
+Koristimo \\ zato što će C++ da vidi \d i da pomisli da je to string escape sekvenca, te mora \\.
+
+regex_match(s1a, r1) - Ova funkcija proverava da li dati string odgovara datom šablonu
+
+smatch mr2; // smatch je objekat koji sadrži podatke o tome kako se neki string uklapa u dati šablon, tj. gde je nađeno šta je nađeno.
+while(regex_search(s2a, mr2, r2)) {
+	cout << mr2[1] << endl;
+	s2a = mr2.suffix();
+}
+// kada se nešto match-uje, u mr1 ćemo dobiti sve što je match-ovano, a u mr2[i] ćemo dobiti grupaciju koja je prepoznata.
+// c++ regex odeljak je malo lenj, tako da mi moramo ručno da prevežemo ostatak teksta do kog je došao, kako se ne bi ponavljalo ono što je već prepoznao.
+
+string out = regex_replace(s3a, r3, "$2, $1."); - prosleđujemo string koji želimo da search-ujemo, regex po kojem želimo da search-ujemo i koji ima odgovarajuće stilove kako da izvlačimo podatke i možemo mu kao treći argument proslediti šablon po kom želimo da napravi krajnji rezultat.
+
+
+
+
+
+
+

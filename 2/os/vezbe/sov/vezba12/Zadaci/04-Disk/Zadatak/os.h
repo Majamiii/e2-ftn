@@ -3,38 +3,38 @@
 
 #include "dijagnostika.h"
 
+#include <vector>
+#include <condition_variable>
+#include <mutex>
+#include <map>
 #include <algorithm>
 #include <numeric>
-#include <condition_variable>
-#include <climits>
-#include <memory>
-#include <vector>
 
 using namespace std;
 using namespace chrono;
 
 struct UI_zahtev{
-    bool obradjen;
     condition_variable cv;
-    int zeljena_poz;
-    int proces;
-    UI_zahtev(bool z_obradjen = false, int poz = 0, int p = -1) : obradjen(z_obradjen), zeljena_poz(poz), proces(p) {}
+    bool obradjen;
+    int id;
+    UI_zahtev(int i) : id(i), obradjen(false) {}
 };
 
 class OS {
 private:
     Dijagnostika& dijagnostika;
+    bool smer_navise;
     mutex m;
     int pozicija;
-    bool smer_navise;
-    condition_variable procesi_cv, ui_cv;
-    int id;
-    vector<shared_ptr<UI_zahtev>> zahtevi;
+    vector<int> sve_pozicije;
+    map<int,shared_ptr<UI_zahtev>> zahtev_za_poziciju;
+    condition_variable ui_zahtev;
+
 public:
     OS(Dijagnostika& d, int t, bool kvs) : dijagnostika(d) {
+        smer_navise = true;
         pozicija = t;
-        smer_navise = kvs;
-        id = -1;
+        cout<<"na pocetku je glava diska na stazi "<<t<<endl<<endl;
     }
 
     Dijagnostika& getDijagnostika() {
@@ -50,25 +50,19 @@ public:
     // zahtev ne izvrši. Pre nego što stupi u blokadu, potrebno je pozvati dijagnostika.proces_ceka.
     void uputi_UI_zahtev(int id_procesa, int broj_staze) {
         unique_lock<mutex> l(m);
-        if(id==-1){
-            id = id_procesa;
-        }
-        id = id_procesa;
-        shared_ptr<UI_zahtev> zahtev = make_shared<UI_zahtev>(false, broj_staze, id_procesa);
-        zahtevi.push_back(zahtev);
-        ui_cv.notify_one();
 
-        while(!zahtev->obradjen){
+        sve_pozicije.push_back(broj_staze);
+        shared_ptr<UI_zahtev> zahtev = make_shared<UI_zahtev>(id_procesa);
+        zahtev_za_poziciju[broj_staze] = zahtev;
+        ui_zahtev.notify_one();
+
+        if(zahtev->obradjen == false){
             dijagnostika.proces_ceka(id_procesa, broj_staze);
+        }
+        
+        while(zahtev->obradjen == false){           
             zahtev->cv.wait(l);
         }
-
-        l.unlock();
-        this_thread::sleep_for(milliseconds(300));
-        l.lock();
-
-        id = -1;
-        procesi_cv.notify_one();
     }
 
     // Metoda koju poziva nit koja simulira deo operativnog sistema koji upravlja diskom, kako bi se obradio jedan pristigli zahtev
@@ -77,69 +71,56 @@ public:
     //
     // Povratna vrednost metode treba da bude broj staze koji je obrađen.
     int obradi_zahtev() {
-        while(true){
-            unique_lock<mutex> l(m);
-            while(zahtevi.empty()){
-                ui_cv.wait(l);
-            }
-    
-            int min_idx = -1;
-            int min_razlika = INT_MAX;
-    
-            // 1. pokušaj: najbliži zahtev u trenutnom smeru kretanja
-            for(int i = 0; i < (int)zahtevi.size(); i++){
-                int poz = zahtevi[i]->zeljena_poz;
-                if(smer_navise){
-                    if(poz >= pozicija && (poz - pozicija) < min_razlika){
-                        min_razlika = poz - pozicija;
-                        min_idx = i;
-                    }
-                } else {
-                    if(poz <= pozicija && (pozicija - poz) < min_razlika){
-                        min_razlika = pozicija - poz;
-                        min_idx = i;
-                    }
-                }
-            }
-    
-            // 2. ako nema nijednog zahteva u trenutnom smeru, napravi krug lepo
-            if(min_idx == -1){
-                pozicija =0;
-                for(int i = 0; i < (int)zahtevi.size(); i++){
-                    int poz = zahtevi[i]->zeljena_poz;
-                    if(smer_navise){
-                        if(poz >= pozicija && (poz - pozicija) < min_razlika){
-                            min_razlika = poz - pozicija;
-                            min_idx = i;
-                        }
-                    } else {
-                        if(poz <= pozicija && (pozicija - poz) < min_razlika){
-                            min_razlika = pozicija - poz;
-                            min_idx = i;
-                        }
-                    }
-                }
-            }
-    
-            int obradjena_staza = zahtevi[min_idx]->zeljena_poz;
-    
-            zahtevi[min_idx]->obradjen = true;
-            zahtevi[min_idx]->cv.notify_one();
-    
-            pozicija = obradjena_staza;
-            procesi_cv.notify_all();
-    
-            zahtevi.erase(zahtevi.begin() + min_idx);
+        unique_lock<mutex> l(m);
 
-            if(zahtevi.empty()){
-                return -1;
-            }
-    
-            return obradjena_staza;
+        while(sve_pozicije.empty()){
+            return -1;
         }
+        
+        sort(sve_pozicije.begin(), sve_pozicije.end());
+        
+        int sledeca_pozicija = -1;
+        int indeks_za_brisanje = -1;
+        
+        for(int i = 0; i < sve_pozicije.size(); i++){
+            if(sve_pozicije[i] >= pozicija){
+                if(smer_navise){
+                    sledeca_pozicija = sve_pozicije[i];
+                } else {
+                    sledeca_pozicija = sve_pozicije[(i - 1 + sve_pozicije.size()) % sve_pozicije.size()];
+                }
+                
+                indeks_za_brisanje = (smer_navise) ? i : (i - 1 + sve_pozicije.size()) % sve_pozicije.size();
+                break;
+            }
+        }
+        
+        if(sledeca_pozicija == -1){
+            if(smer_navise){
+                indeks_za_brisanje = 0;
+            }else{
+                indeks_za_brisanje = sve_pozicije.size()-1;
+            }
+            sledeca_pozicija = sve_pozicije[indeks_za_brisanje];
+        }
+
+        shared_ptr<UI_zahtev> zahtev = zahtev_za_poziciju[sledeca_pozicija];
+
+        sve_pozicije.erase(sve_pozicije.begin() + indeks_za_brisanje);
+        zahtev_za_poziciju.erase(sledeca_pozicija);
+        
+        l.unlock();
+        this_thread::sleep_for(milliseconds(300));
+        l.lock();
+
+        pozicija = sledeca_pozicija;
+        
+        zahtev->obradjen = true;
+        zahtev->cv.notify_one();
+        
+        return pozicija;
     }
 };
 
 #endif // OS_H_INCLUDED
-
 

@@ -1,0 +1,255 @@
+RAĆUNARSKE VEŽBE 4
+
+KONKURENTNOST
+
+Nastala kao mehanizam za optimizaciju upotrebe procesora. Izuzetno je aktuelna jer omogućava:
+	Jednostavniju realizaciju funkcionalno nezavisnih delova programa (npr. glavni program i pozadinske funkcije).
+	Bolje i ravnomernije iskorišćenje procesora (umesto da procesor čeka neki proces, može da izvršava neki drugi proces za to vreme).
+
+Cilj konkurentnosti
+Potencijalno ubrzanje izvršavanja programa korišćenjem više jezgara/procesora (umesto da jedan procesor sabira milion elemenata, bolje da 4 procesora sabiraju po 250 000 elemenata).
+Idealno se svi zadaci dešavaju istovremeno čime se maksimalno smanjuju vreme izvršavanja programa.
+
+
+NITI (THREADS)
+
+U operativnom sistemu niti predstavljaju:
+	tokove izvršavanja, tj. funkcije programskog koda (koji se prepliću na procesoru)
+	čine osnovu raspoređivanja (scheduling entity).
+Zasebno imaju stek, stanje, prioritet i deskriptor, a heap dele sa ostalim nitima.
+
+Izvršavanje programa
+Svaki program ima bar jednu nit (tok izvršavanja) nastalu od funkcije main().
+Program koji se sastoji samo od jedne niti se naziva sekvencijalni program.
+Program koji se sastoji od više (od jedne) niti naziva se konkurentni program.
+Ideal izvršenja je paralelizam.
+
+Od čega nastaju niti?
+Niti nastaju od funkcija.
+Svaka nit kada se stvara krene da izvršava 'svoj' kod, tj. telo nekakve funkcije koja je prosleđena konstruktoru niti (std::thread).
+
+int main()
+Ulazna tačka (entry point) programa, tj. početak korisničkog dela programa je funkcija main().
+Završetak korisničkog dela programa nastupa kada se završi funkcija main().
+Ovo važi kako za sekvencijalni tako i za konkurentni program.
+
+int main() nit
+Ova nit je naročito bitna!
+Program traje koliko i main().
+Kada se završi main(), završava se i ceo program, što podrazumeva prekidanje svih niti procesa.
+Osim toga, main() nit je kao i sve druge niti.
+
+
+std::thread
+
+Služi za stvaranje niti (toka izvršavanja).
+Kada se stvori nit, objekat klase std::thread je u stanju 'joinable' (pokazuje na tok izvršavanja). To znači da je nit krenula da se izvršava i mi treba da odredimo da li želimo da se ta nit završi ili nas to ne interesuje. Ako želimo da se završi, treba da pozovemo join, a ako nas to ne interesuje da li će ona stići do kraja ili ako nema kraj onda ćemo pozvati detach().
+Nit se prevodi iz stanja 'joinable' operacijama: join() i detach(). Ukoliko se nit ne prevede iz stanja 'joinable' nekom od navedenih metoda, dobija se greška: Terminate called without an active exception. Core dumped.
+
+Primer: Zdravko nit
+void zdravo() {
+	cout << "Zdravo Sveto!" << endl;
+}
+void zdravko_primer() {
+	thread nit(zdravo);
+	nit.join();
+}
+U main-u samo pozovemo zdravko_primer().
+zdravko_primer prvo kreira nit koja poziva funkciju zdravo i zatim izvršavamo tu nit, čeka da se ta nit završi ili da nekako ta nit vrati povratnu vrednost.
+Nit main poziva funkciju zdravko_primer koja kreira nit 'nit', što znači da nit main takođe kreira i nit 'nit'. Krenuće 'nit' da izvršava funkciju zdravo, a za to vreme main čeka dok funkcija zdravo ne stigne do kraja unutar te nove niti. Nit zdravo je ispisala 'Zdravo Sveto!'.
+
+Za niti koristimo #include <thread>
+
+Kompajliramo linijom g++ -pthread ime_datoteke.cpp
+Ako želimo izlazni fajl g++ -pthread -o moj_program ime_datoteke.cpp
+
+join() ili detach()?
+Operacija join() blokira nit pozivaoca dok se nit na kojoj je operacija join() pozvana ne završi. Koristi se kada nit main() čeka rezultat rada niti koje je stvorio.
+Operacija detach() razdvaja nit pozivaoca od niti na kojoj je operacija detach() pozvana, tako da nit pozivalac ne čeka da se završi nit na kojoj je pozvana operacija detach(). Ovo bismo koristili kada bismo hteli recimo da u pozadini imamo neku nit koja bi pozivala neku funkciju za merenje vremena, jer nas to ne interesuje u programu.
+
+Primer: Visina
+void visina_primer(thread &nit) {
+	nit = thread([]()->void {
+		int v;
+		cout << "Unesite svoju visinu u [cm]: ";
+		cin >> v;
+		cout << "Vasa visina je " << v << "cm." << endl; });
+	nit.detach();
+}
+U main-u: thread nit; visina_primer(nit);
+S obzirom da smo stavili detach, ne zanima nas da li će se ova nit izvršiti do kraja, samim tim kad se završi program, main nit se ugasi, pa se ugasi i nit koju smo napravili pomoću lambda funkcije. Tako da nemamo garancije da li ćemo moći svaki put da unesemo ili da se ispise. Ako bismo hteli da budemo sigurni da će se izvršiti, stavili bismo join.
+
+Argumenti i povratna vrednost
+Za nit nastalu od funkcije f():
+	Pri stvaranju, niti se moraju proslediti argumenti po istim pravilima kao da se poziva obična C++ funkcija f().
+	Vrednost svih argumenata niti se pri stvaranju kopiraju u kontekst niti.
+	Povratna vrednost funkcije f() se zanemaruje (uvek je void). Zato obično prosledimo adresu i onda na tu adresu upisujemo rezultat (primer).
+
+Primer: Argumenti niti
+void zbir(int a, int b, int &rez) {
+	rez = a + b;
+}
+void argumenti_niti() {
+	int rezultat = -420;
+	thread nit(zbir, 2, 7, ref(rezultat)); // prvo pišemo adresu funkcije koju želimo da izvrši, to može biti i anonimna funkcija, zatim idu parametri za tu funkciju. Mora da ide ref() jer niti ne znaju šta je referenca, a šta nije, tako da moramo eksplicitno da kažemo da je to nešto referenca ka nekoj promenljivoj.
+	nit.join();
+	cout << "Rezultat sabiranja: " << rezultat << endl;
+}
+
+
+
+Međusobna isključivost
+
+Međusobno isključivo pristupanje niti zajedničkim/deljenim resursima je neophodno da bi se zaštitila konzistentnost tih resursa.
+Resurs može biti procesorsko vreme, memorija, ulazno-izlazni uređaji, itd, ali ključno za nas će biti promenljive u kodu i ulazno-izlazni uređaji, odnosno standardni ulaz i izlaz.
+Zajednički/deljeni resurs je resurs koji koriste više niti istovremeno.
+Konzistentan znači da operacije koje predviđamo da se mogu desiti će dovesti do promene stanja tako da stanje uvek bude legalno, tako da neće moći da se dođe u neko nemoguće stanje promenljive.
+Konzistentnost se narušava stihijskim pristupanjem deljenim resursima (dolazi do 'stanja trkanja' i dovodimo promenljivu u ilegalno stanje).
+
+Stanje trkanja (race-condition)
+
+Kada dve (ili više) niti istovremeno pristupaju nezaštićenom deljenom resursu:
+	One se trkaju koja će pre da pristupi resursu.
+	Posledica: Rezultat izvršavanja neočekivano zavisi od redosleda događaja (pristupa), odnosno toga ko je pobedio u trci.
+	To znači da je naš deterministički program upravo postao ne-deterministički.
+U primeru trkanja, svaka nit prvo kopira trenutnu vrednost kod sebe i onda je menja, samim tim uvek ćemo dobijati različita rešenja.
+
+thread nit1([&brojac]() {
+    for (int i = 0; i < ITER_NO; i++) brojac++;
+});
+Ovo je isto lambda funkcija samo što nismo pisali ->... deo jer nam ne treba, povratna vrednost je void.
+
+Ispravan program
+
+Da bi konkurentni program bio ispravan, svi pristupi deljenim promenljivama moraju biti ekskluzivni i (po potrebi) sinhronizovani.
+Ekskluzivnost se postiže zabranom istovremenog pristupa deljenom resursu od strane više niti.
+Sinhronizacija se postiže uspostavljanjem unapred određenog redosleda pristupa niti deljenom resursu.
+
+Primer: ekskluzivnost
+void ekskluzivnost_primer() {
+
+int brojac = 0;
+mutex e;
+
+thread nit1([&brojac, &e]() {
+for (int i = 0; i < ITER_NO; i++) {
+e.lock(); brojac++; e.unlock();}});
+
+thread nit2([&brojac, &e]() {
+for (int i = 0; i < ITER_NO; i++) {
+e.lock(); brojac--; e.unlock();}});
+
+nit1.join();
+nit2.join();
+
+cout << brojac << endl;
+}
+
+mutex moramo proslediti po referenci, zato što jedan mutex manje više uvek odgovara jednom deljenom resursu ili skupu deljenih resursa koji rade zajedno.
+U ovom slucaju imamo samo jedan deljeni resurs, pa mutex vezujemo za njega.
+Mutex i deljene promenljive idu zajedno, bez deljene promenljive ne možemo koristiti mutex, a ne možemo koristiti deljenu promenljivu bez mutexa jer ćemo onda dovesti program u nekonzistentno stanje.
+Kada stavimo e.lock(), to znači da mutex sad zaključa tu stvar i niko drugi ne može da mu pristupi.
+Kad smo završili sa radom sa deljenom promenljivom, oslobodićemo je sa e.unlock().
+
+std::mutex
+
+To je primitiva koja obezbeđuje međusobnu isključivost.
+MUTual EXclusion
+Da bi se koristila klasa std::mutex potrebno je uključivanje zaglavlja <mutex>.
+Nudi operacije:
+	lock()
+	unlock()
+Treba izbegavati direktno korišćenje ovih operacija!
+	Nisu sigurne u slučaju izuzetka.
+Treba paziti kod korišćenja više objekata klase std::mutex u programu.
+Moguće je izazivanje mrtve petlje (deadlock)!
+Objekat klase std::mutex je ZABRANJENO kopirati.
+Čak i da je to moguće, program semantički ne bi bio ispravan jer bi niti zaključavale različite propusnice (kopije) umesto jedinstvene propusnice (originala).
+Novi standard pruža mogućnost da se kompajleru eksplicitno zabrani da stvori neke od metoda koje se podrazumevano automatski generišu (npr. konstruktor ili operator dodele).
+
+Primer: propuštenica
+mutex m;
+void f() { // napraviti 2 niti od funkcije f
+int * veliki_niz;
+try {
+m.lock();
+veliki_niz = new int[1000000000000];
+m.unlock();
+} catch (const bad_alloc& e) {
+cout << "Alokacija memorije neuspesna!: ";
+cout << e.what() << endl;
+}
+}
+
+Ovde neće stići do m.unlock() jer će nam izbaciti grešku zbog loše alokacije memorije i to je loše, zbog toga koristimo unique_lock.
+
+std::unique_lock
+
+Služi za 'zaključavanje' objekata klase std::mutex.
+To je šablonska (template) klasa.
+	Parametar šablona za naše zadatke će biti klasa std::mutex.
+Konstruktoru se kao argument prenosi referenca na objekat klase std::mutex koji treba zaključati.
+	Primer: unique_lock<mutex> ul(m);   za mutex m
+Obezbeđuje 'automatsko' oslobađanje objekta klase std::mutex (u destruktoru) kada objekat klase završi svoj životni vek.
+Omogućuje privremeno otpuštanje propusnice (operacija unlock()), što se može koristiti radi otpuštanja propusnice radi ispunjenja uslova čekanja ili povremenog otpuštanja propusnice radi sprečavanja 'izgladnjivanja' niti.
+
+Kritična sekcija
+
+Kritična sekcija je deo koda u kojem se pristupa deljenom resursu.
+Kritična sekcija treba da je što kraća!
+	U njoj dolazi do serijalizacije izvršavanja niti! To dovodi do usporenja programa, a i samo jedna nit tada obavlja posao što isto dodatno usporava program u datom trenutku, zato je potrebno da taj deo bude što kraći.
+Ulaz u i izlaz iz kritične sekcije se štiti mehanizmom za sinhronizaciju (std::mutex, odnosno unique_lock-om nad mutex-om).
+
+Primer:
+void visina() {
+int v;
+m.lock(); // zakljucavanje propusnice za iostream
+// ulazak u KS (pocetak koriscenja resursa - iostream)
+cout << "Koliko ste visoki [cm]?" << endl;
+cin >> v;
+cout << "Vasa visina je " << v << " cm." << endl;
+// izlazak iz KS (kraj koriscenja resursa - iostream)
+m.unlock(); // oslobadjamo pristup deljenom resursu
+}
+
+Ovime sprečavamo štetna preplitanja na standardnom ulazu i izlazu.
+
+Mrtva petlja (deadlock)
+
+Mora se paziti kako se formiraju kritične sekcije!
+U slučaju korišćenja više od jedne propusnice u programu, moguće je izazivanje mrtve petlje.
+Najbolja praksa je da ukoliko ima više propusnica u programu, kritične sekcije tih propusnica budu razdvojene.
+
+Primer: Nit1 zauzima objekat1(propusnica1), nit2 zauzima objekat2(propusnica2). Niti1 je potrebna propusnica2 kako bi nastavila sa radom, ali joj nit2 ne da, i obrnuto, niti2 je potrebna propusnica1 kako bi nastavila sa radom, ali joj nit1 ne da i tu dolazi do mrtve petlje.
+
+Kad nam se desi mrtva petlja, potrebno je da terminišemo program.
+Dobra praksa je da se kao deljene promenljive koriste objekti klase koje:
+	enkapsuliraju atribute
+	uključuju i objekte za sinhronizaciju (std::mutex) i
+	pristup atributima obezbeđuju preko ekskluzivnih i sinhronizovanih metoda.
+
+cout << flush; - koristimo kada ne zelimo da se ispisi prvo skladiste  bafer pa tek kad se nakupi da se ispise, vec da se odmah ispise na stdout
+
+
+
+
+class Brojac {
+   mutex m; //propusnica pripada klasi i obezbedjuje sprecavanje stetnog preplitanja pri vrsenju operacija nad objektima klase
+   int broj; //vrednost Brojaca
+ public:
+   Brojac() : broj(0) {} //inicijalno je Brojac nula
+   void inc();//operacija povecava Brojac, ali pre toga zakljucava propusnicu i na taj nacin sprecava stetno preplitanja pri izmeni Brojaca
+   void dec();//operacija smanjuje Brojac, ali pre toga zakljucava propusnicu i na taj nacin sprecava stetno preplitanja pri izmeni Brojaca
+   friend ostream& operator<<(ostream& os, Brojac& b);
+};
+
+
+
+
+
+
+
+
+
+
+
