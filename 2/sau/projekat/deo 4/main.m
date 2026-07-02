@@ -80,23 +80,6 @@ s = tf('s');
 G_delta = 0.0125 / ((s + 1) * (s + 0.025))
 H = 1;
 
-% G = tf(sys) je ekvivalentno funkciji prenosa G = 0.0125 / ((s + 1) * (s + 0.025)) datoj u zadatku
-
-%    ؀
-%    Transfer function 'G' from input 'u1' to output ...
-%
-%                0.007014
-%    y1:  ---------------------
-%        s^2 + 1.025 s + 0.025
-%
-%    Continuous-time model.
-%
-%    Transfer function 'G_delta' from input 'u1' to output ...
-%
-%                0.0125
-%    y1:  ---------------------
-%        s^2 + 1.025 s + 0.025
-%
 
 % -------- PROJEKTOVANJE PI REGULATORA ------------
 % Naš objekat ima spor pol na s = -0.025.
@@ -107,7 +90,7 @@ H = 1;
 % ali funkciju prenosa regulatora simuliramo bez pojacanja
 
 G_reg = (s + 0.025) / s;
-G0 = G_reg * G * H; % Povratni prenos
+G0 = G_reg * G_delta * H; % Povratni prenos
 
 
 % ------------- BIRANJE POJAVANJA Kp ---------------
@@ -136,14 +119,14 @@ fprintf('Ki = %f\n', Ki);
 G_reg = Kp + (Ki / s);
 
 
-% funkcija povratnog prenosa sistema sa regulatorom
+% funkcija povratnog prenosa
 G1 = G_reg * G;
 
 % ------- NIKVIST ----------
 nyquist(G1);grid on;
 
 % ------- PRETECI ----------
-[d,fi,Wpi,Wpf] = margin(G1); margin(G1);grid on;
+% [d,fi,Wpi,Wpf] = margin(G1); margin(G1);grid on;
 
 
 
