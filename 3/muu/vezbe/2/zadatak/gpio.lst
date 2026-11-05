@@ -1,0 +1,39 @@
+C51 COMPILER V8.16   GPIO                                                                  11/06/2026 00:37:56 PAGE 1   
+
+
+C51 COMPILER V8.16, COMPILATION OF MODULE GPIO
+OBJECT MODULE PLACED IN gpio.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE src\gpio.c OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\gpio.lst) OB
+                    -JECT(gpio.obj)
+
+line level    source
+
+   1          
+   2          #include <stdint.h>
+   3          #include <at89c51rc2.h>
+   4          #include "gpio.h"
+   5          
+   6          void  init(){
+   7   1      
+   8   1              P2 = 0xFF;
+   9   1              P0 = 0x00;
+  10   1      
+  11   1      }
+  12          
+  13          uint8_t get_P0(){ return P0; }
+  14          
+  15          void set_P2(uint8_t p){    P2 = p; }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     16    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

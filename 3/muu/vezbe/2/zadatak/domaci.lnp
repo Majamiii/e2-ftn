@@ -1,0 +1,5 @@
+"main.obj",
+"gpio.obj",
+"utils.obj" 
+TO "domaci" 
+RAMSIZE(256) 

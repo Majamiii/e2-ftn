@@ -1,0 +1,27 @@
+Sistemi automatskog upravljanja
+Spisak ispitnih pitanja, školska godina 2022-2023
+1. Osnovno kolo SAU.
+2. Laplasova transformacija. Definicija i osobine. Laplasova transformacija
+karakteristiˇcnih pobudnih signala.
+3. Inverzna Laplasova transformacija.
+4. Osobine linearnih sistema: kauzalnost, stacionarnost, linearnost.
+5. Funkcija prenosa i matrica funkcija prenosa.
+
+6. Strukturni blok dijagram SAU. Algebra funkcija prenosa. Graf toka signa-
+la. Mejsonovo pravilo.
+
+7. Linearizacija.
+8. Stabilnost linearnih, stacionarnih sistema. Rautov kriterijum.
+9. Veza izmedu lokacije polova funkcije prenosa SAU u kompleksnoj s-ravni  ̄
+i odziva u prelaznom režimu.
+10. Greška u ustaljenom stanju.
+11. Geometrijsko mesto korena. Definicija, tumaˇcenje i naˇcin konstrukcije.
+12. Nikvistov kriterijum stabilnosti - izvodenje. Cipkinovo pravilo.  ̄
+13. Preteci stabilnosti.
+14. Frekvencijske karakteristike linearnih, stacionarnih sistema.
+15. Bodeovi dijagrami.
+16. Matematiˇcki modeli u prostoru stanja - kanonske forme.
+17. Kretanje sistema u prostoru stanja. Odziv sistema opisanog matematiˇckim
+modelom u prostoru stanja. Matrica funkcija prenosa sistema u prostoru
+stanja. Fundamentalna matrica (definicija, osobine, naˇcini odredivanja).  ̄
+18. Osnovni pojmovi o PID regulatorima: P, I i D komponenta upravljanja.

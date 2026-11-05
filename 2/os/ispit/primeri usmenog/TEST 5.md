@@ -18,7 +18,7 @@ Drajveri definitivno jesu potencijalni vektor za napad — zbog izvršavanja u k
 
 
 
-4)Koja je razlika izmedju jezika za konkurentno programiranje i jezika kome je biblioteka za konkurentno programiranje deo standardne biblioteke? Da li uospte postoji?
+**4)Koja je razlika izmedju jezika za konkurentno programiranje i jezika kome je biblioteka za konkurentno programiranje deo standardne biblioteke? Da li uospte postoji?**
 
 
 
