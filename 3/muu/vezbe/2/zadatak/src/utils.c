@@ -3,8 +3,8 @@
 
 void delay_speed_1(){
 	int i, j;
-    for(i = 0; i < 200; i++) {
-        for(j = 0; j < 200; j++) {
+    for(i = 0; i < 150; i++) {
+        for(j = 0; j < 150; j++) {
         }
     }
 }

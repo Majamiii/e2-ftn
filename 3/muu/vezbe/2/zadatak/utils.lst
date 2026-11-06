@@ -1,4 +1,4 @@
-C51 COMPILER V8.16   UTILS                                                                 11/06/2026 00:43:14 PAGE 1   
+C51 COMPILER V8.16   UTILS                                                                 11/06/2026 01:05:09 PAGE 1   
 
 
 C51 COMPILER V8.16, COMPILATION OF MODULE UTILS
@@ -13,8 +13,8 @@ line level    source
    3          
    4          void delay_speed_1(){
    5   1              int i, j;
-   6   1          for(i = 0; i < 200; i++) {
-   7   2              for(j = 0; j < 200; j++) {
+   6   1          for(i = 0; i < 150; i++) {
+   7   2              for(j = 0; j < 150; j++) {
    8   3              }
    9   2          }
   10   1      }

@@ -43,6 +43,11 @@ int main(void){
 			which_program = which_program >> 2;
 		}
 
+		if ((P0_state & 0xc0)!=0) {
+			which_speed = P0_state & 0xc0; // 11000000
+			which_speed = which_program >> 6;
+		}
+
 		// program 1
 		if ((((P0_state & 0x04) != 0)||(which_program == 0x01))&&(working))  {
 			 if ((P0_state & 0x04) != 0) {
@@ -82,13 +87,13 @@ int main(void){
 
 		// speed 1
 		if ((((P0_state & 0x40)!= 0)||(which_speed == 0x01))&&(working)) {
-			which_speed == 0x01;
+			which_speed = 0x01;
 			delay_speed_1();
 		}
 
 		// speed 2
 		else if ((((P0_state & 0x80)!= 0)||(which_speed == 0x02))&&(working)) {
-			which_speed == 0x02;
+			which_speed = 0x02;
 			delay_speed_2();
 		}
 
