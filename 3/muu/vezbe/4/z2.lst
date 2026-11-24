@@ -1,0 +1,319 @@
+A51 MACRO ASSEMBLER  Z2                                                                   11/20/2026 19:03:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN z2.obj
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE src\z2.a SET(SMALL) DEBUG PRINT(.\z2.lst) OBJECT(z2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1                                                                                                
+                                                                                                                        
+                                                                                                                        
+                                                                                                     
+                       2     
+                       3     
+  0030                 4     CNT_10MS        data 30H                 
+  0031                 5     CNT_S   data 31H                 
+  0000                 6     FLAG_S      bit  20H.0           
+                       7     
+0000                   8     org 0000H         
+0000 021016            9     jmp MAIN
+                      10     
+                      11     ; OVDE JE DRUGACIJE jer je drugi tajmer
+001B                  12     org 001BH                       ; vektor prekida Timer 1
+001B 021000           13     jmp T1_ISR
+                      14     
+1000                  15     org 01000H               
+                      16     
+                      17     
+                      18     
+1000                  19     T1_ISR:
+1000 D5300B           20             djnz CNT_10MS, T1_KRAJ   ;  jos nije 10ms
+1003 753032           21             mov CNT_10MS, #50            ;  proslo 10ms, kreni ispocetka
+1006 D53105           22             djnz CNT_S, T1_KRAJ      ; jos nije 1 ili 2 s
+1009 853631           23             mov CNT_S, KOLIKO_S
+100C D200             24             setb FLAG_S                      ; prosle 1 ili 2s
+                      25     
+100E                  26     T1_KRAJ:
+100E 32               27             reti
+                      28     
+                      29     
+100F                  30     niz:
+100F 81               31             db 0x81
+1010 42               32             db 0x42
+1011 24               33             db 0x24
+1012 18               34             db 0x18
+1013 24               35             db 0x24
+1014 42               36             db 0x42
+1015 81               37             db 0x81
+                      38     
+  0022                39     P0_stanja DATA 0x22
+  0008                40     start     BIT   0x21.0
+  0009                41     stop      BIT   0x21.1
+  000E                42     slow      BIT   0x21.6
+  000F                43     fast      BIT   0x21.7
+  000A                44     prog1     BIT 0x21.2
+  000B                45     prog2     BIT 0x21.3
+  000C                46     prog3     BIT 0x21.4
+  000D                47     prog4     BIT 0x21.5
+  0032                48     P2_stanja DATA 0x32
+  0033                49     Pocetno_1 DATA 0x33
+  0034                50     Pocetno_2 DATA 0x34
+  0035                51     Pocetno_4 DATA 0x35
+  0036                52     KOLIKO_S  DATA 0x36
+                      53     ; Pocetno_5 DATA 0x37
+                      54     
+                      55     
+A51 MACRO ASSEMBLER  Z2                                                                   11/20/2026 19:03:30 PAGE     2
+
+1016                  56     MAIN:
+                      57             ; inicijalizacija tajmera
+1016 758920           58             mov TMOD, #20H   ; Timer 1: Mod2 (gornja 4 bita = 0010)
+1019 758D4D           59             mov TH1, #0x4D   ; pocetna vrednost (ostaje zauvek u TH1)
+101C 758B00           60             mov TL1, #00H    ; pocetna vreddnost za previ ciklus
+                      61     
+                      62             ; inicijalizacija promenljivih i izlaza
+101F 753032           63             mov CNT_10MS, #50
+1022 7531C8           64             mov CNT_S, #200
+1025 C200             65             clr FLAG_S
+1027 75A000           66             MOV P2, #0x00
+102A 7580FF           67             MOV P0, #0xFF
+102D 7B06             68             MOV R3, #6
+102F 753200           69             MOV P2_stanja, #0x00
+1032 753300           70             MOV Pocetno_1, #0x00
+1035 753480           71             MOV Pocetno_2, #0x80 
+1038 7535AA           72             MOV Pocetno_4, #0xAA
+103B 7536C8           73             MOV KOLIKO_S, #200
+                      74     ;       MOV Pocetno_5, #0xF0
+103E D20F             75             SETB fast
+1040 C20E             76             CLR slow
+1042 D20A             77             SETB prog1
+                      78     
+1044 90100F           79             MOV DPTR, #niz
+1047 7406             80             MOV A, #6
+1049 93               81             MOVC A, @A+DPTR  
+                      82     
+                      83             ; dozvola prekida i start
+104A D2AB             84             setb ET1                ; dozvola prekida Timer 1
+104C D2AF             85             setb EA                 ; globalna dozvola prekida
+104E D28E             86             setb TR1                ; start Timer 1
+                      87     
+                      88     
+                      89     
+                      90     
+                      91     
+1050                  92     WHILE_LOOP:
+                      93             ; ovde moze da ide citanje ulaza/druga logika...
+1050 30001B           94             JNB FLAG_S, SKOK_KRAJ_PETLJE                               ; nisu prosle 2s -> dalj
+                             e    
+1053 C200             95             clr FLAG_S                                      ; obradjujemo dogadjaj, brisemo fla
+                             g
+1055 858022           96             MOV P0_stanja, P0
+                      97             
+1058 301022           98             JNB P0_stanja.0, START1
+105B 301113           99             JNB P0_stanja.1, STOP_L
+105E 20081C          100             JB start, START1
+1061 20090D          101             JB stop, STOP_L
+                     102             
+1064 C208            103             CLR start
+1066 D209            104             SETB stop
+1068 753200          105             MOV P2_stanja, #0x00
+106B 8532A0          106             MOV P2, P2_stanja
+                     107     
+106E                 108     SKOK_KRAJ_PETLJE:
+106E 021117          109             LJMP KRAJ_PETLJE
+                     110     
+1071                 111     STOP_L:
+1071 C208            112             CLR start
+1073 D209            113             SETB stop 
+1075 753200          114             MOV P2_stanja, #0x00
+1078 8532A0          115             MOV P2, P2_stanja
+107B 2117            116             JMP KRAJ_PETLJE
+                     117     
+                     118     
+107D                 119     START1:
+A51 MACRO ASSEMBLER  Z2                                                                   11/20/2026 19:03:30 PAGE     3
+
+107D D208            120             SETB start
+107F C209            121             CLR stop
+1081 301217          122             JNB P0_stanja.2, LOGIC1
+1084 301328          123             JNB P0_stanja.3, LOGIC2
+1087 30143A          124             JNB P0_stanja.4, LOGIC3
+108A 30154F          125             JNB P0_stanja.5, LOGIC4
+                     126             ; JNB P0_stanja.6, LOGIC5
+108D 200A0B          127             JB prog1, LOGIC1
+1090 200B1C          128             JB prog2, LOGIC2
+1093 200C2E          129             JB prog3, LOGIC3
+1096 200D43          130             JB prog4, LOGIC4
+                     131             ; JB prog5, LOGIC5
+1099 8000            132             JMP LOGIC1
+                     133     
+109B                 134     LOGIC1:
+109B 300852          135             JNB start, SKIP
+109E D20A            136             SETB prog1
+10A0 C20B            137             CLR prog2
+10A2 C20C            138             CLR prog3
+10A4 C20D            139             CLR prog4         
+                     140     ;       CLR prog5
+10A6 E533            141             MOV A, Pocetno_1
+10A8 F4              142             CPL A
+10A9 F533            143             MOV Pocetno_1, A
+10AB F532            144             MOV P2_stanja, A
+10AD 8041            145             JMP SKIP
+                     146     
+10AF                 147     LOGIC2:
+10AF 30083E          148             JNB start, SKIP
+                     149     
+10B2 D20B            150             SETB prog2
+10B4 C20A            151             CLR prog1
+10B6 C20C            152             CLR prog3
+10B8 C20D            153             CLR prog4 
+                     154     ;       CLR prog5
+                     155     
+10BA E534            156             MOV A, Pocetno_2
+10BC 23              157             RL  A
+10BD F534            158             MOV Pocetno_2, A
+10BF 853432          159             MOV P2_stanja, Pocetno_2
+10C2 802C            160             JMP SKIP
+                     161     
+10C4                 162     LOGIC3:
+10C4 300829          163             JNB start, SKIP
+10C7 D20C            164             SETB prog3
+10C9 C20A            165             CLR prog1
+10CB C20B            166             CLR prog2
+10CD C20D            167             CLR prog4         
+                     168     ;       CLR prog5
+10CF 90100F          169             MOV DPTR, #niz
+10D2                 170     LOOP3:
+10D2 EB              171             MOV A, R3
+10D3 93              172             MOVC A, @A+DPTR
+                     173             
+10D4 DB02            174             DJNZ R3, NASTAVI
+10D6 7B06            175             MOV R3, #6
+                     176     
+10D8                 177     NASTAVI:
+10D8 F532            178             MOV P2_stanja, A
+                     179     
+10DA 8014            180             JMP SKIP
+                     181     
+10DC                 182     LOGIC4:
+10DC 300811          183             JNB start, SKIP
+10DF D20D            184             SETB prog4
+10E1 C20A            185             CLR prog1
+A51 MACRO ASSEMBLER  Z2                                                                   11/20/2026 19:03:30 PAGE     4
+
+10E3 C20B            186             CLR prog2
+10E5 C20C            187             CLR prog3
+                     188     ;       CLR prog5
+10E7                 189     LOOP4:
+10E7 E535            190             MOV A, Pocetno_4
+10E9 F4              191             CPL A
+10EA F535            192             MOV Pocetno_4, A
+10EC F532            193             MOV P2_stanja, A
+10EE 8000            194             JMP SKIP
+                     195     
+                     196     ; LOGIC5:
+                     197     ;       JNB start, SKIP
+                     198     ;       SETB prog5
+                     199     ;       CLR prog1
+                     200     ;       CLR prog2
+                     201     ;       CLR prog3
+                     202     ;       CLR prog4
+                     203     ;LOOP5:
+                     204     ;       MOV A, Pocetno_5
+                     205     ;       RL A
+                     206     ;       MOV Pocetno_5, A
+                     207     ;       MOV P2_stanja, A
+                     208     ;       JMP SKIP
+                     209     
+10F0                 210     SKIP:
+                     211             
+10F0 8532A0          212             MOV P2, P2_stanja
+                     213     
+10F3 30170B          214             JNB P0_stanja.7, DELAY_FAST
+10F6 301614          215             JNB P0_stanja.6, DELAY_SLOW
+                     216     
+10F9 200F05          217             JB fast, DELAY_FAST
+10FC 200E0E          218             JB slow, DELAY_SLOW
+                     219     
+10FF 8016            220             JMP KRAJ_PETLJE
+                     221     
+1101                 222     DELAY_FAST:
+1101 D20F            223             setb fast
+1103 C20E            224             clr slow
+                     225     
+1105 753664          226             MOV KOLIKO_S, #100
+1108 753164          227         MOV CNT_S, #100
+                     228     
+110B 800A            229             JMP KRAJ_PETLJE
+                     230     
+110D                 231     DELAY_SLOW:
+110D C20F            232             clr fast
+110F D20E            233             setb slow
+1111 7536C8          234             MOV KOLIKO_S, #200 
+1114 7531C8          235         MOV CNT_S, #200
+                     236     
+1117                 237     KRAJ_PETLJE:    
+1117 0150            238             JMP WHILE_LOOP  
+                     239     
+                     240     
+                     241             end
+A51 MACRO ASSEMBLER  Z2                                                                   11/20/2026 19:03:30 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CNT_10MS . . . . .  D ADDR   0030H   A   
+CNT_S. . . . . . .  D ADDR   0031H   A   
+DELAY_FAST . . . .  C ADDR   1101H   A   
+DELAY_SLOW . . . .  C ADDR   110DH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+FAST . . . . . . .  B ADDR   0021H.7 A   
+FLAG_S . . . . . .  B ADDR   0020H.0 A   
+KOLIKO_S . . . . .  D ADDR   0036H   A   
+KRAJ_PETLJE. . . .  C ADDR   1117H   A   
+LOGIC1 . . . . . .  C ADDR   109BH   A   
+LOGIC2 . . . . . .  C ADDR   10AFH   A   
+LOGIC3 . . . . . .  C ADDR   10C4H   A   
+LOGIC4 . . . . . .  C ADDR   10DCH   A   
+LOOP3. . . . . . .  C ADDR   10D2H   A   
+LOOP4. . . . . . .  C ADDR   10E7H   A   
+MAIN . . . . . . .  C ADDR   1016H   A   
+NASTAVI. . . . . .  C ADDR   10D8H   A   
+NIZ. . . . . . . .  C ADDR   100FH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P0_STANJA. . . . .  D ADDR   0022H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P2_STANJA. . . . .  D ADDR   0032H   A   
+POCETNO_1. . . . .  D ADDR   0033H   A   
+POCETNO_2. . . . .  D ADDR   0034H   A   
+POCETNO_4. . . . .  D ADDR   0035H   A   
+PROG1. . . . . . .  B ADDR   0021H.2 A   
+PROG2. . . . . . .  B ADDR   0021H.3 A   
+PROG3. . . . . . .  B ADDR   0021H.4 A   
+PROG4. . . . . . .  B ADDR   0021H.5 A   
+SKIP . . . . . . .  C ADDR   10F0H   A   
+SKOK_KRAJ_PETLJE .  C ADDR   106EH   A   
+SLOW . . . . . . .  B ADDR   0021H.6 A   
+START. . . . . . .  B ADDR   0021H.0 A   
+START1 . . . . . .  C ADDR   107DH   A   
+STOP . . . . . . .  B ADDR   0021H.1 A   
+STOP_L . . . . . .  C ADDR   1071H   A   
+T1_ISR . . . . . .  C ADDR   1000H   A   
+T1_KRAJ. . . . . .  C ADDR   100EH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WHILE_LOOP . . . .  C ADDR   1050H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

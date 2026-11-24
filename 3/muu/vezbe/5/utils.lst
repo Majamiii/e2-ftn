@@ -1,0 +1,46 @@
+C51 COMPILER V8.16   UTILS                                                                 11/24/2026 01:26:32 PAGE 1   
+
+
+C51 COMPILER V8.16, COMPILATION OF MODULE UTILS
+OBJECT MODULE PLACED IN utils.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE src\utils.c OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\utils.lst) 
+                    -OBJECT(utils.obj)
+
+line level    source
+
+   1          #include <stdint.h>
+   2          #include "utils.h"
+   3          
+   4          uint8_t program_2(uint8_t prev){
+   5   1               if (prev == 0x80){ return 0x01; }
+   6   1               else {
+   7   2                      prev = prev << 1;
+   8   2                      return prev;
+   9   2              }
+  10   1      }
+  11          
+  12          uint8_t program_3(uint8_t prev, uint8_t lower, uint8_t to_left){
+  13   1                if (to_left){
+  14   2                              lower = lower << 1;
+  15   2                }else{
+  16   2                      lower = lower >> 1;
+  17   2                }
+  18   1                prev = ((lower & 0x01) << 3) | ((lower & 0x02) << 1) | ((lower & 0x04) >> 1) | ((lower & 0x08) >> 3);
+  19   1                prev = prev << 4;
+  20   1                prev += lower;
+  21   1                return prev;
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    112    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,120 @@
+C51 COMPILER V8.16   MAIN                                                                  11/24/2026 01:26:32 PAGE 1   
+
+
+C51 COMPILER V8.16, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE src\main.c OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\main.lst) OB
+                    -JECT(main.obj)
+
+line level    source
+
+   1          #include <stdint.h>
+   2          #include <stdbool.h>
+   3          #include <stdlib.h>
+   4          
+   5          #include "gpio.h"
+   6          #include "timers.h"
+   7          #include "utils.h"
+   8          
+   9          int main(void){
+  10   1      
+  11   1              uint8_t P0_stanje;
+  12   1              uint8_t P2_stanje = 0x00;     // trenutno stanje dioda
+  13   1      
+  14   1              uint8_t running = 0;          // 1 = program se izvrsava (start), 0 = stop
+  15   1              uint8_t which_program = 1;    // 1..4
+  16   1              uint8_t which_speed = 1;      // 1 ili 2
+  17   1              uint8_t load_program = 1;     // 1 = treba ucitati pocetno stanje programa
+  18   1      
+  19   1              uint8_t lower_4_bites = 0x01; // donja 4 bita za program 3
+  20   1              uint8_t to_left = 1;          // smer za program 3
+  21   1      
+  22   1              uint8_t reload = 256 - 250;          // 250 us pri 12 MHz
+  23   1              uint16_t soft_cnt_speed1 = 4000;     // 2000 * 250us = 500 ms
+  24   1              uint16_t soft_cnt_speed2 = 2000;     // 1000 * 250us = 250 ms
+  25   1      
+  26   1              init();
+  27   1              initTIM1(2, reload, soft_cnt_speed1);   // tajmer 1, 8-bitni auto reload
+  28   1              toggleTIM1_IT(1);
+  29   1      
+  30   1              while(true){
+  31   2                      P0_stanje = get_P0();
+  32   2      
+  33   2                      // tasteri su aktivni na nuli
+  34   2                      if(!(P0_stanje & 0x01)){ running = 1; }                           // start
+  35   2                      if(!(P0_stanje & 0x02)){ running = 0; }                           // stop
+  36   2      
+  37   2                      if(!(P0_stanje & 0x04)){ which_program = 1; load_program = 1; }   // program 1
+  38   2                      if(!(P0_stanje & 0x08)){ which_program = 2; load_program = 1; }   // program 2
+  39   2                      if(!(P0_stanje & 0x10)){ which_program = 3; load_program = 1; }   // program 3
+  40   2                      if(!(P0_stanje & 0x20)){ which_program = 4; load_program = 1; }   // program 4
+  41   2      
+  42   2                      if(!(P0_stanje & 0x40) && which_speed != 1){                      // brzina 1
+  43   3                              which_speed = 1;
+  44   3                              initTIM1(2, reload, soft_cnt_speed1);
+  45   3                      }
+  46   2                      if(!(P0_stanje & 0x80) && which_speed != 2){                      // brzina 2
+  47   3                              which_speed = 2;
+  48   3                              initTIM1(2, reload, soft_cnt_speed2);
+  49   3                      }
+  50   2      
+  51   2                      // ucitavanje pocetnog stanja izabranog programa
+  52   2                      if(load_program){
+  53   3                              load_program = 0;
+  54   3                              if(which_program == 1){
+C51 COMPILER V8.16   MAIN                                                                  11/24/2026 01:26:32 PAGE 2   
+
+  55   4                                      P2_stanje = 0x00;
+  56   4                              }else if(which_program == 2){
+  57   4                                      P2_stanje = 0x01;
+  58   4                              }else if(which_program == 3){
+  59   4                                      lower_4_bites = 0x01;
+  60   4                                      to_left = 1;
+  61   4                                      P2_stanje = 0x81;
+  62   4                              }else{
+  63   4                                      P2_stanje = 0x00;
+  64   4                              }
+  65   3                      }
+  66   2      
+  67   2                      // jedan korak programa na svaki istek tajmera
+  68   2                      if(tim1_2s){
+  69   3                              tim1_2s = 0;
+  70   3                              if(running){
+  71   4                                      if(which_program == 1){
+  72   5                                              P2_stanje = ~P2_stanje;
+  73   5                                      }else if(which_program == 2){
+  74   5                                              P2_stanje = program_2(P2_stanje);
+  75   5                                      }else if(which_program == 3){
+  76   5                                              P2_stanje = program_3(P2_stanje, lower_4_bites, to_left);
+  77   5                                              lower_4_bites = P2_stanje & 0x0F;
+  78   5                                              if(lower_4_bites == 0x08){ to_left = 0; }
+  79   5                                              if(lower_4_bites == 0x01){ to_left = 1; }
+  80   5                                      }else{
+  81   5                                              if(P2_stanje == 0xFF){
+  82   6                                                      P2_stanje = 0x00;
+  83   6                                              }else{
+  84   6                                                      P2_stanje = (P2_stanje << 1) | 0x01;
+  85   6                                              }
+  86   5                                      }
+  87   4                              }
+  88   3                      }
+  89   2      
+  90   2                      set_P2(P2_stanje);
+  91   2              }
+  92   1      
+  93   1              return 0;
+  94   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    326    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -17,14 +17,14 @@ int main(void){
 	uint8_t working = 0x00;
 	uint8_t which_program = 0x00;
 	uint8_t which_speed = 0x00;
-	uint8_t lower_4_bites = 0x00;
+	uint8_t lower_4_bites = 0x02;
 	uint8_t to_left = 0x00;
 
 	init();
 
 	while(true){
 
-		P0_state = get_P0();
+		P0_state = ~get_P0();
 		
 		// start
 		if (((P0_state & 0x01) != 0)||(working==0x01)) {
@@ -38,13 +38,13 @@ int main(void){
 			continue;
 		}
 		
-		if ((P0_state & 0x3c)!=0) {
-			which_program = P0_state & 0x3c; // 00111100
+		if ((P0_state & 0x7c)!=0) {
+			which_program = P0_state & 0x7c; // 01111100
 			which_program = which_program >> 2;
 		}
 
 		if ((P0_state & 0xc0)!=0) {
-			which_speed = P0_state & 0xc0; // 11000000
+			which_speed = P0_state & 0xa0; // 11000000
 			which_speed = which_program >> 6;
 		}
 
@@ -82,20 +82,30 @@ int main(void){
 			which_program = 0x08;
 			out_state = rand() % 0xFF;
 		}
+
+		// program 5
+		else if ((((P0_state & 0x40) != 0)||(which_program == 0x10))&&(working)){
+			which_program = 0x10;
+			if ((P0_state & 0x40) != 0) {
+			 	out_state = 0x0F;
+			 }
+			out_state = ~out_state;
+		}
 		
 		set_P2(out_state);
 
 		// speed 1
-		if ((((P0_state & 0x40)!= 0)||(which_speed == 0x01))&&(working)) {
-			which_speed = 0x01;
-			delay_speed_1();
-		}
+		//if ((((P0_state & 0x40)!= 0)||(which_speed == 0x01))&&(working)) {
+		//	which_speed = 0x01;
+		//	delay_speed_1();
+		//}
 
 		// speed 2
-		else if ((((P0_state & 0x80)!= 0)||(which_speed == 0x02))&&(working)) {
-			which_speed = 0x02;
-			delay_speed_2();
-		}
+		delay_speed_2();
+		//if ((((P0_state & 0x80)!= 0)||(which_speed == 0x02))&&(working)) {
+		//	which_speed = 0x02;
+		//	delay_speed_2();
+		//}
 
 	}
 

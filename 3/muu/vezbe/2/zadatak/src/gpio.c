@@ -6,7 +6,7 @@
 void  init(){
 
  	P2 = 0xFF;
-	P0 = 0x00;
+	P0 = 0xFF;
 
 }
 

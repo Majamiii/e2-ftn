@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.15                                                        11/06/2026  01:05:09  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.15                                                        11/06/2026  19:15:15  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.15, INVOKED BY:
@@ -37,17 +37,17 @@ LINK MAP OF MODULE:  domaci (MAIN)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     014EH     UNIT         ?PR?MAIN?MAIN
-            CODE    0151H     008BH     UNIT         ?C?LIB_CODE
-            CODE    01DCH     005CH     UNIT         ?PR?_PROGRAM_3?UTILS
-            CODE    0238H     004DH     UNIT         ?PR?RAND?RAND
-            CODE    0285H     003BH     UNIT         ?PR?DELAY_SPEED_1?UTILS
-            CODE    02C0H     003BH     UNIT         ?PR?DELAY_SPEED_2?UTILS
-            CODE    02FBH     0014H     UNIT         ?PR?_PROGRAM_2?UTILS
-            CODE    030FH     000CH     UNIT         ?C_C51STARTUP
-            CODE    031BH     0007H     UNIT         ?PR?INIT?GPIO
-            CODE    0322H     0006H     UNIT         ?PR?_SET_P2?GPIO
-            CODE    0328H     0003H     UNIT         ?PR?GET_P0?GPIO
+            CODE    0003H     0143H     UNIT         ?PR?MAIN?MAIN
+            CODE    0146H     008BH     UNIT         ?C?LIB_CODE
+            CODE    01D1H     005CH     UNIT         ?PR?_PROGRAM_3?UTILS
+            CODE    022DH     004DH     UNIT         ?PR?RAND?RAND
+            CODE    027AH     003BH     UNIT         ?PR?DELAY_SPEED_1?UTILS
+            CODE    02B5H     003BH     UNIT         ?PR?DELAY_SPEED_2?UTILS
+            CODE    02F0H     0014H     UNIT         ?PR?_PROGRAM_2?UTILS
+            CODE    0304H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0310H     0007H     UNIT         ?PR?INIT?GPIO
+            CODE    0317H     0006H     UNIT         ?PR?_SET_P2?GPIO
+            CODE    031DH     0003H     UNIT         ?PR?GET_P0?GPIO
 
 
 
@@ -59,7 +59,7 @@ SEGMENT
 ---------------------
 ?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
-BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  01:05:09  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  19:15:15  PAGE 2
 
 
 
@@ -70,7 +70,6 @@ SEGMENT
   +--> ?PR?_PROGRAM_2?UTILS
   +--> ?PR?_PROGRAM_3?UTILS
   +--> ?PR?RAND?RAND
-  +--> ?PR?DELAY_SPEED_1?UTILS
   +--> ?PR?DELAY_SPEED_2?UTILS
 
 
@@ -113,64 +112,64 @@ SYMBOL TABLE OF MODULE:  domaci (MAIN)
   C:0024H         LINE#         23
   C:0027H         LINE#         25
   C:0027H         LINE#         27
-  C:002CH         LINE#         30
-  C:0036H         LINE#         31
-  C:0039H         LINE#         32
-  C:0039H         LINE#         35
-  C:003EH         LINE#         36
-  C:0041H         LINE#         37
-BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  01:05:09  PAGE 3
+  C:002EH         LINE#         30
+  C:0038H         LINE#         31
+  C:003BH         LINE#         32
+  C:003BH         LINE#         35
+  C:0040H         LINE#         36
+  C:0043H         LINE#         37
+  C:0048H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  19:15:15  PAGE 3
 
 
-  C:0046H         LINE#         38
-  C:0048H         LINE#         39
-  C:0048H         LINE#         41
-  C:0050H         LINE#         42
-  C:0056H         LINE#         43
-  C:005EH         LINE#         44
-  C:005EH         LINE#         46
-  C:0066H         LINE#         47
-  C:006CH         LINE#         48
-  C:0075H         LINE#         49
-  C:0075H         LINE#         52
-  C:0083H         LINE#         53
-  C:0088H         LINE#         54
-  C:008BH         LINE#         55
-  C:008BH         LINE#         56
-  C:008EH         LINE#         57
-  C:0091H         LINE#         58
-  C:0093H         LINE#         61
-  C:00A1H         LINE#         62
-  C:00A4H         LINE#         63
-  C:00ABH         LINE#         64
-  C:00B0H         LINE#         65
-  C:00B3H         LINE#         66
-  C:00B3H         LINE#         67
-  C:00B5H         LINE#         70
-  C:00C4H         LINE#         71
-  C:00C7H         LINE#         72
-  C:00CDH         LINE#         73
-  C:00DFH         LINE#         74
-  C:00EAH         LINE#         75
-  C:00EFH         LINE#         76
-  C:00F2H         LINE#         77
-  C:00F2H         LINE#         78
-  C:00F4H         LINE#         81
-  C:0102H         LINE#         82
-  C:0105H         LINE#         83
-  C:0111H         LINE#         84
-  C:0111H         LINE#         86
-  C:0116H         LINE#         89
-  C:0124H         LINE#         90
-  C:0127H         LINE#         91
-  C:012AH         LINE#         92
-  C:012DH         LINE#         95
-  C:0142H         LINE#         96
-  C:0145H         LINE#         97
-  C:0148H         LINE#         98
-  C:0148H         LINE#         100
-  C:014BH         LINE#         102
-  C:0150H         LINE#         103
+  C:004AH         LINE#         39
+  C:004AH         LINE#         41
+  C:0052H         LINE#         42
+  C:0058H         LINE#         43
+  C:0060H         LINE#         44
+  C:0060H         LINE#         46
+  C:0068H         LINE#         47
+  C:006EH         LINE#         48
+  C:0077H         LINE#         49
+  C:0077H         LINE#         52
+  C:0085H         LINE#         53
+  C:008AH         LINE#         54
+  C:008DH         LINE#         55
+  C:008DH         LINE#         56
+  C:0090H         LINE#         57
+  C:0093H         LINE#         58
+  C:0096H         LINE#         61
+  C:00A4H         LINE#         62
+  C:00A7H         LINE#         63
+  C:00AEH         LINE#         64
+  C:00B6H         LINE#         65
+  C:00B9H         LINE#         66
+  C:00B9H         LINE#         67
+  C:00BBH         LINE#         70
+  C:00CAH         LINE#         71
+  C:00CDH         LINE#         72
+  C:00D3H         LINE#         73
+  C:00E5H         LINE#         74
+  C:00F0H         LINE#         75
+  C:00F5H         LINE#         76
+  C:00F8H         LINE#         77
+  C:00F8H         LINE#         78
+  C:00FAH         LINE#         81
+  C:0108H         LINE#         82
+  C:010BH         LINE#         83
+  C:0117H         LINE#         84
+  C:0119H         LINE#         87
+  C:0127H         LINE#         88
+  C:012AH         LINE#         89
+  C:012FH         LINE#         90
+  C:0132H         LINE#         91
+  C:0132H         LINE#         92
+  C:0135H         LINE#         93
+  C:0135H         LINE#         95
+  C:013AH         LINE#         104
+  C:013DH         LINE#         110
+  C:0140H         LINE#         112
+  C:0145H         LINE#         113
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -178,101 +177,104 @@ SYMBOL TABLE OF MODULE:  domaci (MAIN)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:00A0H         PUBLIC        P2
-  C:0328H         PUBLIC        get_P0
-BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  01:05:09  PAGE 4
+  C:031DH         PUBLIC        get_P0
+  C:0317H         PUBLIC        _set_P2
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  19:15:15  PAGE 4
 
 
-  C:0322H         PUBLIC        _set_P2
-  C:031BH         PUBLIC        init
+  C:0310H         PUBLIC        init
   -------         PROC          INIT
-  C:031BH         LINE#         6
-  C:031BH         LINE#         8
-  C:031EH         LINE#         9
-  C:0321H         LINE#         11
+  C:0310H         LINE#         6
+  C:0310H         LINE#         8
+  C:0313H         LINE#         9
+  C:0316H         LINE#         11
   -------         ENDPROC       INIT
   -------         PROC          GET_P0
-  C:0328H         LINE#         13
+  C:031DH         LINE#         13
   -------         ENDPROC       GET_P0
   -------         PROC          _SET_P2
   D:0022H         SYMBOL        p
-  C:0322H         LINE#         15
+  C:0317H         LINE#         15
   -------         ENDPROC       _SET_P2
   -------         ENDMOD        GPIO
 
   -------         MODULE        UTILS
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:02FBH         PUBLIC        _program_2
-  C:01DCH         PUBLIC        _program_3
-  C:0285H         PUBLIC        delay_speed_1
-  C:02C0H         PUBLIC        delay_speed_2
+  C:02F0H         PUBLIC        _program_2
+  C:01D1H         PUBLIC        _program_3
+  C:027AH         PUBLIC        delay_speed_1
+  C:02B5H         PUBLIC        delay_speed_2
   -------         PROC          DELAY_SPEED_1
   -------         DO            
   D:0013H         SYMBOL        i
   D:0015H         SYMBOL        j
   -------         ENDDO         
-  C:0285H         LINE#         4
-  C:0285H         LINE#         6
-  C:0298H         LINE#         7
-  C:02ABH         LINE#         8
-  C:02B5H         LINE#         9
-  C:02BFH         LINE#         10
+  C:027AH         LINE#         4
+  C:027AH         LINE#         6
+  C:028DH         LINE#         7
+  C:02A0H         LINE#         8
+  C:02AAH         LINE#         9
+  C:02B4H         LINE#         10
   -------         ENDPROC       DELAY_SPEED_1
   -------         PROC          DELAY_SPEED_2
   -------         DO            
   D:0017H         SYMBOL        i
   D:0019H         SYMBOL        j
   -------         ENDDO         
-  C:02C0H         LINE#         12
-  C:02C0H         LINE#         14
-  C:02D3H         LINE#         15
-  C:02E6H         LINE#         16
-  C:02F0H         LINE#         17
-  C:02FAH         LINE#         18
+  C:02B5H         LINE#         12
+  C:02B5H         LINE#         14
+  C:02C8H         LINE#         15
+  C:02DBH         LINE#         16
+  C:02E5H         LINE#         17
+  C:02EFH         LINE#         18
   -------         ENDPROC       DELAY_SPEED_2
   -------         PROC          _PROGRAM_2
   D:0023H         SYMBOL        prev
-  C:02FBH         LINE#         20
-  C:02FDH         LINE#         21
-  C:0306H         LINE#         22
-  C:0306H         LINE#         23
-  C:030CH         LINE#         24
-  C:030EH         LINE#         25
-  C:030EH         LINE#         26
+  C:02F0H         LINE#         20
+  C:02F2H         LINE#         21
+  C:02FBH         LINE#         22
+  C:02FBH         LINE#         23
+  C:0301H         LINE#         24
+  C:0303H         LINE#         25
+  C:0303H         LINE#         26
   -------         ENDPROC       _PROGRAM_2
-BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  01:05:09  PAGE 5
-
-
   -------         PROC          _PROGRAM_3
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  19:15:15  PAGE 5
+
+
   D:001FH         SYMBOL        prev
   D:0020H         SYMBOL        lower
   D:0021H         SYMBOL        to_left
-  C:01DCH         LINE#         28
-  C:01E2H         LINE#         29
-  C:01E6H         LINE#         30
-  C:01ECH         LINE#         31
-  C:01EEH         LINE#         32
-  C:01F4H         LINE#         33
-  C:01F4H         LINE#         34
-  C:0228H         LINE#         35
-  C:022FH         LINE#         36
-  C:0235H         LINE#         37
-  C:0237H         LINE#         38
+  C:01D1H         LINE#         28
+  C:01D7H         LINE#         29
+  C:01DBH         LINE#         30
+  C:01E1H         LINE#         31
+  C:01E3H         LINE#         32
+  C:01E9H         LINE#         33
+  C:01E9H         LINE#         34
+  C:021DH         LINE#         35
+  C:0224H         LINE#         36
+  C:022AH         LINE#         37
+  C:022CH         LINE#         38
   -------         ENDPROC       _PROGRAM_3
   -------         ENDMOD        UTILS
 
   -------         MODULE        ?C?SIDIV
-  C:0151H         PUBLIC        ?C?SIDIV
+  C:0146H         PUBLIC        ?C?SIDIV
   -------         ENDMOD        ?C?SIDIV
 
   -------         MODULE        RAND
   D:001BH         PUBLIC        ?SRAND?BYTE
-  C:0238H         PUBLIC        RAND
-  C:027AH         PUBLIC        _SRAND
+  C:022DH         PUBLIC        RAND
+  C:026FH         PUBLIC        _SRAND
   -------         ENDMOD        RAND
 
   -------         MODULE        ?C?UIDIV
-  C:0187H         PUBLIC        ?C?UIDIV
+  C:017CH         PUBLIC        ?C?UIDIV
   -------         ENDMOD        ?C?UIDIV
 
-Program Size: data=37.0 xdata=0 code=811
-LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY_SPEED_1?UTILS
+
+Program Size: data=37.0 xdata=0 code=800
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

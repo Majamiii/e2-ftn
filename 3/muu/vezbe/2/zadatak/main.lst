@@ -1,4 +1,4 @@
-C51 COMPILER V8.16   MAIN                                                                  11/06/2026 01:00:44 PAGE 1   
+C51 COMPILER V8.16   MAIN                                                                  11/06/2026 19:14:20 PAGE 1   
 
 
 C51 COMPILER V8.16, COMPILATION OF MODULE MAIN
@@ -27,14 +27,14 @@ line level    source
   17   1              uint8_t working = 0x00;
   18   1              uint8_t which_program = 0x00;
   19   1              uint8_t which_speed = 0x00;
-  20   1              uint8_t lower_4_bites = 0x00;
+  20   1              uint8_t lower_4_bites = 0x02;
   21   1              uint8_t to_left = 0x00;
   22   1      
   23   1              init();
   24   1      
   25   1              while(true){
   26   2      
-  27   2                      P0_state = get_P0();
+  27   2                      P0_state = ~get_P0();
   28   2                      
   29   2                      // start
   30   2                      if (((P0_state & 0x01) != 0)||(working==0x01)) {
@@ -48,13 +48,13 @@ line level    source
   38   3                              continue;
   39   3                      }
   40   2                      
-  41   2                      if ((P0_state & 0x3c)!=0) {
-  42   3                              which_program = P0_state & 0x3c; // 00111100
+  41   2                      if ((P0_state & 0x7c)!=0) {
+  42   3                              which_program = P0_state & 0x7c; // 01111100
   43   3                              which_program = which_program >> 2;
   44   3                      }
   45   2      
   46   2                      if ((P0_state & 0xc0)!=0) {
-  47   3                              which_speed = P0_state & 0xc0; // 11000000
+  47   3                              which_speed = P0_state & 0xa0; // 11000000
   48   3                              which_speed = which_program >> 6;
   49   3                      }
   50   2      
@@ -62,7 +62,7 @@ line level    source
   52   2                      if ((((P0_state & 0x04) != 0)||(which_program == 0x01))&&(working))  {
   53   3                               if ((P0_state & 0x04) != 0) {
   54   4                                      out_state = 0xFF;
-C51 COMPILER V8.16   MAIN                                                                  11/06/2026 01:00:44 PAGE 2   
+C51 COMPILER V8.16   MAIN                                                                  11/06/2026 19:14:20 PAGE 2   
 
   55   4                               }
   56   3                               which_program = 0x01;
@@ -94,29 +94,41 @@ line level    source
   82   3                              which_program = 0x08;
   83   3                              out_state = rand() % 0xFF;
   84   3                      }
-  85   2                      
-  86   2                      set_P2(out_state);
-  87   2      
-  88   2                      // speed 1
-  89   2                      if ((((P0_state & 0x40)!= 0)||(which_speed == 0x01))&&(working)) {
-  90   3                              which_speed = 0x01;
-  91   3                              delay_speed_1();
-  92   3                      }
-  93   2      
-  94   2                      // speed 2
-  95   2                      else if ((((P0_state & 0x80)!= 0)||(which_speed == 0x02))&&(working)) {
-  96   3                              which_speed = 0x02;
-  97   3                              delay_speed_2();
-  98   3                      }
-  99   2      
- 100   2              }
- 101   1      
- 102   1              return 0;
- 103   1      }
+  85   2      
+  86   2                      // program 5
+  87   2                      else if ((((P0_state & 0x40) != 0)||(which_program == 0x10))&&(working)){
+  88   3                              which_program = 0x10;
+  89   3                              if ((P0_state & 0x40) != 0) {
+  90   4                                      out_state = 0x0F;
+  91   4                               }
+  92   3                              out_state = ~out_state;
+  93   3                      }
+  94   2                      
+  95   2                      set_P2(out_state);
+  96   2      
+  97   2                      // speed 1
+  98   2                      //if ((((P0_state & 0x40)!= 0)||(which_speed == 0x01))&&(working)) {
+  99   2                      //      which_speed = 0x01;
+ 100   2                      //      delay_speed_1();
+ 101   2                      //}
+ 102   2      
+ 103   2                      // speed 2
+ 104   2                      delay_speed_2();
+ 105   2                      //if ((((P0_state & 0x80)!= 0)||(which_speed == 0x02))&&(working)) {
+ 106   2                      //      which_speed = 0x02;
+ 107   2                      //      delay_speed_2();
+ 108   2                      //}
+ 109   2      
+ 110   2              }
+ 111   1      
+ 112   1              return 0;
+ 113   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    334    ----
+C51 COMPILER V8.16   MAIN                                                                  11/06/2026 19:14:20 PAGE 3   
+
+   CODE SIZE        =    323    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

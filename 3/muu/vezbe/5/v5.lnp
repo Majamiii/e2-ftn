@@ -1,0 +1,6 @@
+"main.obj",
+"gpio.obj",
+"timers.obj",
+"utils.obj" 
+TO "v5" 
+RAMSIZE(256) 

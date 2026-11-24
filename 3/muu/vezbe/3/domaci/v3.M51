@@ -1,0 +1,216 @@
+BL51 BANKED LINKER/LOCATER V6.15                                                        11/13/2026  19:15:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.15, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE vezbe3.obj TO v3 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  vezbe3.obj (VEZBE3)
+
+
+LINK MAP OF MODULE:  v3 (VEZBE3)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     012AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  v3 (VEZBE3)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        VEZBE3
+  C:0022H         SYMBOL        DELAY
+  C:0009H         SYMBOL        DELAY_2
+  C:0125H         SYMBOL        DELAY_FAST
+  C:002AH         SYMBOL        DELAY_FOR0
+  C:0011H         SYMBOL        DELAY_FOR0_2
+  C:002CH         SYMBOL        DELAY_FOR1
+  C:0013H         SYMBOL        DELAY_FOR1_2
+  C:002EH         SYMBOL        DELAY_FOR2
+  C:0015H         SYMBOL        DELAY_FOR2_2
+  B:0021H.7       SYMBOL        FAST
+  C:0128H         SYMBOL        KRAJ_PETLJE
+  C:00A7H         SYMBOL        LOGIC1
+  C:00BDH         SYMBOL        LOGIC2
+  C:00D4H         SYMBOL        LOGIC3
+  C:00EEH         SYMBOL        LOGIC4
+  C:0104H         SYMBOL        LOGIC5
+  C:00E4H         SYMBOL        LOOP3
+  C:00FBH         SYMBOL        LOOP4
+  C:0111H         SYMBOL        LOOP5
+  C:003BH         SYMBOL        MAIN
+  C:00EAH         SYMBOL        NASTAVI
+  C:0002H         SYMBOL        NIZ
+  D:0080H         SYMBOL        P0
+  D:0020H         SYMBOL        P0_STANJA
+  D:00A0H         SYMBOL        P2
+  D:0030H         SYMBOL        P2_STANJA
+  D:0031H         SYMBOL        POCETNO_1
+  D:0032H         SYMBOL        POCETNO_2
+  D:0033H         SYMBOL        POCETNO_4
+  D:0034H         SYMBOL        POCETNO_5
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/13/2026  19:15:38  PAGE 2
+
+
+  B:0021H.2       SYMBOL        PROG1
+  B:0021H.3       SYMBOL        PROG2
+  B:0021H.4       SYMBOL        PROG3
+  B:0021H.5       SYMBOL        PROG4
+  B:0021H.6       SYMBOL        PROG5
+  C:011AH         SYMBOL        SKIP
+  B:0021H.0       SYMBOL        START
+  C:0083H         SYMBOL        START1
+  B:0021H.1       SYMBOL        STOP
+  C:0077H         SYMBOL        STOP_L
+  C:005CH         SYMBOL        WHILE
+  C:0000H         LINE#         3
+  C:0009H         LINE#         31
+  C:000BH         LINE#         32
+  C:000DH         LINE#         33
+  C:000FH         LINE#         35
+  C:0011H         LINE#         38
+  C:0013H         LINE#         40
+  C:0015H         LINE#         42
+  C:0017H         LINE#         43
+  C:0019H         LINE#         44
+  C:001BH         LINE#         46
+  C:001DH         LINE#         47
+  C:001FH         LINE#         48
+  C:0021H         LINE#         50
+  C:0022H         LINE#         53
+  C:0024H         LINE#         54
+  C:0026H         LINE#         55
+  C:0028H         LINE#         57
+  C:002AH         LINE#         60
+  C:002CH         LINE#         62
+  C:002EH         LINE#         64
+  C:0030H         LINE#         65
+  C:0032H         LINE#         66
+  C:0034H         LINE#         68
+  C:0036H         LINE#         69
+  C:0038H         LINE#         70
+  C:003AH         LINE#         72
+  C:003BH         LINE#         75
+  C:003EH         LINE#         76
+  C:0041H         LINE#         77
+  C:0043H         LINE#         78
+  C:0046H         LINE#         79
+  C:0049H         LINE#         80
+  C:004CH         LINE#         81
+  C:004FH         LINE#         82
+  C:0052H         LINE#         83
+  C:0054H         LINE#         84
+  C:0056H         LINE#         86
+  C:0059H         LINE#         87
+  C:005BH         LINE#         88
+  C:005CH         LINE#         92
+  C:005FH         LINE#         94
+  C:0062H         LINE#         95
+  C:0065H         LINE#         96
+  C:0068H         LINE#         98
+  C:006BH         LINE#         100
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/13/2026  19:15:38  PAGE 3
+
+
+  C:006DH         LINE#         101
+  C:006FH         LINE#         102
+  C:0072H         LINE#         103
+  C:0075H         LINE#         104
+  C:0077H         LINE#         107
+  C:0079H         LINE#         108
+  C:007BH         LINE#         109
+  C:007EH         LINE#         110
+  C:0081H         LINE#         111
+  C:0083H         LINE#         115
+  C:0085H         LINE#         116
+  C:0087H         LINE#         117
+  C:008AH         LINE#         118
+  C:008DH         LINE#         119
+  C:0090H         LINE#         120
+  C:0093H         LINE#         121
+  C:0096H         LINE#         122
+  C:0099H         LINE#         123
+  C:009CH         LINE#         124
+  C:009FH         LINE#         125
+  C:00A2H         LINE#         126
+  C:00A5H         LINE#         127
+  C:00A7H         LINE#         130
+  C:00AAH         LINE#         131
+  C:00ACH         LINE#         132
+  C:00AEH         LINE#         133
+  C:00B0H         LINE#         134
+  C:00B2H         LINE#         135
+  C:00B4H         LINE#         136
+  C:00B6H         LINE#         137
+  C:00B7H         LINE#         138
+  C:00B9H         LINE#         139
+  C:00BBH         LINE#         140
+  C:00BDH         LINE#         143
+  C:00C0H         LINE#         145
+  C:00C2H         LINE#         146
+  C:00C4H         LINE#         147
+  C:00C6H         LINE#         148
+  C:00C8H         LINE#         149
+  C:00CAH         LINE#         151
+  C:00CCH         LINE#         152
+  C:00CDH         LINE#         153
+  C:00CFH         LINE#         154
+  C:00D2H         LINE#         155
+  C:00D4H         LINE#         158
+  C:00D7H         LINE#         159
+  C:00D9H         LINE#         160
+  C:00DBH         LINE#         161
+  C:00DDH         LINE#         162
+  C:00DFH         LINE#         163
+  C:00E1H         LINE#         164
+  C:00E4H         LINE#         166
+  C:00E5H         LINE#         167
+  C:00E6H         LINE#         169
+  C:00E8H         LINE#         170
+  C:00EAH         LINE#         173
+  C:00ECH         LINE#         175
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/13/2026  19:15:38  PAGE 4
+
+
+  C:00EEH         LINE#         178
+  C:00F1H         LINE#         179
+  C:00F3H         LINE#         180
+  C:00F5H         LINE#         181
+  C:00F7H         LINE#         182
+  C:00F9H         LINE#         183
+  C:00FBH         LINE#         185
+  C:00FDH         LINE#         186
+  C:00FEH         LINE#         187
+  C:0100H         LINE#         188
+  C:0102H         LINE#         189
+  C:0104H         LINE#         192
+  C:0107H         LINE#         193
+  C:0109H         LINE#         194
+  C:010BH         LINE#         195
+  C:010DH         LINE#         196
+  C:010FH         LINE#         197
+  C:0111H         LINE#         199
+  C:0113H         LINE#         200
+  C:0114H         LINE#         201
+  C:0116H         LINE#         202
+  C:0118H         LINE#         203
+  C:011AH         LINE#         207
+  C:011DH         LINE#         209
+  C:0120H         LINE#         211
+  C:0123H         LINE#         213
+  C:0125H         LINE#         216
+  C:0128H         LINE#         219
+  -------         ENDMOD        VEZBE3
+
+Program Size: data=8.0 xdata=0 code=298
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

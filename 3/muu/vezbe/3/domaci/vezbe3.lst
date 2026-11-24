@@ -1,0 +1,294 @@
+A51 MACRO ASSEMBLER  VEZBE3                                                               11/13/2026 19:15:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN vezbe3.obj
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE src\vezbe3.a SET(SMALL) DEBUG PRINT(.\vezbe3.lst) OBJECT(vezbe3.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0X00
+                       2     USING 0
+0000 8039              3     JMP MAIN
+                       4     
+                       5     
+0002                   6     niz:
+0002 81                7             db 0x81
+0003 42                8             db 0x42
+0004 24                9             db 0x24
+0005 18               10             db 0x18
+0006 24               11             db 0x24
+0007 42               12             db 0x42
+0008 81               13             db 0x81
+                      14     
+  0020                15     P0_stanja DATA 0x20
+  0008                16     start     BIT   0x21.0
+  0009                17     stop      BIT   0x21.1
+  000F                18     fast      BIT   0x21.7
+  000A                19     prog1     BIT 0x21.2
+  000B                20     prog2     BIT 0x21.3
+  000C                21     prog3     BIT 0x21.4
+  000D                22     prog4     BIT 0x21.5
+  000E                23     prog5     BIT 0x21.6
+  0030                24     P2_stanja DATA 0x30
+  0031                25     Pocetno_1 DATA 0x31
+  0032                26     Pocetno_2 DATA 0x32
+  0033                27     Pocetno_4 DATA 0x33
+  0034                28     Pocetno_5 DATA 0x34
+                      29     
+0009                  30     DELAY_2:
+0009 C000             31             PUSH AR0
+000B C001             32             PUSH AR1
+000D C002             33             PUSH AR2
+                      34     
+000F 78C8             35         MOV R0, #200
+                      36     
+0011                  37     DELAY_FOR0_2:
+0011 79C8             38             MOV R1, #200
+0013                  39     DELAY_FOR1_2:
+0013 7A05             40             MOV R2, #5
+0015                  41     DELAY_FOR2_2:
+0015 DAFE             42             DJNZ R2, DELAY_FOR2_2
+0017 D9FA             43             DJNZ R1, DELAY_FOR1_2
+0019 D8F6             44             DJNZ R0, DELAY_FOR0_2
+                      45     
+001B D002             46             POP AR2
+001D D001             47             POP AR1
+001F D000             48             POP AR0
+                      49     
+0021 22               50             RET
+                      51     
+0022                  52     DELAY:
+0022 C000             53             PUSH AR0
+0024 C001             54             PUSH AR1
+0026 C002             55             PUSH AR2
+                      56     
+0028 78C8             57         MOV R0, #200
+                      58     
+A51 MACRO ASSEMBLER  VEZBE3                                                               11/13/2026 19:15:38 PAGE     2
+
+002A                  59     DELAY_FOR0:
+002A 79C8             60             MOV R1, #200
+002C                  61     DELAY_FOR1:
+002C 7A0A             62             MOV R2, #10
+002E                  63     DELAY_FOR2:
+002E DAFE             64             DJNZ R2, DELAY_FOR2
+0030 D9FA             65             DJNZ R1, DELAY_FOR1
+0032 D8F6             66             DJNZ R0, DELAY_FOR0
+                      67     
+0034 D002             68             POP AR2
+0036 D001             69             POP AR1
+0038 D000             70             POP AR0
+                      71     
+003A 22               72             RET
+                      73     
+003B                  74     MAIN:
+003B 75A000           75             MOV P2, #0x00
+003E 7580FF           76             MOV P0, #0xFF
+0041 7B06             77             MOV R3, #6
+0043 753000           78             MOV P2_stanja, #0x00
+0046 753100           79             MOV Pocetno_1, #0x00
+0049 753280           80             MOV Pocetno_2, #0x80 
+004C 7533AA           81             MOV Pocetno_4, #0xAA
+004F 7534F0           82             MOV Pocetno_5, #0xF0
+0052 D20F             83             SETB fast
+0054 D20A             84             SETB prog1
+                      85     
+0056 900002           86             MOV DPTR, #niz
+0059 7406             87             MOV A, #6
+005B 93               88             MOVC A, @A+DPTR  
+                      89     
+005C                  90     WHILE:
+                      91             
+005C 858020           92             MOV P0_stanja, P0
+                      93             
+005F 300021           94             JNB P0_stanja.0, START1
+0062 300112           95             JNB P0_stanja.1, STOP_L
+0065 20081B           96             JB start, START1
+                      97             
+0068 20090C           98             JB stop, STOP_L
+                      99             
+006B C208            100             CLR start
+006D D209            101             SETB stop
+006F 753000          102             MOV P2_stanja, #0x00
+0072 8530A0          103             MOV P2, P2_stanja
+0075 2128            104             JMP KRAJ_PETLJE
+                     105     
+0077                 106     STOP_L:
+0077 C208            107             CLR start
+0079 D209            108             SETB stop 
+007B 753000          109             MOV P2_stanja, #0x00
+007E 8530A0          110             MOV P2, P2_stanja
+0081 2128            111             JMP KRAJ_PETLJE
+                     112     
+                     113     
+0083                 114     START1:
+0083 D208            115             SETB start
+0085 C209            116             CLR stop
+0087 30021D          117             JNB P0_stanja.2, LOGIC1
+008A 300330          118             JNB P0_stanja.3, LOGIC2
+008D 300444          119             JNB P0_stanja.4, LOGIC3
+0090 30055B          120             JNB P0_stanja.5, LOGIC4
+0093 30066E          121             JNB P0_stanja.6, LOGIC5
+0096 200A0E          122             JB prog1, LOGIC1
+0099 200B21          123             JB prog2, LOGIC2
+009C 200C35          124             JB prog3, LOGIC3
+A51 MACRO ASSEMBLER  VEZBE3                                                               11/13/2026 19:15:38 PAGE     3
+
+009F 200D4C          125             JB prog4, LOGIC4
+00A2 200E5F          126             JB prog5, LOGIC5
+00A5 8000            127             JMP LOGIC1
+                     128     
+00A7                 129     LOGIC1:
+00A7 300870          130             JNB start, SKIP
+00AA D20A            131             SETB prog1
+00AC C20B            132             CLR prog2
+00AE C20C            133             CLR prog3
+00B0 C20D            134             CLR prog4         
+00B2 C20E            135             CLR prog5
+00B4 E531            136             MOV A, Pocetno_1
+00B6 F4              137             CPL A
+00B7 F531            138             MOV Pocetno_1, A
+00B9 F530            139             MOV P2_stanja, A
+00BB 805D            140             JMP SKIP
+                     141     
+00BD                 142     LOGIC2:
+00BD 30085A          143             JNB start, SKIP
+                     144     
+00C0 D20B            145             SETB prog2
+00C2 C20A            146             CLR prog1
+00C4 C20C            147             CLR prog3
+00C6 C20D            148             CLR prog4 
+00C8 C20E            149             CLR prog5
+                     150     
+00CA E532            151             MOV A, Pocetno_2
+00CC 23              152             RL  A
+00CD F532            153             MOV Pocetno_2, A
+00CF 853230          154             MOV P2_stanja, Pocetno_2
+00D2 8046            155             JMP SKIP
+                     156     
+00D4                 157     LOGIC3:
+00D4 300843          158             JNB start, SKIP
+00D7 D20C            159             SETB prog3
+00D9 C20A            160             CLR prog1
+00DB C20B            161             CLR prog2
+00DD C20D            162             CLR prog4         
+00DF C20E            163             CLR prog5
+00E1 900002          164             MOV DPTR, #niz
+00E4                 165     LOOP3:
+00E4 EB              166             MOV A, R3
+00E5 93              167             MOVC A, @A+DPTR
+                     168             
+00E6 DB02            169             DJNZ R3, NASTAVI
+00E8 7B06            170             MOV R3, #6
+                     171     
+00EA                 172     NASTAVI:
+00EA F530            173             MOV P2_stanja, A
+                     174     
+00EC 802C            175             JMP SKIP
+                     176     
+00EE                 177     LOGIC4:
+00EE 300829          178             JNB start, SKIP
+00F1 D20D            179             SETB prog4
+00F3 C20A            180             CLR prog1
+00F5 C20B            181             CLR prog2
+00F7 C20C            182             CLR prog3
+00F9 C20E            183             CLR prog5
+00FB                 184     LOOP4:
+00FB E533            185             MOV A, Pocetno_4
+00FD F4              186             CPL A
+00FE F533            187             MOV Pocetno_4, A
+0100 F530            188             MOV P2_stanja, A
+0102 8016            189             JMP SKIP
+                     190     
+A51 MACRO ASSEMBLER  VEZBE3                                                               11/13/2026 19:15:38 PAGE     4
+
+0104                 191     LOGIC5:
+0104 300813          192             JNB start, SKIP
+0107 D20E            193             SETB prog5
+0109 C20A            194             CLR prog1
+010B C20B            195             CLR prog2
+010D C20C            196             CLR prog3
+010F C20D            197             CLR prog4
+0111                 198     LOOP5:
+0111 E534            199             MOV A, Pocetno_5
+0113 23              200             RL A
+0114 F534            201             MOV Pocetno_5, A
+0116 F530            202             MOV P2_stanja, A
+0118 8000            203             JMP SKIP
+                     204     
+011A                 205     SKIP:
+                     206             
+011A 8530A0          207             MOV P2, P2_stanja
+                     208     
+011D 300705          209             JNB P0_stanja.7, DELAY_FAST
+                     210     
+0120 200F02          211             JB fast, DELAY_FAST
+                     212     
+0123 8003            213             JMP KRAJ_PETLJE
+                     214     
+0125                 215     DELAY_FAST:
+0125 120022          216             LCALL DELAY
+                     217     
+0128                 218     KRAJ_PETLJE:    
+0128 015C            219             JMP WHILE
+                     220     
+                     221     END
+A51 MACRO ASSEMBLER  VEZBE3                                                               11/13/2026 19:15:38 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR0. . . . . . . .  D ADDR   0000H   A   
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+DELAY. . . . . . .  C ADDR   0022H   A   
+DELAY_2. . . . . .  C ADDR   0009H   A   
+DELAY_FAST . . . .  C ADDR   0125H   A   
+DELAY_FOR0 . . . .  C ADDR   002AH   A   
+DELAY_FOR0_2 . . .  C ADDR   0011H   A   
+DELAY_FOR1 . . . .  C ADDR   002CH   A   
+DELAY_FOR1_2 . . .  C ADDR   0013H   A   
+DELAY_FOR2 . . . .  C ADDR   002EH   A   
+DELAY_FOR2_2 . . .  C ADDR   0015H   A   
+FAST . . . . . . .  B ADDR   0021H.7 A   
+KRAJ_PETLJE. . . .  C ADDR   0128H   A   
+LOGIC1 . . . . . .  C ADDR   00A7H   A   
+LOGIC2 . . . . . .  C ADDR   00BDH   A   
+LOGIC3 . . . . . .  C ADDR   00D4H   A   
+LOGIC4 . . . . . .  C ADDR   00EEH   A   
+LOGIC5 . . . . . .  C ADDR   0104H   A   
+LOOP3. . . . . . .  C ADDR   00E4H   A   
+LOOP4. . . . . . .  C ADDR   00FBH   A   
+LOOP5. . . . . . .  C ADDR   0111H   A   
+MAIN . . . . . . .  C ADDR   003BH   A   
+NASTAVI. . . . . .  C ADDR   00EAH   A   
+NIZ. . . . . . . .  C ADDR   0002H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P0_STANJA. . . . .  D ADDR   0020H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P2_STANJA. . . . .  D ADDR   0030H   A   
+POCETNO_1. . . . .  D ADDR   0031H   A   
+POCETNO_2. . . . .  D ADDR   0032H   A   
+POCETNO_4. . . . .  D ADDR   0033H   A   
+POCETNO_5. . . . .  D ADDR   0034H   A   
+PROG1. . . . . . .  B ADDR   0021H.2 A   
+PROG2. . . . . . .  B ADDR   0021H.3 A   
+PROG3. . . . . . .  B ADDR   0021H.4 A   
+PROG4. . . . . . .  B ADDR   0021H.5 A   
+PROG5. . . . . . .  B ADDR   0021H.6 A   
+SKIP . . . . . . .  C ADDR   011AH   A   
+START. . . . . . .  B ADDR   0021H.0 A   
+START1 . . . . . .  C ADDR   0083H   A   
+STOP . . . . . . .  B ADDR   0021H.1 A   
+STOP_L . . . . . .  C ADDR   0077H   A   
+WHILE. . . . . . .  C ADDR   005CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

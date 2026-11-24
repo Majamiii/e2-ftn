@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.15                                                        11/06/2026  21:04:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.15, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE vezbe3.obj TO v3 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  vezbe3.obj (VEZBE3)
+
+
+LINK MAP OF MODULE:  v3 (VEZBE3)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0061H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  v3 (VEZBE3)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        VEZBE3
+  C:0007H         SYMBOL        DELAY
+  C:000FH         SYMBOL        DELAY_FOR0
+  C:0011H         SYMBOL        DELAY_FOR1
+  C:0013H         SYMBOL        DELAY_FOR2
+  C:0044H         SYMBOL        LOGIC1
+  C:004EH         SYMBOL        LOGIC2
+  C:0020H         SYMBOL        MAIN
+  C:0002H         SYMBOL        NIZ
+  D:0080H         SYMBOL        P0
+  D:0020H         SYMBOL        P0_STANJA
+  D:00A0H         SYMBOL        P2
+  D:0030H         SYMBOL        P2_STANJA
+  D:0031H         SYMBOL        POCETNO_2
+  C:0059H         SYMBOL        SKIP
+  B:0021H.0       SYMBOL        START
+  C:003DH         SYMBOL        START1
+  C:0032H         SYMBOL        WHILE
+  C:0000H         LINE#         3
+  C:0007H         LINE#         19
+  C:0009H         LINE#         20
+  C:000BH         LINE#         21
+  C:000DH         LINE#         23
+  C:000FH         LINE#         26
+  C:0011H         LINE#         28
+  C:0013H         LINE#         30
+  C:0015H         LINE#         31
+  C:0017H         LINE#         32
+  C:0019H         LINE#         34
+  C:001BH         LINE#         35
+  C:001DH         LINE#         36
+BL51 BANKED LINKER/LOCATER V6.15                                                      11/06/2026  21:04:41  PAGE 2
+
+
+  C:001FH         LINE#         38
+  C:0020H         LINE#         41
+  C:0023H         LINE#         42
+  C:0026H         LINE#         43
+  C:0029H         LINE#         44
+  C:002CH         LINE#         46
+  C:002FH         LINE#         47
+  C:0031H         LINE#         48
+  C:0032H         LINE#         52
+  C:0035H         LINE#         54
+  C:0038H         LINE#         55
+  C:003AH         LINE#         56
+  C:003DH         LINE#         59
+  C:0040H         LINE#         60
+  C:0042H         LINE#         61
+  C:0044H         LINE#         64
+  C:0047H         LINE#         68
+  C:0049H         LINE#         69
+  C:004AH         LINE#         70
+  C:004CH         LINE#         71
+  C:004EH         LINE#         74
+  C:0051H         LINE#         76
+  C:0053H         LINE#         77
+  C:0054H         LINE#         78
+  C:0056H         LINE#         79
+  C:0059H         LINE#         83
+  C:005CH         LINE#         85
+  C:005FH         LINE#         86
+  -------         ENDMOD        VEZBE3
+
+Program Size: data=8.0 xdata=0 code=97
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
